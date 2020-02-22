@@ -41,7 +41,7 @@ export class AddProductComponent implements OnInit {
 
   
 
-    this.authservice.addProduct(product).subscribe(data => {
+    this.authService.addProduct(product).subscribe(data => {
       if (data.success) {
         this.flashMessage.show('Successfully Added', { cssClass: 'alert-success', timeout: 3000 });
         this.router.navigate(['/addproduct']);

@@ -65,7 +65,7 @@ private router:Router) { }
       return false;
     }
 
-    this.authservice.registerUser(user).subscribe(data=>{
+    this.authService.registerUser(user).subscribe(data=>{
       
       if(data._id){
       //  this.flashMessage.show('Successfully Registered', { cssClass: 'alert-success', timeout: 3000 });
