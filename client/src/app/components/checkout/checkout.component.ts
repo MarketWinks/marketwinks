@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
   currentselection: String;
   price: number;
 
-  constructor(private flashMessage: FlashMessagesService, private authService: AuthService,
+  constructor(private flashMessage: FlashMessagesService, public authService: AuthService,
     private router: Router, private validateService: ValidateService) { }
 
   ngOnInit() {

@@ -18,7 +18,7 @@ export class ContactusComponent implements OnInit {
   //location:String;
 
   constructor(private validateService: ValidateService, private flashMessage:FlashMessagesService,
-    private authservice:AuthService,
+    public authService:AuthService,
   private router:Router) { }
 
   ngOnInit() {

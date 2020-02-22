@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
  
 constructor(private validateService: ValidateService, 
   //private flashMessage:FlashMessagesService,
-  private authservice:AuthService,
+  public authService:AuthService,
 private router:Router) { }
 
   ngOnInit() {
