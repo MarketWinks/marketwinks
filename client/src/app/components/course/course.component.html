@@ -1,0 +1,24 @@
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+
+<div class="container">
+  <div class="ring">
+    <div *ngIf="authService.loggedIn()">
+      <h2><p>{{course}}</p></h2>
+      <hr>
+      <div class="row ">
+        <div *ngFor="let video of videos" class="col-md-4">
+          <p>{{video.cmoduleName}}</p>
+          <p>{{video.cmoduleDescription}}</p>
+          <p>{{video.cmoduleAuthor}}</p>
+          <div [innerHTML]="video.cmoduleURL | safe: 'html'"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

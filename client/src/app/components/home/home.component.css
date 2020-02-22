@@ -1,0 +1,377 @@
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+
+.footer{
+  width:100%;
+  height: auto;
+  border-left: 0px;
+  padding-left: 0px;
+ }
+
+.home-image{
+  width: 100%;
+  height: auto;
+ }
+
+
+ .home-image .home-image-btn1{
+  position: absolute;
+  top: 25%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn1:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn2{
+  position: absolute;
+  top: 40%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn2:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn3{
+  position: absolute;
+  top: 55%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn3:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn4{
+  position: absolute;
+  top: 25%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn4:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn5{
+  position: absolute;
+  top: 40%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn5:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn6{
+  position: absolute;
+  top: 55%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn6:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn7{
+  position: absolute;
+  top: 25%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn7:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn8{
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn8:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn9{
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:80px;
+  width:80px;
+ }
+
+ .home-image .home-image-btn9:hover {
+  background-color: #10085A;
+}
+
+
+.home-image .home-image-btn10{
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #10085A;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  text-align: center;
+  height:inline;
+  width:fit-content;
+  line-height: 50px;
+  
+ }
+
+ .home-image .home-image-btn10:hover {
+  background-color: #10085A;
+  color: white;
+}
+
+
+.home-image .home-image-btn11{
+  position: absolute;
+  top: 60%;
+  left: 8%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #10085A;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  height:40px;
+  width:90px;
+ }
+
+ .home-image .home-image-btn11:hover {
+  background-color: #10085A;
+  color: white;
+}
+
+.home-image .large-text{
+  position: absolute;
+  font-size: 30px;
+  font-family: 'markpro-bold';
+  font-style: normal;
+  color: #10085A;
+  max-width: 30%;
+  top: 20%;
+  left: 5%;
+}
+
+@media (max-width: 768px) {
+  .home-image .large-text{
+    
+    font-size: 10px;
+    font-family: 'markpro-bold';
+    font-style: normal;
+    color: #10085A;
+    
+  }
+  
+
+}
+
+
+ 
+.home-image .small-text{
+  position: absolute;
+  font-size: 15px;
+  font-family: 'markpro-bold';
+  font-style: normal;
+  color: white;
+  max-width: 30%;
+  top: 45%;
+  left: 5%;
+
+}
+
+/* 
+
+@media (max-width: 768px) {
+
+  .home-image .small-text{
+  display: none;
+  }
+  
+.home-image .large-text{
+  display: none;
+  
+}
+} */
+
+
+
+
+.icon-bar a {
+    width: 50px;
+    align-content: center;
+    display: inline;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+  
+  .facebook {
+    background: #3B5998;
+    color: #10085A;
+  }
+  
+  .twitter {
+    background: #55ACEE;
+    color: #10085A;
+  }
+  
+  .google {
+    background: #dd4b39;
+    color: #10085A;
+  }
+  
+  .linkedin {
+    background: #007bb5;
+    color: #10085A;
+  }
+  
+  .youtube {
+    background: #bb0000;
+    color: #10085A;
+  }
+  
+  .content {
+    margin-left: 75px;
+    font-size: 30px;
+  }
+
+  
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.image-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}

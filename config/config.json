@@ -1,0 +1,13 @@
+{
+    "development": {
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://checkoutfood:checkoutfood123@cluster0-5ffrd.mongodb.net/MEANStackDB",
+        "JWT_SECRET": "SECRET#123",
+        "JWT_EXP": "10m"
+    },
+    "production": {
+        "MONGODB_URI": "mongodb+srv://checkoutfood:checkoutfood123@cluster0-5ffrd.mongodb.net/test?retryWrites=true",
+        "JWT_SECRET": "SECRET#123",
+        "JWT_EXP": "2m"
+    }
+}

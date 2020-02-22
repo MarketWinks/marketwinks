@@ -1,0 +1,24 @@
+<div class="container">
+  <br>
+   
+  
+  <div class="container">
+  
+            <div class="row ">
+              <div *ngFor="let monthlysellDetails of monthlysellDetails" class="col-md-12">
+                <div class="shadow-box">
+                  
+                
+                  <div class="card-body">
+                    <h5 class="card-title">{{monthlysellDetails.company}}</h5>
+                    <h5 class="card-text">{{monthlysellDetails.confidence_level}}</h5>
+                    <p class="card-text">{{monthlysellDetails.lastSellEvent}}</p>
+                    
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+    </div>
+  </div>

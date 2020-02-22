@@ -1,0 +1,24 @@
+<div class="container">
+<br>
+ 
+
+<div class="container">
+
+          <div class="row ">
+            <div *ngFor="let dailybuyDetails of dailybuyDetails" class="col-md-12">
+              <div class="shadow-box">
+                
+              
+                <div class="card-body">
+                  <h5 class="card-title">{{dailybuyDetails.company}}</h5>
+                  <h5 class="card-text">{{dailybuyDetails.confidence_level}}</h5>
+                  <p class="card-text">{{dailybuyDetails.lastBuyEvent}}</p>
+                  
+               
+                </div>
+              </div>
+            </div>
+          </div>
+
+  </div>
+</div>

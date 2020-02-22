@@ -1,0 +1,44 @@
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+
+<div class="container">
+  <h4>User Category: {{profile.email}}</h4>
+  <h4>Subscription Expiration: {{profile.email}}</h4>
+
+</div>
+
+<div class="container">
+<h1>User Profile</h1>
+<h2>{{profile.name}}</h2>
+  <img src="../../../assets/images/single_user.png" alt="profile-picture" border="0" />
+  <h3>{{profile.email}}</h3>
+
+<div>
+    <h4> <app-inline-edit [(ngModel)]="location" label="Location" type="text">
+    </app-inline-edit></h4>
+
+    <h4> <app-inline-edit [(ngModel)]="dateOfBirth" label="Date Of Birth" type="text">
+    </app-inline-edit></h4>
+
+    <h4> <app-inline-edit [(ngModel)]="mobile" label="Mobile" type="text">
+    </app-inline-edit></h4>
+
+    <h4> <app-inline-edit [(ngModel)]="occupation" label="Occupation" type="text">
+    </app-inline-edit></h4>
+
+  </div>
+  
+  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Save Changes</button>
+  
+  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Reset Password</button>
+  
+  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Download My Receipts</button>
+
+  
+  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Change Profile Pic</button>
+
+</div>
+</div>
