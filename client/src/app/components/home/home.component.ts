@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
       console.log(res);
 
-      this.rssfeedNewsArticlesTemp = res;
+      this.rssfeedNewsArticlesTemp = res.reverse();
 
       for (var i = 0; i < this.rssfeedNewsArticlesTemp.length; i++) {
         this.rssfeedNewsArticlesTemp[i].title = this.rssfeedNewsArticlesTemp[i].title.replace("<b>","");
