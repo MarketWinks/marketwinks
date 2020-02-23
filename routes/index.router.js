@@ -20,7 +20,12 @@ const ctrlMins15Buy = require('../controllers/mins15Buy.controller');
 const ctrlMins5Sell = require('../controllers/mins5Sell.controller');
 const ctrlMins5Buy = require('../controllers/mins5Buy.controller');
 
+const ctrlRssfeedNewsArticle = require('../controllers/rssfeedNewsArticle.controller');
+
 const jwtHelper = require('../config/jwtHelper');
+
+router.get('/rssfeedNewsArticleProfile',ctrlRssfeedNewsArticle.rssfeedNewsArticleProfile);
+
 
 router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);

@@ -375,3 +375,26 @@
   margin-right: auto;
   width: 40%;
 }
+
+
+
+.shadow-box{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+align-content: center;
+-webkit-border-radius: 10px 10px 10px 10px;
+border-radius: 10px 10px 10px 10px;
+background: #fff;
+-webkit-box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+.card-body .name { 
+  float:right;
+color: #10085A
+}
