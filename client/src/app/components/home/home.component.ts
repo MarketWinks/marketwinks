@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 
 import { RssfeedNewsArticleService } from '../../services/rssfeedNewsArticle.service';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -15,16 +16,25 @@ export class HomeComponent implements OnInit {
   rssfeedNewsArticles;
   rssfeedNewsArticlesTemp: any[];
 
-  constructor(public authService:AuthService,private router:Router, public rssfeedNewsArticleService:RssfeedNewsArticleService)  { }
+  constructor(public authService:AuthService,private router:Router, 
+    public rssfeedNewsArticleService:RssfeedNewsArticleService,
+    public http: HttpClient)  { }
 
   ngOnInit() {
-    
+
+//     this.rssfeedNewsArticleService.getLivePrice().
+//     subscribe((res: any[]) => {
+// console.log("live price");
+// console.log(res);
+//     });
+
     this.rssfeedNewsArticleService.getRssfeedNewsArticleProfile().
     subscribe((res: any[]) => {
 
       console.log(res);
 
       this.rssfeedNewsArticlesTemp = res.reverse();
+      this.rssfeedNewsArticlesTemp = this.rssfeedNewsArticlesTemp.slice(0,19)
 
       for (var i = 0; i < this.rssfeedNewsArticlesTemp.length; i++) {
         this.rssfeedNewsArticlesTemp[i].title = this.rssfeedNewsArticlesTemp[i].title.replace("<b>","");
@@ -53,7 +63,7 @@ export class HomeComponent implements OnInit {
     });
 
   }
-
+  
   customOptions: any = {
     loop: true,
     mouseDrag: false,

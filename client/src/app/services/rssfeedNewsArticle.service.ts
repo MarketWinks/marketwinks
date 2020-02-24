@@ -26,6 +26,10 @@ export class RssfeedNewsArticleService {
     return this.http.get(environment.apiBaseUrl + '/rssfeedNewsArticleProfile');
   }
 
+  // getLivePrice(){
+  //   return this.http.get('http://localhost:8085/baseURL/LSEDailyMarketFeedPriceService/KAZ');
+
+  // }
   //Helper Methods
 
   // setToken(token: string) {
