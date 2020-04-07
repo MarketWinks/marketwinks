@@ -265,15 +265,14 @@
   font-family: 'markpro-bold';
   font-style: normal;
   color: #10085A;
-  max-width: 30%;
+  max-width: 100%;
   top: 20%;
-  left: 5%;
 }
 
 @media (max-width: 768px) {
   .home-image .large-text{
     
-    font-size: 10px;
+    font-size: 20px;
     font-family: 'markpro-bold';
     font-style: normal;
     color: #10085A;
@@ -377,6 +376,12 @@
 }
 
 
+.image-expand {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
 
 .shadow-box{
   display: flex;
