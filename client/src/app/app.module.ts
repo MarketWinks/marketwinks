@@ -15,7 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SupportComponent } from './components/support/support.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { OurframeworkComponent } from './components/ourframework/ourframework.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UkeqDashboardComponent } from './components/ukeqdashboard/ukeqdashboard.component';
 import { CourseComponent } from './components/course/course.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,25 +31,25 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CollapseModule } from 'ngx-bootstrap';
 import { PaymentreceiptComponent } from './components/paymentreceipt/paymentreceipt.component';
 
-import { MonthlysellComponent } from './components/dashboard/monthlysell/monthlysell.component';
-import { MonthlybuyComponent } from './components/dashboard/monthlybuy/monthlybuy.component';
-import { WeeklysellComponent } from './components/dashboard/weeklysell/weeklysell.component';
-import { WeeklybuyComponent } from './components/dashboard/weeklybuy/weeklybuy.component';
-import { DailysellComponent } from './components/dashboard/dailysell/dailysell.component';
-import { DailybuyComponent } from './components/dashboard/dailybuy/dailybuy.component';
+import { UkeqMonthlysellComponent } from './components/ukeqdashboard/ukeqmonthlysell/ukeqmonthlysell.component';
+import { UkeqMonthlybuyComponent } from './components/ukeqdashboard/ukeqmonthlybuy/ukeqmonthlybuy.component';
+import { UkeqWeeklysellComponent } from './components/ukeqdashboard/ukeqweeklysell/ukeqweeklysell.component';
+import { UkeqWeeklybuyComponent } from './components/ukeqdashboard/ukeqweeklybuy/ukeqweeklybuy.component';
+import { UkeqDailysellComponent } from './components/ukeqdashboard/ukeqdailysell/ukeqdailysell.component';
+import { UkeqDailybuyComponent } from './components/ukeqdashboard/ukeqdailybuy/ukeqdailybuy.component';
 
 
-import { HourlysellComponent } from './components/dashboard/hourlysell/hourlysell.component';
-import { HourlybuyComponent } from './components/dashboard/hourlybuy/hourlybuy.component';
+import { UkeqHourlysellComponent } from './components/ukeqdashboard/ukeqhourlysell/ukeqhourlysell.component';
+import { UkeqHourlybuyComponent } from './components/ukeqdashboard/ukeqhourlybuy/ukeqhourlybuy.component';
 
-import { Mins30sellComponent } from './components/dashboard/mins30sell/mins30sell.component';
-import { Mins30buyComponent } from './components/dashboard/mins30buy/mins30buy.component';
+import { UkeqMins30sellComponent } from './components/ukeqdashboard/ukeqmins30sell/ukeqmins30sell.component';
+import { UkeqMins30buyComponent } from './components/ukeqdashboard/ukeqmins30buy/ukeqmins30buy.component';
 
-import { Mins15sellComponent } from './components/dashboard/mins15sell/mins15sell.component';
-import { Mins15buyComponent } from './components/dashboard/mins15buy/mins15buy.component';
+import { UkeqMins15sellComponent } from './components/ukeqdashboard/ukeqmins15sell/ukeqmins15sell.component';
+import { UkeqMins15buyComponent } from './components/ukeqdashboard/ukeqmins15buy/ukeqmins15buy.component';
 
-import { Mins5sellComponent } from './components/dashboard/mins5sell/mins5sell.component';
-import { Mins5buyComponent } from './components/dashboard/mins5buy/mins5buy.component';
+import { UkeqMins5sellComponent } from './components/ukeqdashboard/ukeqmins5sell/ukeqmins5sell.component';
+import { UkeqMins5buyComponent } from './components/ukeqdashboard/ukeqmins5buy/ukeqmins5buy.component';
 
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -77,74 +77,74 @@ const appRoutes: Routes =  [
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'paymentreceipt', component: PaymentreceiptComponent, canActivate: [AuthGuard] },
   {
-    path: 'dailysell', component: DashboardComponent,
-    children: [{ path: '', component: DailysellComponent }]
+    path: 'ukeqdailysell', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqDailysellComponent }]
 },
 {
-  path: 'dailybuy', component: DashboardComponent,
-  children: [{ path: '', component: DailybuyComponent }]
-},
-
-{
-  path: 'monthlysell', component: DashboardComponent,
-  children: [{ path: '', component: MonthlysellComponent }]
-},
-{
-  path: 'monthlybuy', component: DashboardComponent,
-  children: [{ path: '', component: MonthlybuyComponent }]
+  path: 'ukeqdailybuy', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqDailybuyComponent }]
 },
 
-
 {
-  path: 'weeklysell', component: DashboardComponent,
-  children: [{ path: '', component: WeeklysellComponent }]
+  path: 'ukeqmonthlysell', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMonthlysellComponent }]
 },
 {
-  path: 'weeklybuy', component: DashboardComponent,
-  children: [{ path: '', component: WeeklybuyComponent }]
+  path: 'ukeqmonthlybuy', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMonthlybuyComponent }]
 },
 
 
 {
-  path: 'hourlysell', component: DashboardComponent,
-  children: [{ path: '', component: HourlysellComponent }]
+  path: 'ukeqweeklysell', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqWeeklysellComponent }]
 },
 {
-  path: 'hourlybuy', component: DashboardComponent,
-  children: [{ path: '', component: HourlybuyComponent }]
-},
-
-
-
-
-{
-  path: 'mins30sell', component: DashboardComponent,
-  children: [{ path: '', component: Mins30sellComponent }]
-},
-{
-  path: 'mins30buy', component: DashboardComponent,
-  children: [{ path: '', component: Mins30buyComponent }]
-},
-
-
-
-{
-  path: 'mins15sell', component: DashboardComponent,
-  children: [{ path: '', component: Mins15sellComponent }]
-},
-{
-  path: 'mins15buy', component: DashboardComponent,
-  children: [{ path: '', component: Mins15buyComponent }]
+  path: 'ukeqweeklybuy', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqWeeklybuyComponent }]
 },
 
 
 {
-  path: 'mins5sell', component: DashboardComponent,
-  children: [{ path: '', component: Mins5sellComponent }]
+  path: 'ukeqhourlysell', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqHourlysellComponent }]
 },
 {
-  path: 'mins5buy', component: DashboardComponent,
-  children: [{ path: '', component: Mins5buyComponent }]
+  path: 'ukeqhourlybuy', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqHourlybuyComponent }]
+},
+
+
+
+
+{
+  path: 'ukeqmins30sell', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMins30sellComponent }]
+},
+{
+  path: 'ukeqmins30buy', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMins30buyComponent }]
+},
+
+
+
+{
+  path: 'ukeqmins15sell', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMins15sellComponent }]
+},
+{
+  path: 'ukeqmins15buy', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMins15buyComponent }]
+},
+
+
+{
+  path: 'ukeqmins5sell', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMins5sellComponent }]
+},
+{
+  path: 'ukeqmins5buy', component: UkeqDashboardComponent,
+  children: [{ path: '', component: UkeqMins5buyComponent }]
 }
 
 ]
@@ -156,7 +156,7 @@ const appRoutes: Routes =  [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    DashboardComponent,
+    UkeqDashboardComponent,
     ProfileComponent,
     AddProductComponent,
     EditProductComponent,
@@ -169,21 +169,21 @@ const appRoutes: Routes =  [
     ContactusComponent,
     SupportComponent,
     InlineEditComponent,
-    DailysellComponent,
-    DailybuyComponent,
+    UkeqDailysellComponent,
+    UkeqDailybuyComponent,
 
-    MonthlysellComponent,
-    MonthlybuyComponent,
-    WeeklysellComponent,
-    WeeklybuyComponent,
-    HourlysellComponent,
-    HourlybuyComponent,
-    Mins30sellComponent,
-    Mins30buyComponent,
-    Mins15sellComponent,
-    Mins15buyComponent,
-    Mins5sellComponent,
-    Mins5buyComponent,
+    UkeqMonthlysellComponent,
+    UkeqMonthlybuyComponent,
+    UkeqWeeklysellComponent,
+    UkeqWeeklybuyComponent,
+    UkeqHourlysellComponent,
+    UkeqHourlybuyComponent,
+    UkeqMins30sellComponent,
+    UkeqMins30buyComponent,
+    UkeqMins15sellComponent,
+    UkeqMins15buyComponent,
+    UkeqMins5sellComponent,
+    UkeqMins5buyComponent,
  
     SafePipe
   ],
