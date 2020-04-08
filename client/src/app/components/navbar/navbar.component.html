@@ -1,7 +1,10 @@
 
 
 <!--nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"-->
-  
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
 
 
@@ -44,7 +47,20 @@
       </li-->
 
       <li class="nav-item" *ngIf="authSerivce.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/dailybuy']"><b>Live Signals</b></a>
+        <a class="nav-link">
+        <div class="dropdown"><a>Live Signals<i class="fa fa-caret-down"></i></a>
+          <div class="dropdown-content">
+            <a [routerLink]="['/dailybuy']">US Equities</a>
+            <a [routerLink]="['/dailysell']">US Indices</a>
+            <a [routerLink]="['/dailybuy']">UK Equities</a>
+            <a [routerLink]="['/dailysell']">UK Indices</a>
+            <a [routerLink]="['/dailybuy']">Forex</a>
+            <a [routerLink]="['/dailysell']">Cryptos</a>
+            <a [routerLink]="['/dailysell']">Commodities</a>
+            
+          </div>
+        </div>
+      </a>
       </li>
       <li class="nav-item" *ngIf="authSerivce.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" [routerLink]="['/profile']">Profile</a>
