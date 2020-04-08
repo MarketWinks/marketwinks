@@ -29,6 +29,8 @@ _id: String;
     this.authSerivce.getProfile(this.email.toString()).subscribe((data: any[]) =>{
     this.profile = data[0];
 
+    console.log(data[0]);
+
     this._id = this.profile._id;
     this.name = this.profile.name;
     this.location = this.profile.location;
@@ -41,7 +43,7 @@ _id: String;
 
 navigateToEditProfile(){
   console.log("updated details");
-  console.log(this.profile._id);
+  console.log(this._id);
   console.log(this.email);
   console.log(this.name);
   
@@ -51,7 +53,7 @@ navigateToEditProfile(){
   console.log(this.occupation);
 
   const profileWithUpdates = {
-    _id: this.profile._id,
+    _id: this._id,
     name: this.name,
     email: this.email,
     location: this.location,

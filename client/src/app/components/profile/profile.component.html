@@ -5,16 +5,16 @@
   <br>
 
 <div class="container">
-  <h4>User Category: {{profile.email}}</h4>
-  <h4>Subscription Expiration: {{profile.email}}</h4>
+  <h4>User Category: {{email}}</h4>
+  <h4>Subscription Expiration: {{email}}</h4>
 
 </div>
 
 <div class="container">
 <h1>User Profile</h1>
-<h2>{{profile.name}}</h2>
+<h2>{{name}}</h2>
   <img src="../../../assets/images/single_user.png" alt="profile-picture" border="0" />
-  <h3>{{profile.email}}</h3>
+  <h3>{{email}}</h3>
 
 <div>
     <h4> <app-inline-edit [(ngModel)]="location" label="Location" type="text">
