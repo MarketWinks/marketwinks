@@ -15,7 +15,7 @@ const ctrlMins30Sell = require('../controllers/mins30Sell.controller');
 const ctrlMins30Buy = require('../controllers/mins30Buy.controller');
 const ctrlMins15Sell = require('../controllers/mins15Sell.controller');
 const ctrlMins15Buy = require('../controllers/mins15Buy.controller');
-const ctrlMins5Sell = require('../controllers/mins5Sell.controller');
+const ctrlUK_LSE_5MinSell = require('../controllers/uK_LSE_5MinSell.controller');
 const ctrlUK_LSE_5MinBuy = require('../controllers/uK_LSE_5MinBuy.controller');
 
 
