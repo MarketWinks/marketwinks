@@ -16,8 +16,8 @@ require('./mins30Buy.model');
 require('./mins15Sell.model');
 require('./mins15Buy.model');
 
-require('./mins5Sell.model');
-require('./mins5Buy.model');
+require('./uK_LSE_5MinSell.model');
+require('./uK_LSE_5MinBuy.model');
 
 require('./rssfeedNewsArticle.model');
 

@@ -14,7 +14,7 @@ const passport = require('passport');
 const env = require('./env');
 const rtsIndex = require('./routes/index.router');
 
-mongoose.connect('mongodb+srv://checkoutfood:checkoutfood123@cluster0-5ffrd.mongodb.net/test?retryWrites=true', {
+mongoose.connect('mongodb+srv://marketwinks:L9sS6oOAk1sHL0yi@aws-eu-west1-cluster-tszuq.mongodb.net/marketwinksdbprod?retryWrites=true', {
   useMongoClient: true,
 }, (err) => {
   // Check if database was able to connect

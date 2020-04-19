@@ -3,8 +3,13 @@ const crypto = require('crypto').randomBytes(256).toString('hex'); // Provides c
 // Export config object
 module.exports = {
 //  uri: process.env.databaseUri, // Databse URI and database name
-  uri: "mongodb://checkoutfood:checkoutfood123@cluster0-5ffrd.mongodb.net/",
+  uri: "mongodb://marketwinks:L9sS6oOAk1sHL0yi@aws-eu-west1-cluster-tszuq.mongodb.net/",
   secret: crypto, // Cryto-created secret
-  db: 'test'
+  db: 'marketwinksdbprod'
 
 }
+
+
+
+
+
