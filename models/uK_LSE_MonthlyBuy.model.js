@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var dailyBuySchema = new mongoose.Schema({
+var uK_LSE_MonthlyBuySchema = new mongoose.Schema({
     month: {
         type: String
     },
@@ -33,4 +33,4 @@ var dailyBuySchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('DailyBuy', dailyBuySchema);
+mongoose.model('UK_LSE_MonthlyBuy', uK_LSE_MonthlyBuySchema);

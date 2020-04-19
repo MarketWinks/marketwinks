@@ -28,7 +28,7 @@ export class UkeqMins30sellService {
   //HttpMethods
 
   getMins30sellProfile() {
-    return this.http.get(environment.apiBaseUrl + '/mins30SellProfile');
+    return this.http.get(environment.apiBaseUrl + '/uK_LSE_30MinSellProfile');
   }
 
   //Helper Methods

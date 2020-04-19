@@ -28,7 +28,7 @@ export class UkeqDailybuyService {
   //HttpMethods
 
   getDailybuyProfile() {
-    return this.http.get(environment.apiBaseUrl + '/dailyBuyProfile');
+    return this.http.get(environment.apiBaseUrl + '/uK_LSE_DailyBuyProfile');
   }
 
   //Helper Methods

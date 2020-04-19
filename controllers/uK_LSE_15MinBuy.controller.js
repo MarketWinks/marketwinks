@@ -2,21 +2,21 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
 
-const Mins15Buy = mongoose.model('Mins15Buy');
+const UK_LSE_15MinBuy = mongoose.model('UK_LSE_15MinBuy');
 
-module.exports.mins15BuyProfile = (req, res, next) =>{
+module.exports.uK_LSE_15MinBuyProfile = (req, res, next) =>{
 
-    Mins15Buy.find({}, (err, mins15Buy) => {
+    UK_LSE_15MinBuy.find({}, (err, uK_LSE_15MinBuy) => {
         console.log("Here we go");
-        res.send(mins15Buy);
+        res.send(uK_LSE_15MinBuy);
     }
 )};
 
 //testing
 module.exports.testentry_buy = (req, res, next) => {
-    var mins15Buy = new Mins15Buy();
-    mins15Buy.month = "4";
-    mins15Buy.save((err, doc) => {
+    var uK_LSE_15MinBuy = new UK_LSE_15MinBuy();
+    uK_LSE_15MinBuy.month = "4";
+    uK_LSE_15MinBuy.save((err, doc) => {
         if (!err)
             res.send(doc);
         else {

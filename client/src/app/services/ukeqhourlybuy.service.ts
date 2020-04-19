@@ -28,7 +28,7 @@ export class UkeqHourlybuyService {
   //HttpMethods
 
   getHourlybuyProfile() {
-    return this.http.get(environment.apiBaseUrl + '/hourlyBuyProfile');
+    return this.http.get(environment.apiBaseUrl + '/uK_LSE_HourlyBuyProfile');
   }
 
   //Helper Methods

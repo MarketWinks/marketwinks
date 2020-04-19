@@ -28,7 +28,7 @@ export class UkeqMonthlybuyService {
   //HttpMethods
 
   getMonthlybuyProfile() {
-    return this.http.get(environment.apiBaseUrl + '/monthlyBuyProfile');
+    return this.http.get(environment.apiBaseUrl + '/uK_LSE_MonthlyBuyProfile');
   }
 
   //Helper Methods

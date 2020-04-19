@@ -28,7 +28,7 @@ export class UkeqDailysellService {
   //HttpMethods
 
   getDailysellProfile() {
-    return this.http.get(environment.apiBaseUrl + '/dailySellProfile');
+    return this.http.get(environment.apiBaseUrl + '/uK_LSE_DailySellProfile');
   }
 
   //Helper Methods

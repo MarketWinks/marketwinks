@@ -28,7 +28,7 @@ export class UkeqWeeklybuyService {
   //HttpMethods
 
   getWeeklybuyProfile() {
-    return this.http.get(environment.apiBaseUrl + '/weeklyBuyProfile');
+    return this.http.get(environment.apiBaseUrl + '/uK_LSE_WeeklyBuyProfile');
   }
 
   //Helper Methods

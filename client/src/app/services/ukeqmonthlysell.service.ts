@@ -28,7 +28,7 @@ export class UkeqMonthlysellService {
   //HttpMethods
 
   getMonthlysellProfile() {
-    return this.http.get(environment.apiBaseUrl + '/monthlySellProfile');
+    return this.http.get(environment.apiBaseUrl + '/uK_LSE_MonthlySellProfile');
   }
 
   //Helper Methods

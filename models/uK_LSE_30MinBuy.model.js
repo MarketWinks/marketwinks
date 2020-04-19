@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var mins15SellSchema = new mongoose.Schema({
+var uK_LSE_30MinBuySchema = new mongoose.Schema({
     month: {
         type: String
     },
@@ -16,16 +16,16 @@ var mins15SellSchema = new mongoose.Schema({
     confidence_level: {
         type: String
     },
-    lastSellEvent: {
+    lastBuyEvent: {
         type: String
     },
-    lastSellPrice: {
+    lastBuyPrice: {
         type: String
     },
     lastEvent: {
         type: String
     },
-    isLastEventSell: {
+    isLastEventBuy: {
         type: String
     },
     lastEventPrice: {
@@ -33,4 +33,4 @@ var mins15SellSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('Mins15Sell', mins15SellSchema);
+mongoose.model('UK_LSE_30MinBuy', uK_LSE_30MinBuySchema);

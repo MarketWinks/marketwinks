@@ -2,23 +2,23 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
 
-const MonthlySell = mongoose.model('MonthlySell');
+const UK_LSE_MonthlySell = mongoose.model('UK_LSE_MonthlySell');
 //const MonthlySell = mongoose.model('User');
 
-module.exports.monthlySellProfile = (req, res, next) =>{
+module.exports.uK_LSE_MonthlySellProfile = (req, res, next) =>{
 
-    MonthlySell.find({}, (err, monthlySell) => {
+    UK_LSE_MonthlySell.find({}, (err, uK_LSE_MonthlySell) => {
         //return res.status(200).json({ status: true, monthlySell: monthlySell});
         console.log("Here we go");
-        res.send(monthlySell);
+        res.send(uK_LSE_MonthlySell);
     }
 )};
 
 //testing
 module.exports.testentry = (req, res, next) => {
-    var monthlySell = new MonthlySell();
-    monthlySell.month = "3";
-    monthlySell.save((err, doc) => {
+    var uK_LSE_MonthlySell = new UK_LSE_MonthlySell();
+    uK_LSE_MonthlySell.month = "3";
+    uK_LSE_MonthlySell.save((err, doc) => {
         if (!err)
             res.send(doc);
         else {
