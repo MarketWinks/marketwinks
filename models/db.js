@@ -17,6 +17,23 @@ require('./uK_LSE_15MinBuy.model');
 require('./uK_LSE_5MinSell.model');
 require('./uK_LSE_5MinBuy.model');
 
+
+require('./uS_MonthlySell.model');
+require('./uS_MonthlyBuy.model');
+require('./uS_WeeklySell.model');
+require('./uS_WeeklyBuy.model');
+require('./uS_DailySell.model');
+require('./uS_DailyBuy.model');
+require('./uS_HourlySell.model');
+require('./uS_HourlyBuy.model');
+require('./uS_30MinSell.model');
+require('./uS_30MinBuy.model');
+require('./uS_15MinSell.model');
+require('./uS_15MinBuy.model');
+require('./uS_5MinSell.model');
+require('./uS_5MinBuy.model');
+
+
 mongoose.connect(process.env.MONGODB_URI, (err) => {
     if (!err) { console.log('MongoDB connection succeeded.'); }
     else { console.log('Error in MongoDB connection : ' + JSON.stringify(err, undefined, 2)); }

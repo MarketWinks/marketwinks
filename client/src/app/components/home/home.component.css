@@ -11,6 +11,7 @@
 .home-image{
   width: 100%;
   height: auto;
+  font-family: Arial, Helvetica, sans-serif;
  }
 
 
@@ -261,8 +262,8 @@
 
 .home-image .large-text{
   position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
-  font-family: 'markpro-bold';
   font-style: normal;
   color: #10085A;
   max-width: 100%;
@@ -273,7 +274,7 @@
   .home-image .large-text{
     
     font-size: 20px;
-    font-family: 'markpro-bold';
+    font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     color: #10085A;
     
