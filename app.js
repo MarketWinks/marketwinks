@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const env = require('./env');
 const rtsIndex = require('./routes/index.router');
+const payments = require('./routes/payments');
 
 mongoose.connect('mongodb+srv://marketwinks:L9sS6oOAk1sHL0yi@aws-eu-west1-cluster-tszuq.mongodb.net/marketwinksdbprod?retryWrites=true', {
   useMongoClient: true,
@@ -33,6 +34,8 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use('', rtsIndex);
+app.use('/payments', payments);
+
 //cors-enabled here
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
