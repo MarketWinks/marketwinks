@@ -77,6 +77,9 @@ import { UseqMins5sellComponent } from './components/useqdashboard/useqmins5sell
 import { UseqMins5buyComponent } from './components/useqdashboard/useqmins5buy/useqmins5buy.component';
 
 
+import { InfopageComponent } from './components/infopage/infopage.component';
+
+
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 //safe piping for videos to dynamically load in iframe
@@ -101,6 +104,7 @@ const appRoutes: Routes =  [
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'paymentreceipt', component: PaymentreceiptComponent, canActivate: [AuthGuard] },
+  { path: 'infopage', component: InfopageComponent, canActivate: [AuthGuard] },
   {
     path: 'ukeqdailysell', component: UkeqDashboardComponent,
     children: [{ path: '', component: UkeqDailysellComponent }]
@@ -297,6 +301,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     UseqMins15buyComponent,
     UseqMins5sellComponent,
     UseqMins5buyComponent,
+    InfopageComponent,
  
 
     SafePipe

@@ -1,3 +1,4 @@
+  
 <div class="container">
 
   <div class="wrapper">
@@ -5,6 +6,25 @@
 </div>
    
 </div>
+
+
+<div class="container">
+
+  <div class="wrapper" *ngIf="authService.loggedIn()">
+    
+  <form align=center #searchForm="ngForm" (ngSubmit)="searchForm.valid && onSubmit()">
+
+    <input type="text" name="symbol" #symbol="ngModel" [(ngModel)]="model.symbol" placeholder="Type symbol to search" 
+    required [ngClass]="{'invalid-textbox' :searchForm.submitted}">
+    
+                    <input type="submit" value="SEARCH">
+           
+    </form>
+  </div>
+  </div>
+
+
+
 
 <div class="container">
 

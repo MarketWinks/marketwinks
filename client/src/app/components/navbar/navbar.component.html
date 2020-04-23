@@ -20,7 +20,7 @@
   <div id="navbar" class=" navbar-collapse collapse" [collapse]="iscollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/']">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/']">
           <b><i><span style="font-size: 30px;font-style: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
             MarketWinks</span>
           <!--img src="../../../assets/images/rsz_1broadwise.jpg"--></i></b>
@@ -40,37 +40,37 @@
         <a class="nav-link" [routerLink]="['/ourframework']">FRAMEWORK</a>
       </li-->
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/contactus']">Get in touch</a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/contactus']">Get in touch</a>
       </li>
       <!--li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" [routerLink]="['/support']">SUPPORT</a>
       </li-->
 
       <li class="nav-item" *ngIf="authSerivce.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
         <div class="dropdown"><a>Live Signals<i class="fa fa-caret-down"></i></a>
           <div class="dropdown-content">
-            <a [routerLink]="['/ukeqdailybuy']">UK Equities & Indices</a>
-            <a [routerLink]="['/useqdailybuy']">US Equities & Indices</a>
-            <a [routerLink]="['/ukeqmonthlybuy']">Forex</a>
-            <a [routerLink]="['/useqmonthlybuy']">Cryptos</a>
-            <a [routerLink]="['/ukeqweeklybuy']">Commodities</a>
+            <a data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/ukeqdailybuy']">UK Equities & Indices</a>
+            <a data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/useqdailybuy']">US Equities & Indices</a>
+            <a data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/ukeqmonthlybuy']">Forex</a>
+            <a data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/useqmonthlybuy']">Cryptos</a>
+            <a data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/ukeqweeklybuy']">Commodities</a>
             
           </div>
         </div>
       </a>
       </li>
       <li class="nav-item" *ngIf="authSerivce.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/profile']">Profile</a>
       </li>
       <li class="nav-item" *ngIf="authSerivce.loggedIn() && !authSerivce.userRole()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/cart']">Subscribe</a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/cart']">Subscribe</a>
       </li>
       <li class="nav-item" *ngIf="!authSerivce.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/login']"><b>Sign In</b></a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/login']"><b>Sign In</b></a>
       </li>
       <li class="nav-item" *ngIf="!authSerivce.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" [routerLink]="['/register']"><b>Sign Up</b></a>
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/register']"><b>Sign Up</b></a>
       </li>
       <li class="nav-item" *ngIf="authSerivce.loggedIn()">
         <a class="nav-link" (click)="onLogoutClick()" href="#">Sign Out</a>

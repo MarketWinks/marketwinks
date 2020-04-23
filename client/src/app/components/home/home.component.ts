@@ -20,6 +20,11 @@ export class HomeComponent implements OnInit {
     public rssfeedNewsArticleService:RssfeedNewsArticleService,
     public http: HttpClient)  { }
 
+    
+  model ={
+    symbol :''
+  };
+
   ngOnInit() {
 
 //     this.rssfeedNewsArticleService.getLivePrice().
@@ -87,6 +92,16 @@ export class HomeComponent implements OnInit {
       }
     },
     nav: true
+  }
+
+  
+  onSubmit(){
+      const symbol = this.model.symbol
+    
+console.log(symbol);
+localStorage.setItem('searchsymbol', symbol);
+this.router.navigate(['infopage']);
+    
   }
 
 }
