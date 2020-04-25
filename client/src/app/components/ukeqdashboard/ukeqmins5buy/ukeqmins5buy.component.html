@@ -10,10 +10,26 @@
                   
                 
                   <div class="card-body">
-                    <h5 class="card-title">{{mins5buyDetails.company}}</h5>
-                    <h5 class="card-text">{{mins5buyDetails.confidence_level}}</h5>
-                    <p class="card-text">{{mins5buyDetails.lastBuyEvent}}</p>
                     
+                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: chartreuse;">LIVE</div>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: 101</div>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10</div>
+
+                    <h5 class="card-title" style="font-weight: bold;">{{mins5buyDetails.company}}</h5>
+                    <h5 class="card-title">{{mins5buyDetails.confidence_level}}%</h5>
+                    <p class="card-text">{{mins5buyDetails.lastBuyEvent}}</p>
+                    <p class="card-text">Entry condition: BUY when Price <= 100 GBX</p>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
+                    <div class="like-content" align="left">
+  
+                      <button class="btn-secondary like-review" align="left" onclick="">
+                        <i class="fa fa-heart" aria-hidden="true"></i> 25
+                      </button>
+
+                    </div>
                  
                   </div>
                 </div>
