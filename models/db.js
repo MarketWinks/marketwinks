@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 require('./user.model');
+require('./profile.model');
+
 require('./rssfeedNewsArticle.model');
 
 require('./uK_LSE_MonthlySell.model');

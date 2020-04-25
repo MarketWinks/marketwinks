@@ -46,7 +46,7 @@ console.log(user);
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(environment.apiBaseUrl + '/users/updateProfile', profileWithUpdates, { headers: headers })
+    return this.http.put(environment.apiBaseUrl + '/profile/updateProfile', profileWithUpdates, { headers: headers })
       .pipe(map(res => res.json()));
   };
 
@@ -116,14 +116,16 @@ console.log(user);
   getProfile(email) {
     let headers = new Headers();
 
+    console.log("checking for..");
     console.log(email);
 
     
     headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.apiBaseUrl + '/users/profile/' + email, email)
+    return this.http.get(environment.apiBaseUrl + '/profile/profile/'+email, email)
     .pipe(map(res => res.json()));
 
   }
+
 
   // getPayment(paymentReferenceId) {
   //   let headers = new Headers();

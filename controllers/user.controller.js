@@ -3,6 +3,7 @@ const passport = require('passport');
 const _ = require('lodash');
 
 const User = mongoose.model('User');
+const Profile = mongoose.model('Profile');
 
 module.exports.register = (req, res, next) => {
     var user = new User();
@@ -10,8 +11,30 @@ module.exports.register = (req, res, next) => {
     user.email = req.body.email;
     user.password = req.body.password;
     user.save((err, doc) => {
-        if (!err)
-            res.send(doc);
+        if (!err){
+
+            var newProfile = new Profile({
+                name: req.body.fullName,
+                email: req.body.email,
+                username: req.body.email,
+                location: "location is null",
+                dateOfBirth: "dob is null",
+                mobile: "mobile is null",
+                occupation: "occupation is null"
+              });
+            
+
+              newProfile.save((err, doc) => {
+                if (!err){
+                    console.log(newProfile);
+
+                }
+
+              });
+          
+  res.send(doc);
+
+            }    
         else {
             console.log("ERROR IS:");
             console.log(err);
@@ -45,4 +68,25 @@ module.exports.userProfile = (req, res, next) =>{
                 return res.status(200).json({ status: true, user : _.pick(user,['fullName','email']) });
         }
     );
+}
+
+module.exports.getProfile = (req, res, next) =>{
+
+    console.log("this is incling req");
+    console.log(req);
+        Profile.find({email:req.params.email}, function(err, data){
+         
+       if(err){
+              console.log(err);
+              return
+          }
+      
+          if(data.length == 0) {
+              console.log("No record found")
+              return
+          }
+          res.send(data);
+      });
+      
+
 }

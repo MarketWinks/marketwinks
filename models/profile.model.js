@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
-// User Schema
-const ProfileSchema = mongoose.Schema({
+const jwt = require('jsonwebtoken');
+
+var profileSchema = new mongoose.Schema({
+
+  
   name: {
     type: String
   },
@@ -24,31 +27,40 @@ const ProfileSchema = mongoose.Schema({
   },
   occupation: {type: String,
   }
+
 });
 
-const Profile = module.exports = mongoose.model('Profile', ProfileSchema);
 
-module.exports.getProfileById = function(id, callback){
+profileSchema.methods.getProfileById = function(id, callback){
   Profile.findById(id, callback);
 }
 
-module.exports.getProfileByUsername = function(username, callback){
+profileSchema.methods.getProfileByUsername = function(username, callback){
   const query = {username: username}
   Profile.findOne(query, callback);
 }
 
-module.exports.getProfileByEmail = function(email, callback){
+profileSchema.methods.getProfileByEmail = function(email, callback){
   const query = {email: email}
   Profile.findOne(query, callback);
 }
 
-module.exports.addProfile = function(newProfile, callback){
-   //Profile.save(newProfile);
-  newProfile.save(callback);
+profileSchema.methods.addProfile = function(newProfile, callback){
+   Profile.save(newProfile);
+  //newProfile.save(callback);
     
 }
+
 
 // module.exports.updateProfile = function(profileWithUpdates, callback){
 //   profileWithUpdates.update(callback);
  
 // }
+
+const Profile = module.exports = mongoose.model('Profile', profileSchema);
+
+
+
+
+
+mongoose.model('Profile', profileSchema);

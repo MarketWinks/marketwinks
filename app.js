@@ -14,6 +14,7 @@ const passport = require('passport');
 const env = require('./env');
 const rtsIndex = require('./routes/index.router');
 const payments = require('./routes/payments');
+const profile = require('./routes/profile');
 
 mongoose.connect('mongodb+srv://marketwinks:L9sS6oOAk1sHL0yi@aws-eu-west1-cluster-tszuq.mongodb.net/marketwinksdbprod?retryWrites=true', {
   useMongoClient: true,
@@ -35,6 +36,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use('', rtsIndex);
 app.use('/payments', payments);
+app.use('/profile', profile);
 
 //cors-enabled here
 app.use(function(req, res, next) {

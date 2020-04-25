@@ -27,9 +27,9 @@ _id: String;
 
     this.email = localStorage.getItem("LoggedInUserEmail");
     this.authSerivce.getProfile(this.email.toString()).subscribe((data: any[]) =>{
-    this.profile = data[0];
-
-    console.log(data[0]);
+    this.profile = data;
+console.log("profile received");
+    console.log(data);
 
     this._id = this.profile._id;
     this.name = this.profile.name;

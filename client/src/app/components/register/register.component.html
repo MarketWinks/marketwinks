@@ -28,9 +28,9 @@
 <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onRegisterSubmit()">
   <input type="text" #fullName="ngModel" [(ngModel)]="model.name" name="fullName" placeholder="Full Name"
   required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
-  <div *ngIf="signUpForm.submitted && !fullName.valid">
+  <!--div *ngIf="signUpForm.submitted && !fullName.valid">
     <label class="validation-message">This field is required.</label>
-  </div>
+  </div-->
   <input type="text" #email="ngModel" [(ngModel)]="model.email" name="email" placeholder="Email Address"
   required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
   <div *ngIf="signUpForm.submitted && email.errors">
