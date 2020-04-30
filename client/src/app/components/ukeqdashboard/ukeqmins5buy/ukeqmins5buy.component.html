@@ -11,11 +11,11 @@
                 
                   <div class="card-body">
                     
-                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: chartreuse;">LIVE</div>
+                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">LIVE</div>
                     
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: 101</div>
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: 101 GBX</div>
                     
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10</div>
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10 GBX</div>
 
                     <h5 class="card-title" style="font-weight: bold;">{{mins5buyDetails.company}}</h5>
 <!--                    
@@ -23,11 +23,15 @@
 
                     <h5 class="card-title">
 
+<!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
                       <circle-progress
       [percent]="mins5buyDetails.confidence_level"
       [radius]="30"
       [outerStrokeWidth]="8"
       [innerStrokeWidth]="2"
+      [outerStrokeColor]="'#00FF22'"
       [innerStrokeColor]="'#e2e2e2'"
       [animation]="true"
       [animationDuration]="300"
@@ -40,8 +44,8 @@
   </circle-progress>
   </h5>
 
-                    <p class="card-text">{{mins5buyDetails.lastBuyEvent}}</p>
-                    <p class="card-text">Entry condition: BUY when Price <= 100 GBX</p>
+                    <p class="card-text">{{mins5buyDetails.lastBuyEvent}} GMT</p>
+                    <p class="card-text">Entry Criteria: <b>BUY when Market Price <= 100 GBX</b></p>
                     
                     <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
                     <div class="like-content" align="left">
