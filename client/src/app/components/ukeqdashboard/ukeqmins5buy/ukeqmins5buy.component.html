@@ -18,7 +18,28 @@
                     <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10</div>
 
                     <h5 class="card-title" style="font-weight: bold;">{{mins5buyDetails.company}}</h5>
-                    <h5 class="card-title">{{mins5buyDetails.confidence_level}}%</h5>
+<!--                    
+                    <h5 class="card-title">{{mins5buyDetails.confidence_level}}%</h5> -->
+
+                    <h5 class="card-title">
+
+                      <circle-progress
+      [percent]="mins5buyDetails.confidence_level"
+      [radius]="30"
+      [outerStrokeWidth]="8"
+      [innerStrokeWidth]="2"
+      [innerStrokeColor]="'#e2e2e2'"
+      [animation]="true"
+      [animationDuration]="300"
+      [space]="5"
+      [showSubtitle]= "false"
+      [showUnits]= "true"
+      [unitsFontSize]= "10"
+      [titleFontSize]= "15"
+      [clockwise]= "true">
+  </circle-progress>
+  </h5>
+
                     <p class="card-text">{{mins5buyDetails.lastBuyEvent}}</p>
                     <p class="card-text">Entry condition: BUY when Price <= 100 GBX</p>
                     
@@ -30,6 +51,9 @@
                       </button>
 
                     </div>
+
+        
+  
                  
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgCircleProgressModule} from 'ng-circle-progress';
 
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -318,7 +319,13 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     CollapseModule,
-    HttpClientModule
+    HttpClientModule,
+    NgCircleProgressModule.forRoot({
+      "units": "%",
+      "outerStrokeLinecap": "butt",
+      lazy: false
+    }),
+    RouterModule.forChild(appRoutes)
   ],
   providers: [ValidateService,AuthService,AuthGuard],
 
