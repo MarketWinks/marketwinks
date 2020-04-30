@@ -86,12 +86,12 @@ export class UkeqMins15sellComponent implements OnInit {
      this.mins15sellDetailsUnique.sort((obj1, obj2) => {
 
 
-      if (new Date(obj1.lastSellEvent.toString()).getTime() > new Date(obj2.lastSellEvent.toString())
+      if (new Date(obj1.lastSellEvent).getTime() > new Date(obj2.lastSellEvent)
       .getTime()) {
           return 1;
       }
 
-      if (new Date(obj1.lastSellEvent.toString()).getTime() < new Date(obj2.lastSellEvent.toString())
+      if (new Date(obj1.lastSellEvent).getTime() < new Date(obj2.lastSellEvent)
       .getTime()) {
           return -1;
       }
@@ -101,7 +101,7 @@ export class UkeqMins15sellComponent implements OnInit {
 
       this.mins15sellDetails_length=this.mins15sellDetailsUnique.length;
       this.mins15sellDetails = this.mins15sellDetailsUnique;
-
+      console.log(this.mins15sellDetails);
 
       },
       err => { 

@@ -86,12 +86,12 @@ export class UkeqMins30sellComponent implements OnInit {
      this.mins30sellDetailsUnique.sort((obj1, obj2) => {
 
 
-      if (new Date(obj1.lastSellEvent.toString()).getTime() > new Date(obj2.lastSellEvent.toString())
+      if (new Date(obj1.lastSellEvent).getTime() > new Date(obj2.lastSellEvent)
       .getTime()) {
           return 1;
       }
 
-      if (new Date(obj1.lastSellEvent.toString()).getTime() < new Date(obj2.lastSellEvent.toString())
+      if (new Date(obj1.lastSellEvent).getTime() < new Date(obj2.lastSellEvent)
       .getTime()) {
           return -1;
       }
