@@ -38,7 +38,7 @@ userSchema.pre('save', function (next) {
         bcrypt.hash(this.password, salt, (err, hash) => {
             this.password = hash;
          //   this.saltSecret = salt;
-            next();
+         //   next();
         });
     });
 
@@ -46,7 +46,7 @@ userSchema.pre('save', function (next) {
         bcrypt.hash(this.recoverywordpetname, salt, (err, hash) => {
             this.recoverywordpetname = hash;
            // this.saltSecret1 = salt;
-            next();
+          //  next();
         });
     });
 });
