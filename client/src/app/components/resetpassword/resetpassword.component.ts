@@ -7,21 +7,20 @@ import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-resetpassword',
+  templateUrl: './resetpassword.component.html',
+  styleUrls: ['./resetpassword.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class ResetpasswordComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   showSucessMessage: boolean;
   serverErrorMessages: string;
  
   model ={
-    name :'',
-  email :'',
-  password :'',
-  recoverywordpetname: '',
-  role :''
+   email :'',
+  newpwdgen :'',
+  newpwdgenrepeat :'',
+  recoverywordpetname: ''
 }
 
 
@@ -34,16 +33,14 @@ private router:Router) { }
   ngOnInit() {
   }
 
-  onRegisterSubmit(){
-    const user = {
-      fullName: this.model.name,
+  onResetSubmit(){
+    const input = {
       email: this.model.email,
-      password: this.model.password,
-      recoverywordpetname: this.model.recoverywordpetname,
-      role: 'users'
+      newpwdgen: this.model.newpwdgen,
+      recoverywordpetname: this.model.recoverywordpetname
     }
 
-    console.log(user);
+    console.log(input);
     // const profile = {
     //   name: this.name,
     //   email: this.email,
@@ -52,22 +49,22 @@ private router:Router) { }
     // }
 
     // Required Fields
-    if(!this.validateService.validateRegister(user)){
-      this.serverErrorMessages = 'Validation failed';
+    // if(!this.validateService.validateRegister(input)){
+    //   this.serverErrorMessages = 'Validation failed';
         
      // this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
-      return false;
-    }
+    //   return false;
+    // }
 
     // Validate Email
-    if(!this.validateService.validateEmail(user.email)){
+    if(!this.validateService.validateEmail(input.email)){
       this.serverErrorMessages = 'Validation failed';
         
       // this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
-    this.authService.registerUser(user).subscribe(data=>{
+    this.authService.resetPassword(input).subscribe(data=>{
       
       if(data._id){
       //  this.flashMessage.show('Successfully Registered', { cssClass: 'alert-success', timeout: 3000 });
@@ -98,9 +95,9 @@ private router:Router) { }
 
   
   resetForm() {
-    this.model.name= '';
     this.model.email= '';
-    this.model.password= '';
+    this.model.newpwdgen= '';
+    this.model.newpwdgenrepeat= '';
     this.model.recoverywordpetname= '';
     this.serverErrorMessages = '';
     }    

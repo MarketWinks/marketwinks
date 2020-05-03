@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClickForgotPwd(){
+    this.router.navigate(['resetpassword']);
+  }
+
   onSubmit(){
     const user={
       email:this.model.email,

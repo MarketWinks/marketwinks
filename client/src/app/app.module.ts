@@ -18,6 +18,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { OurframeworkComponent } from './components/ourframework/ourframework.component';
 import { UkeqDashboardComponent } from './components/ukeqdashboard/ukeqdashboard.component';
 import { UseqDashboardComponent } from './components/useqdashboard/useqdashboard.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
 import { CourseComponent } from './components/course/course.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -94,6 +95,8 @@ const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
+  {path:'resetpassword', component: ResetpasswordComponent},
+  
   {path:'aboutus', component: AboutusComponent},
   {path:'contactus', component: ContactusComponent},
   {path:'support', component: SupportComponent},
@@ -303,6 +306,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     UseqMins5sellComponent,
     UseqMins5buyComponent,
     InfopageComponent,
+    ResetpasswordComponent,
  
 
     SafePipe

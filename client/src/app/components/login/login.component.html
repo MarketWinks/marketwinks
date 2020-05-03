@@ -47,8 +47,8 @@
     </div>
     <input type="submit" value="Sign In">
   <div>
-  <a style="color: black">Forgot password? <a  style="color: black" href="www.google.com">Click here</a></a></div>
-    
+  <a style="color: black">Forgot password? <a style="color: black" (click)="onClickForgotPwd()"><b>Click here</b></a></a></div>
+  
   </form>
   <!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">

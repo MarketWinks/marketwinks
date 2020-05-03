@@ -17,7 +17,13 @@ var userSchema = new mongoose.Schema({
         required: 'Password can\'t be empty',
         minlength: [4, 'Password must be atleast 4 character long']
     },
-    saltSecret: String
+   // saltSecret: String,
+    recoverywordpetname: {
+        type: String,
+        required: 'Recovery Answer field can\'t be empty',
+        minlength: [4, 'Recovery Answer field must be atleast 4 character long']
+    }
+  //  saltSecret1: String
 });
 
 // Custom validation for email
@@ -31,7 +37,15 @@ userSchema.pre('save', function (next) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(this.password, salt, (err, hash) => {
             this.password = hash;
-            this.saltSecret = salt;
+         //   this.saltSecret = salt;
+            next();
+        });
+    });
+
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(this.recoverywordpetname, salt, (err, hash) => {
+            this.recoverywordpetname = hash;
+           // this.saltSecret1 = salt;
             next();
         });
     });
@@ -42,6 +56,11 @@ userSchema.pre('save', function (next) {
 userSchema.methods.verifyPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
+
+userSchema.methods.verifyRecoverywordpetname = function (recoverywordpetname) {
+    return bcrypt.compareSync(recoverywordpetname, this.recoverywordpetname);
+};
+
 
 userSchema.methods.generateJwt = function () {
     return jwt.sign({ _id: this._id},

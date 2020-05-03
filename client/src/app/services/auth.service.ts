@@ -32,6 +32,17 @@ console.log(user);
     .pipe(map(res => res.json()));
   };
 
+
+  resetPassword(input) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+console.log(input);
+    return this.http.post(environment.apiBaseUrl+'/changePassword',input, { headers: headers })
+    .pipe(map(res => res.json()));
+  };
+
+
+
   addProfile(user) {
     console.log("Adding Profile");
 

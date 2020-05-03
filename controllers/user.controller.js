@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
+const bcrypt = require('bcryptjs');
+
 
 const User = mongoose.model('User');
 const Profile = mongoose.model('Profile');
@@ -10,6 +12,7 @@ module.exports.register = (req, res, next) => {
     user.fullName = req.body.fullName;
     user.email = req.body.email;
     user.password = req.body.password;
+    user.recoverywordpetname = req.body.recoverywordpetname;
     user.save((err, doc) => {
         if (!err){
 
@@ -46,6 +49,60 @@ module.exports.register = (req, res, next) => {
 
     });
 }
+
+
+
+module.exports.changePassword = (req, res, next) => {
+    //saltSecret1: String;
+
+    //console.log(req.query.email);
+    // newpwdgen = "passnew123";
+    // saltSecret1 = null;
+
+    console.log("received req in change pwd");
+    console.log(req);
+
+    
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(req.body.newpwdgen, salt, (err, hash) => {
+            req.body.newpwdgen = hash;
+//            this.saltSecret1 = salt;
+        });
+    });
+
+    User.findOne({ email: req.body.email },
+        (err, user) => {
+            if (!user)
+                return res.status(404).json({ status: false, message: 'User record not found.' });
+            else
+                res.send(user);
+
+
+                bcrypt.compare(req.body.recoverywordpetname, user.recoverywordpetname, function(err, isMatch) {
+                    if (err) {
+                        return res.status(404).json({ status: false, message: 'Error during recovery words compare' });
+                        
+                    }
+                    else if (!isMatch) {
+                      console.log("recovery words didn't match");
+                      } else {
+                    console.log("success");
+
+
+                    var myquery = { email: req.body.email };
+                var newvalues = { $set: {password: req.body.newpwdgen} };
+                    User.updateOne(myquery, newvalues, function(err, res) {
+                        if (err) throw err;
+                        console.log("1 document updated");
+                });
+                
+        }
+                });
+    console.log("Here in change pwd");
+
+});
+}
+
 
 module.exports.authenticate = (req, res, next) => {
     // call for passport authentication

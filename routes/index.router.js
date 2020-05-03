@@ -40,6 +40,7 @@ const jwtHelper = require('../config/jwtHelper');
 
 router.get('/rssfeedNewsArticleProfile',ctrlRssfeedNewsArticle.rssfeedNewsArticleProfile);
 router.post('/register', ctrlUser.register);
+router.post('/changePassword', ctrlUser.changePassword);
 router.post('/authenticate', ctrlUser.authenticate);
 router.get('/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile);
 
