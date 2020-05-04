@@ -45,12 +45,20 @@ export class LoginComponent implements OnInit {
 console.log(user);
     this.authSerivce.authenticateUser(user).subscribe(data=>{
 
-      console.log(data);
+      // console.log(data);
 
       if (data.token) {
         this.authSerivce.storeUserData(data.token);
         localStorage.setItem('user', user.email);
         localStorage.setItem('LoggedInUserEmail', user.email);
+
+        this.authSerivce.getProfile(user.email).subscribe(profiledata=>{
+          // console.log("profiledata");
+        
+          // console.log(profiledata);
+          localStorage.setItem('UserCategory', profiledata.usercategory);
+
+        });
   
   //      this.flashMessage.show('Your now logged in', { cssClass: 'alert-success', timeout: 3000 });
         console.log('Login is completed fully');

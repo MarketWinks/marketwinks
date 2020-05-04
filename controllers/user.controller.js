@@ -13,8 +13,14 @@ module.exports.register = (req, res, next) => {
     user.email = req.body.email;
     user.password = req.body.password;
     user.recoverywordpetname = req.body.recoverywordpetname;
+    
     user.save((err, doc) => {
         if (!err){
+
+            
+    var date = new Date(Date.now());
+    date.setDate(date.getDate() + 7);
+    
 
             var newProfile = new Profile({
                 name: req.body.fullName,
@@ -23,7 +29,10 @@ module.exports.register = (req, res, next) => {
                 location: "location is null",
                 dateOfBirth: "dob is null",
                 mobile: "mobile is null",
-                occupation: "occupation is null"
+                occupation: "occupation is null",
+                usercategory: "TRIAL",
+                validtilldate: date.toString()
+
               });
             
 

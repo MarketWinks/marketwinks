@@ -17,6 +17,12 @@ var profileSchema = new mongoose.Schema({
     type: String,
     
   },
+  usercategory: {
+    type: String
+ },
+ validtilldate: {
+    type: String
+ },
   location: {
     type: String,
     
