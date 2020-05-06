@@ -69,7 +69,7 @@ export class ShoppingCartComponent implements OnInit {
   addProduct30Days(){
 
     this.currentselection="30 Days Subscription";
-    this.total=30;
+    this.total=36;
     
     this.authService.storeTotal(this.total);
    
@@ -77,10 +77,21 @@ export class ShoppingCartComponent implements OnInit {
   }
  
   
-  addProduct15Days(){
+  addProduct60Days(){
 
-    this.currentselection="15 Days Subscription";
-    this.total=299;
+    this.currentselection="60 Days Subscription";
+    this.total=69;
+    
+    this.authService.storeTotal(this.total);
+   
+    
+  }
+
+  
+  addProduct90Days(){
+
+    this.currentselection="90 Days Subscription";
+    this.total=97;
     
     this.authService.storeTotal(this.total);
    

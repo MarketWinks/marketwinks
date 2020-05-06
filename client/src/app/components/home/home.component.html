@@ -33,8 +33,8 @@
 <div class="home-image" style="padding-bottom: 20px;padding-top: 0px;">
   
   <img class="image-expand" src="../../../assets/images/gettyimages-agileWork1.JPG">
-  <button type="button" class="home-image-btn10" *ngIf="!authService.loggedIn()">TRY IT FOR FREE</button>
-  <button type="button" class="home-image-btn10" *ngIf="authService.loggedIn()">Subscribe Now</button>
+  <button type="button" class="home-image-btn10" *ngIf="!authService.loggedIn()" (click)="gotoSignup()">GET 7 DAYS FREE</button>
+  <button type="button" class="home-image-btn10" *ngIf="authService.loggedIn()" (click)="gotoCart()">Subscribe Now</button>
     
   <div class="large-text">AI Driven <br>Live Trading Signals <br>with Confidence Level<br><b>Global Equities.Indices.Forex<br>Cryptos.Commodities</b></div>
 

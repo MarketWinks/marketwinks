@@ -100,8 +100,19 @@ export class HomeComponent implements OnInit {
     
 console.log(symbol);
 localStorage.setItem('searchsymbol', symbol);
-this.router.navigate(['infopage']);
+this.router.navigate(['/infopage']);
     
   }
 
+  gotoSignup(){
+    this.router.navigate(['/register']);
+
+  }
+
+  
+  gotoCart(){
+    this.router.navigate(['/cart']);
+
+    
+  }
 }
