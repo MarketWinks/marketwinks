@@ -39,6 +39,13 @@ export class UkeqMins15buyComponent implements OnInit {
     //   }
     //  ),
 
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+
     this.mins15buyService.getMins15buyProfile().
       subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -152,6 +159,10 @@ export class UkeqMins15buyComponent implements OnInit {
 
 
 
+        if(localStorage.getItem('UserCategory') == "TRIAL"){
+          this.mins15buyDetails = this.mins15buyDetails.slice(0,3);
+  
+        }
 
       },
         err => {

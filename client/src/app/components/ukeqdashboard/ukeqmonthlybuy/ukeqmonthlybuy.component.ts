@@ -40,6 +40,13 @@ export class UkeqMonthlybuyComponent implements OnInit {
     //   }
     //  ),
 
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+
     this.monthlybuyService.getMonthlybuyProfile().
       subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -153,6 +160,10 @@ export class UkeqMonthlybuyComponent implements OnInit {
 
 
 
+        if(localStorage.getItem('UserCategory') == "TRIAL"){
+          this.monthlybuyDetails = this.monthlybuyDetails.slice(0,3);
+  
+        }
 
       },
         err => {

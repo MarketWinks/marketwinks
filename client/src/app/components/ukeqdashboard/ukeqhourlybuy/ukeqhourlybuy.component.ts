@@ -40,6 +40,13 @@ export class UkeqHourlybuyComponent implements OnInit {
     //   }
     //  ),
 
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+
     this.hourlybuyService.getHourlybuyProfile().
       subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -152,6 +159,11 @@ export class UkeqHourlybuyComponent implements OnInit {
         this.hourlybuyDetailsUniqueforTransitWork = this.hourlybuyDetailsUnique;
 
 
+        if(localStorage.getItem('UserCategory') == "TRIAL"){
+          this.hourlybuyDetails = this.hourlybuyDetails.slice(0,3);
+  
+        }
+        
 
 
       },

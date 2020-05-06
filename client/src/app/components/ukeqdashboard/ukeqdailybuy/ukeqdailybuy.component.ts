@@ -41,6 +41,14 @@ export class UkeqDailybuyComponent implements OnInit {
     //   }
     //  ),
 
+    
+
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+
     this.dailybuyService.getDailybuyProfile().
       subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -152,8 +160,11 @@ export class UkeqDailybuyComponent implements OnInit {
         this.dailybuyDetails = this.dailybuyDetailsUnique.reverse();
         this.dailybuyDetailsUniqueforTransitWork = this.dailybuyDetailsUnique;
 
+        if(localStorage.getItem('UserCategory') == "TRIAL"){
+          this.dailybuyDetails = this.dailybuyDetails.slice(0,3);
 
-
+        }
+        
 
       },
         err => {

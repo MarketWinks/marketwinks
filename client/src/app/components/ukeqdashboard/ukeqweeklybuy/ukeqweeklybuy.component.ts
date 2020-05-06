@@ -20,6 +20,14 @@ export class UkeqWeeklybuyComponent implements OnInit {
   constructor(public weeklybuyService: UkeqWeeklybuyService, public router: Router) { }
 
   ngOnInit() {
+
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+    
     this.weeklybuyService.getWeeklybuyProfile().
     subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -94,6 +102,10 @@ export class UkeqWeeklybuyComponent implements OnInit {
         this.weeklybuyDetails = this.weeklybuyDetailsUnique;
 
 
+        if(localStorage.getItem('UserCategory') == "TRIAL"){
+          this.weeklybuyDetails = this.weeklybuyDetails.slice(0,3);
+  
+        }
 
       },
       err => { 

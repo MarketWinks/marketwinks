@@ -32,6 +32,14 @@ export class UkeqWeeklysellComponent implements OnInit {
         
     //   }
     //  ),
+
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+    
     this.weeklysellService.getWeeklysellProfile().
     subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -102,6 +110,11 @@ export class UkeqWeeklysellComponent implements OnInit {
         this.weeklysellDetails_length=this.weeklysellDetailsUnique.length;
         this.weeklysellDetails = this.weeklysellDetailsUnique;
 
+        
+      if(localStorage.getItem('UserCategory') == "TRIAL"){
+        this.weeklysellDetails = this.weeklysellDetails.slice(0,3);
+
+      }
 
 
 

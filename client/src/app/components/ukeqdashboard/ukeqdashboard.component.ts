@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class UkeqDashboardComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, public authSerivce: AuthService) { }
 
   ngOnInit() {
     if(!localStorage.getItem('id_token')){

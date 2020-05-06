@@ -31,6 +31,14 @@ export class UkeqHourlysellComponent implements OnInit {
         
     //   }
     //  ),
+
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+    
     this.hourlysellService.getHourlysellProfile().
     subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -101,6 +109,11 @@ export class UkeqHourlysellComponent implements OnInit {
       this.hourlysellDetails_length=this.hourlysellDetailsUnique.length;
       this.hourlysellDetails = this.hourlysellDetailsUnique;
 
+      if(localStorage.getItem('UserCategory') == "TRIAL"){
+        this.hourlysellDetails = this.hourlysellDetails.slice(0,3);
+
+      }
+      
 
       },
       err => { 

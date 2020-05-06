@@ -240,6 +240,39 @@ console.log(input);
     return tokenNotExpired('id_token');
   }
 
+  
+  isUserCategoryTrial() {
+    console.log("checking user category");
+    console.log(localStorage.getItem('UserCategory'));
+    if (localStorage.getItem('UserCategory') == "TRIAL"){
+     return true;
+
+    } else {
+    return false;
+  }
+  }
+
+  
+  isUserCategoryFull() {
+    if (localStorage.getItem('UserCategory') == "FULL"){
+     return true;
+
+    } else {
+    return false;
+  }
+  }
+
+  
+  isUserCategoryNonRenew() {
+    if (localStorage.getItem('UserCategory') == "NONRENEW"){
+     return true;
+
+    } else {
+    return false;
+  }
+  }
+
+
   getUser() {
     return this.user;
   }

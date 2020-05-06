@@ -32,6 +32,14 @@ export class UkeqMins15sellComponent implements OnInit {
         
     //   }
     //  ),
+
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+    
     this.mins15sellService.getMins15sellProfile().
     subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -102,6 +110,12 @@ export class UkeqMins15sellComponent implements OnInit {
       this.mins15sellDetails_length=this.mins15sellDetailsUnique.length;
       this.mins15sellDetails = this.mins15sellDetailsUnique;
       console.log(this.mins15sellDetails);
+
+      
+      if(localStorage.getItem('UserCategory') == "TRIAL"){
+        this.mins15sellDetails = this.mins15sellDetails.slice(0,3);
+
+      }
 
       },
       err => { 

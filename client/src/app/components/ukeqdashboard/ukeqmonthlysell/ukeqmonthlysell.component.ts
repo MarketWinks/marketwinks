@@ -32,6 +32,14 @@ export class UkeqMonthlysellComponent implements OnInit {
         
     //   }
     //  ),
+
+    
+    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+      this.router.navigate(['/cart']);
+      return;
+
+    }
+    
     this.monthlysellService.getMonthlysellProfile().
     subscribe((res: any[]) => {
         console.log("RESPONSE");
@@ -102,6 +110,11 @@ export class UkeqMonthlysellComponent implements OnInit {
       this.monthlysellDetails_length=this.monthlysellDetailsUnique.length;
       this.monthlysellDetails = this.monthlysellDetailsUnique;
 
+      
+      if(localStorage.getItem('UserCategory') == "TRIAL"){
+        this.monthlysellDetails = this.monthlysellDetails.slice(0,3);
+
+      }
 
       },
       err => { 

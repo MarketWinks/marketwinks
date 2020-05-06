@@ -5,6 +5,7 @@
 
 <div class="wrapper">
   <marquee style="font-size: 20px;"><b>UK Equities</b></marquee>
+  <marquee *ngIf="authSerivce.isUserCategoryTrial()" style="font-size: 10px;"><b>You are currently using TRIAL Version with limited features. Please 'Subscribe' to access full features.</b></marquee>
 
   <div id="formContent">
     <h2 class="underlineHover"  routerLink="/ukeqmonthlybuy"  routerLinkActive="active">Monthly Buy</h2>

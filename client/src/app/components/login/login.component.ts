@@ -55,8 +55,11 @@ console.log(user);
         this.authSerivce.getProfile(user.email).subscribe(profiledata=>{
           // console.log("profiledata");
         
-          // console.log(profiledata);
+          console.log(profiledata);
           localStorage.setItem('UserCategory', profiledata.usercategory);
+
+          
+          console.log(localStorage.getItem('UserCategory'));
 
         });
   
