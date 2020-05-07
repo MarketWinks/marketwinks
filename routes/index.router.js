@@ -43,6 +43,7 @@ router.post('/register', ctrlUser.register);
 router.post('/changePassword', ctrlUser.changePassword);
 router.post('/authenticate', ctrlUser.authenticate);
 router.get('/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile);
+router.get('/verifyandactivateEmail', ctrlUser.verifyandactivateEmail);
 
 router.get('/uK_LSE_DailySellProfile',ctrlUK_LSE_DailySell.uK_LSE_DailySellProfile);
 router.get('/uK_LSE_DailyBuyProfile',ctrlUK_LSE_DailyBuy.uK_LSE_DailyBuyProfile);

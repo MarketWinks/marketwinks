@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
+var crypto = require('crypto');
+var nodemailer = require('nodemailer');
+
 
 
 const User = mongoose.model('User');
@@ -13,7 +16,9 @@ module.exports.register = (req, res, next) => {
     user.email = req.body.email;
     user.password = req.body.password;
     user.recoverywordpetname = req.body.recoverywordpetname;
-    
+    user.activeToken = Math.floor((Math.random() * 123456789) + Math.random());
+    user.activeExpires = Date.now() + 24 * 3600 * 1000;
+
     user.save((err, doc) => {
         if (!err){
 
@@ -43,8 +48,51 @@ module.exports.register = (req, res, next) => {
                 }
 
               });
+
+              var config = {
+                host: 'smtpout.asia.secureserver.net',
+                port: 25,
+               // secure: true,
+                auth: {
+                    user: 'globalhr@skillplaces.com',
+                    pass: 'live9in@Us'
+                }
+            };
+                
+            var smtpTransport = nodemailer.createTransport(config);
+
+            var link = 'https://www.marketwinks.com/verifyandactivateEmail?id='
+            + user.activeToken;
+
+
+            
+        
+            
           
-  res.send(doc);
+              mailOptions={
+                from: 'globalhr@skillplaces.com',
+                to : req.body.email,
+                subject : "Please confirm your Email account",
+                html : "Hello "+req.body.fullName+",<br><br> Welcome to MarketWinks!.<br><br>"+
+                "It’s time to confirm your email address.<br>"+
+                "Please Click on the link below to verify your email.<br><br>"+
+                link+"<br><br>Thank you,<br>MarketWinks Team!"
+                
+            };
+            
+            console.log(mailOptions);
+
+            smtpTransport.sendMail(mailOptions, function(error, response){
+                if(error){
+                    console.log(error);
+                    res.end("error");
+                }else{
+                    console.log("Message sent");
+                    res.end("sent");
+                }
+            });
+            
+            res.send(doc);
 
             }    
         else {
@@ -58,6 +106,32 @@ module.exports.register = (req, res, next) => {
 
     });
 }
+
+
+
+
+module.exports.verifyandactivateEmail = (req, res, next) => {
+
+    User.findOne({ activeToken : req.query.id },
+    (err, user) => {
+
+        console.log("User identified");
+        console.log(user);
+
+        var myquery = { email: user.email };
+        var newvalues = { $set: {active: true, activeToken: "TOKENUSED"} };
+            User.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+        });
+        res.send("Account Activated");
+    
+    }
+    );
+    
+}
+
+
 
 
 

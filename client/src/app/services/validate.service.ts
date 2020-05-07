@@ -39,9 +39,9 @@ export class ValidateService {
     }
   }
 
-  validateCard(Card){
-    if ( Card.ccname == undefined || Card.ccnumber  == undefined
-      || Card.ccexpiration_month == undefined || Card.ccexpiration_year == undefined || Card.cccvv  == undefined) {
+  validateCard(Card) {
+    if (Card.ccname == undefined || Card.ccnumber == undefined
+      || Card.ccexpiration_month == undefined || Card.ccexpiration_year == undefined || Card.cccvv == undefined) {
       return false;
     } else {
       return true;
@@ -50,6 +50,15 @@ export class ValidateService {
   validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+  }
+
+  validatePwd(pwd, repeatpwd) {
+    if (pwd === repeatpwd) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 
 }

@@ -22,8 +22,17 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: 'Recovery Answer field can\'t be empty',
         minlength: [4, 'Recovery Answer field must be atleast 4 character long']
-    }
+    },
   //  saltSecret1: String
+
+  active: {
+    type: Boolean,
+    default: false
+},
+activeToken: String,
+activeExpires: Date
+
+
 });
 
 // Custom validation for email
