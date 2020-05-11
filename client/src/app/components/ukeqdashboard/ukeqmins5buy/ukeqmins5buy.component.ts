@@ -212,4 +212,10 @@ export class UkeqMins5buyComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  navigateToSignalInfoPage(mins5buyDetails_idparameter){
+    localStorage.setItem('mongoSignalrequestedTable', "uk_lse_5minbuys");
+    localStorage.setItem('mongoSignalrequestedSignalID', mins5buyDetails_idparameter);
+    this.router.navigate(['/signalinfopage']);
+  }
+
 }

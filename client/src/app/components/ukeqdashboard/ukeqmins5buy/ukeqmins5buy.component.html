@@ -47,9 +47,15 @@
                     <p class="card-text">{{mins5buyDetails.lastBuyEvent}} GMT</p>
                     <p class="card-text">Entry Criteria: <b>BUY when Market Price <= 100 GBX</b></p>
                     
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
+                  <div align="right">
+                    <button type="button" (click)="navigateToSignalInfoPage(mins5buyDetails._id)" align="right" style="font-variant-caps: all-petite-caps; color: blue;">
+                      More Details...
+                      </button>
+                    </div>
+                    
                     <div class="like-content" align="left">
   
+
                       <button class="btn-secondary like-review" align="left" onclick="">
                         <i class="fa fa-heart" aria-hidden="true"></i> 25
                       </button>

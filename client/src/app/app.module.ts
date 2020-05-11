@@ -80,6 +80,7 @@ import { UseqMins5buyComponent } from './components/useqdashboard/useqmins5buy/u
 
 
 import { InfopageComponent } from './components/infopage/infopage.component';
+import { SignalinfopageComponent } from './components/signalinfopage/signalinfopage.component';
 
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -109,6 +110,8 @@ const appRoutes: Routes =  [
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'paymentreceipt', component: PaymentreceiptComponent, canActivate: [AuthGuard] },
   { path: 'infopage', component: InfopageComponent, canActivate: [AuthGuard] },
+  { path: 'signalinfopage', component: SignalinfopageComponent, canActivate: [AuthGuard] },
+  
   {
     path: 'ukeqdailysell', component: UkeqDashboardComponent,
     children: [{ path: '', component: UkeqDailysellComponent }]
@@ -306,6 +309,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     UseqMins5sellComponent,
     UseqMins5buyComponent,
     InfopageComponent,
+    SignalinfopageComponent,
     ResetpasswordComponent,
  
 
