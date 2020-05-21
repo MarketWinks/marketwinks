@@ -67,6 +67,14 @@
       <li class="nav-item" *ngIf="authSerivce.loggedIn() && !authSerivce.userRole()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/cart']">Subscribe</a>
       </li>
+      
+      <li class="nav-item" *ngIf="authSerivce.loggedIn() && !authSerivce.userRole()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/cart']">Watchlist</a>
+      </li>
+      <li class="nav-item" *ngIf="authSerivce.loggedIn() && !authSerivce.userRole()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/cart']">Notifications</a>
+      </li>
+
       <li class="nav-item" *ngIf="!authSerivce.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/login']"><b>Sign In</b></a>
       </li>
