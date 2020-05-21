@@ -83,8 +83,6 @@ import { InfopageComponent } from './components/infopage/infopage.component';
 import { SignalinfopageComponent } from './components/signalinfopage/signalinfopage.component';
 
 
-import { CarouselModule } from 'ngx-owl-carousel-o';
-
 //safe piping for videos to dynamically load in iframe
 import { SafePipe } from './components/course/safe.pipe';
 import { ContactusComponent } from './components/contactus/contactus.component';
@@ -318,7 +316,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
   imports: [
     BrowserModule,
     FormsModule,
-    CarouselModule,
+    
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot(),
