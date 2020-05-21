@@ -8,6 +8,6 @@
     "production": {
         "MONGODB_URI": "mongodb+srv://marketwinks:L9sS6oOAk1sHL0yi@aws-eu-west1-cluster-tszuq.mongodb.net/marketwinksdbprod?retryWrites=true",
         "JWT_SECRET": "SECRET#123",
-        "JWT_EXP": "2m"
+        "JWT_EXP": "8m"
     }
 }

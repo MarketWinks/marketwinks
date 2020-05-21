@@ -132,6 +132,45 @@ module.exports.verifyandactivateEmail = (req, res, next) => {
 }
 
 
+module.exports.updateUserCategorytoFull = (req, res, next) => {
+
+    Profile.findOne({ email : req.query.id },
+    (err, profile) => {
+        var date = new Date(Date.now());
+        date.setDate(date.getDate() + 30);
+    
+        var myquery = { email: profile.email };
+        var newvalues = { $set: {usercategory: "FULL", validtilldate: date.toString()} };
+        Profile.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+        });
+        res.send("User Category in Profile updated to FULL");
+    
+    }
+    );
+    
+}
+
+
+module.exports.updateUserCategorytoNonrenew = (req, res, next) => {
+
+    Profile.findOne({ email : req.query.id },
+    (err, profile) => {
+      
+        var myquery = { email: profile.email };
+        var newvalues = { $set: {usercategory: "NONRENEW"} };
+        Profile.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+        });
+        res.send("User Category in Profile updated to NONRENEW");
+    
+    }
+    );
+    
+}
+
 
 
 
