@@ -158,3 +158,145 @@ else if (req.body.table == "uk_lse_monthlysells"){
 
 };
 
+
+
+
+module.exports.getAllSignalsForSymbolDetailsProfile = (req, res, next) =>{
+
+    console.log("came to ootha controller for all signal table");
+    console.log(req.body);
+    
+    if (req.body.table == "uk_lse_5minbuys"){
+    UK_LSE_5MinBuy.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get for the 5mins buy fk");
+        res.send(signal);
+    }
+)
+}
+
+
+
+else if (req.body.table == "uk_lse_15minbuys"){
+    UK_LSE_15MinBuy.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+
+else if (req.body.table == "uk_lse_30minbuys"){
+    UK_LSE_30MinBuy.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+
+else if (req.body.table == "uk_lse_hourlybuys"){
+    UK_LSE_HourlyBuy.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_dailybuys"){
+    UK_LSE_DailyBuy.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_weeklybuys"){
+    UK_LSE_WeeklyBuy.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_monthlybuys"){
+    UK_LSE_MonthlyBuy.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+
+else if (req.body.table == "uk_lse_5minsells"){
+    UK_LSE_5MinSell.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_15minsells"){
+    UK_LSE_15MinSell.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_30minsells"){
+    UK_LSE_30MinSell.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+
+else if (req.body.table == "uk_lse_hourlysells"){
+    UK_LSE_HourlySell.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_dailysells"){
+    UK_LSE_DailySell.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_weeklysells"){
+    UK_LSE_WeeklySell.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+else if (req.body.table == "uk_lse_monthlysells"){
+    UK_LSE_MonthlySell.find({company:req.body.symbol}, (err, signal) => {
+        console.log("Here we get");
+        res.send(signal);
+    }
+)
+}
+
+
+
+};
+
