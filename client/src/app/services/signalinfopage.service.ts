@@ -22,9 +22,15 @@ export class SignalinfopageService {
 
   //HttpMethods
 
-  getSignalinfopageProfile() {
-    return this.http.get(environment.apiBaseUrl + '/signalinfopageProfile');
+  getSignalinfopageProfile(input) {
+    console.log("sending this");
+    console.log(input);
+    return this.http.post(environment.apiBaseUrl + '/getFullSignalDetailsProfile', input);
+
+
   }
+
+  
 
   // getLivePrice(){
   //   return this.http.get('http://localhost:8085/baseURL/LSEDailyMarketFeedPriceService/KAZ');

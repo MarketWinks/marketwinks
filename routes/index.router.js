@@ -4,6 +4,10 @@ const router = express.Router();
 const ctrlUser = require('../controllers/user.controller');
 const ctrlRssfeedNewsArticle = require('../controllers/rssfeedNewsArticle.controller');
 
+
+const ctrlGetFullSignalDetails = require('../controllers/getFullSignalDetails.controller');
+
+
 const ctrlUK_LSE_MonthlySell = require('../controllers/uK_LSE_MonthlySell.controller');
 const ctrlUK_LSE_MonthlyBuy = require('../controllers/uK_LSE_MonthlyBuy.controller');
 const ctrlUK_LSE_WeeklySell = require('../controllers/uK_LSE_WeeklySell.controller');
@@ -39,6 +43,8 @@ const ctrlUS_5MinBuy = require('../controllers/uS_5MinBuy.controller');
 const jwtHelper = require('../config/jwtHelper');
 
 router.get('/rssfeedNewsArticleProfile',ctrlRssfeedNewsArticle.rssfeedNewsArticleProfile);
+router.post('/getFullSignalDetailsProfile',ctrlGetFullSignalDetails.getFullSignalDetailsProfile);
+
 router.post('/register', ctrlUser.register);
 router.post('/changePassword', ctrlUser.changePassword);
 router.post('/authenticate', ctrlUser.authenticate);
