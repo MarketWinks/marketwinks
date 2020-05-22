@@ -13,6 +13,7 @@ import { InfopageService } from '../../services/infopage.service';
 export class InfopageComponent implements OnInit {
 
   symbol: string;
+symbolDetails: any;
 
 constructor(public infopageService: InfopageService, 
   public router: Router, public authSerivce:AuthService,
@@ -35,6 +36,20 @@ constructor(public infopageService: InfopageService,
   //   this.occupation =  this.profile.occupation;
     
   // })
+
+  
+  const input = {
+    symbol: this.symbol
+  }
+
+  this.infopageService.getInfopageProfile(input).subscribe(data => {
+console.log("sending this");
+console.log(input);
+    this.symbolDetails = data[0];
+    console.log(data[0]);
+
+  });
+
 
 
 }

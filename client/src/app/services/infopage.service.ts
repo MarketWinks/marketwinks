@@ -22,8 +22,8 @@ export class InfopageService {
 
   //HttpMethods
 
-  getInfopageProfile() {
-    return this.http.get(environment.apiBaseUrl + '/infopageProfile');
+  getInfopageProfile(input) {
+    return this.http.post(environment.apiBaseUrl + '/getSymbolDetailsProfile', input);
   }
 
   // getLivePrice(){

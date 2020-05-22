@@ -6,6 +6,7 @@ const ctrlRssfeedNewsArticle = require('../controllers/rssfeedNewsArticle.contro
 
 
 const ctrlGetFullSignalDetails = require('../controllers/getFullSignalDetails.controller');
+const ctrlGetSymbolDetails = require('../controllers/getSymbolDetails.controller');
 
 
 const ctrlUK_LSE_MonthlySell = require('../controllers/uK_LSE_MonthlySell.controller');
@@ -44,6 +45,8 @@ const jwtHelper = require('../config/jwtHelper');
 
 router.get('/rssfeedNewsArticleProfile',ctrlRssfeedNewsArticle.rssfeedNewsArticleProfile);
 router.post('/getFullSignalDetailsProfile',ctrlGetFullSignalDetails.getFullSignalDetailsProfile);
+
+router.post('/getSymbolDetailsProfile',ctrlGetSymbolDetails.getSymbolDetailsProfile);
 
 router.post('/register', ctrlUser.register);
 router.post('/changePassword', ctrlUser.changePassword);
