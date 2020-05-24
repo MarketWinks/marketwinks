@@ -105,6 +105,9 @@ this.authService.makePayment(paymentDetails).subscribe(data=>{
   console.log(data);
   if(data.success){
     this.authService.storePaymentReferenceId(data.paymentReferenceId);
+
+    localStorage.setItem("receiptURL", data.receiptURL);
+    
     this.flashMessage.show('Your order is Placed and Successfully Paid', { cssClass: 'alert-success', timeout: 3000 });
    // this.authService.orderClear();
     this.router.navigate(['/paymentreceipt']);

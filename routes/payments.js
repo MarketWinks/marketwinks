@@ -201,7 +201,8 @@ console.log("payment completed;receipt page can be redirected if needed");
       return res.json({
         success: true,
         msg: 'Payment Done',
-        paymentReferenceId: charge.id
+        paymentReferenceId: charge.id,
+        receiptURL: charge.receipt_url
       });
     });
   });

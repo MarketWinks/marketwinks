@@ -11,12 +11,15 @@ import { ValidateService } from "../../services/validate.service";
 })
 export class PaymentreceiptComponent implements OnInit {
   paymentReferenceId: String;
+  receiptURL: String;
   
   constructor(private flashMessage: FlashMessagesService, public authService: AuthService,
     private router: Router, private validateService: ValidateService) { }
 
   ngOnInit() {
   this.paymentReferenceId = this.authService.getPaymentReferenceId();
+  this.receiptURL = localStorage.getItem("receiptURL");
+  
   }
 
 }
