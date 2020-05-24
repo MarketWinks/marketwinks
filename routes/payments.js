@@ -195,6 +195,9 @@ console.log("payment completed;receipt page can be redirected if needed");
     }
   });
 
+
+  //write a block to update the profile table and set the user category to FULL and the valid Till field
+
       return res.json({
         success: true,
         msg: 'Payment Done',

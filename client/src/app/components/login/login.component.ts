@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('LoggedInUserEmail', this.model.email.toString());
     this.authSerivce.authenticateUser(user).subscribe(data => {
 
+
       if (data.token) {
         this.authSerivce.storeUserData(data.token);
         localStorage.setItem('user', user.email);
@@ -49,7 +50,10 @@ export class LoginComponent implements OnInit {
 
         });
         this.router.navigate(['']);
-      } else {
+      } else if (data == "Please verify the email account"){
+        this.serverErrorMessages = 'Please verify the email account';
+        this.router.navigate(['login']);
+      }else {
         this.serverErrorMessages = 'Something went wrong.';
         this.router.navigate(['login']);
       }
