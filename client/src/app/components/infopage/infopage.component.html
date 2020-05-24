@@ -18,20 +18,42 @@
         
       
         <div class="card-body">
-          
 
-            <div>{{symbol}}</div>
+
+
+
+
+
+
+
+          <div>{{symbol}}</div>
 
   
             <div>{{symbolDetails.exchange}}</div>
 
+
+
+
+            <br><br>
+
+          <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_24050" style="height: 100%;"></div>
+  
+</div>
+<!-- TradingView Widget END -->
+
+
+
+
+            
             <br><br>
            
             <div [innerHtml]="symbolDetails.profile"></div>
             
             <br><br>
          
-            <div>chart,sentiment analysis, news, signals</div>
+            <div>fundamentals,chart,sentiment analysis, news, signals</div>
 
 
 

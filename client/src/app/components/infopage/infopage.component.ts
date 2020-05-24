@@ -4,12 +4,15 @@ import { Router } from "@angular/router";
 import {FlashMessagesService} from 'angular2-flash-messages';
 import { InfopageService } from '../../services/infopage.service';
 
+declare const TradingView: any;
 
 @Component({
   selector: 'app-infopage',
   templateUrl: './infopage.component.html',
   styleUrls: ['./infopage.component.css']
 })
+
+
 export class InfopageComponent implements OnInit {
 
   symbol: string;
@@ -39,6 +42,7 @@ constructor(public infopageService: InfopageService,
   public flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
+  
 
     this.symbol = localStorage.getItem('searchsymbol');
 
@@ -68,6 +72,38 @@ console.log(input);
     this.exchange = data[0].exchange;
     console.log("sending this othe her yu go");
     console.log(this.exchange.toString());
+
+
+
+
+      //setTimeout(function() {
+  // tslint:disable-next-line: no-unused-expression
+  new TradingView.widget(
+    {
+    "autosize": true,
+    "symbol": this.exchange.toString()+":"+this.symbol.toString(),
+    "interval": "5",
+    "timezone": "Etc/UTC",
+    "theme": "light",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "withdateranges": true,
+    "hide_side_toolbar": false,
+    "details": true,
+    "calendar": true,
+    "news": [
+      "stocktwits",
+      "headlines"
+    ],
+    "container_id": "tradingview_24050",
+    "id": "tradingview_24050"
+  }
+    );
+//}, 1000);
+
+
 
 
     const inputforallsignalsalltimes = {
