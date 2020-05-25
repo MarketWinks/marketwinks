@@ -11,9 +11,9 @@
                 
                   <div class="card-body">
                     
-                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">LIVE</div>
+                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">{{dailybuyDetails.indicator}}</div>
                     
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: 101 GBX</div>
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: {{(dailybuyDetails.lasttradedprice).toFixed(2)}} GBX</div>
                     
                     <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10 GBX</div>
 
@@ -43,7 +43,7 @@
   </h5>
 
                     <p class="card-text">{{dailybuyDetails.lastBuyEvent}} GMT</p>
-                    <p class="card-text">Entry Criteria: <b>BUY when Market Price <= 100 GBX</b></p>
+                    <p class="card-text">Entry Criteria: <b>BUY when Market Price <= {{dailybuyDetails.lastBuyPrice}} GBX</b></p>
                     
                     <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
                     <div class="like-content" align="left">

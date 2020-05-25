@@ -11,11 +11,11 @@
                 
                   <div class="card-body">
                     
-                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">LIVE</div>
+                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">{{mins5buyDetails.indicator}}</div>
                     
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: 101 GBX</div>
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: {{(mins5buyDetails.lasttradedprice).toFixed(2)}} GBX</div>
                     
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10 GBX</div>
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L%*: {{((mins5buyDetails.lasttradedprice - mins5buyDetails.lastBuyPrice*1.002)*100/(mins5buyDetails.lastBuyPrice*1.002)).toFixed(2)}} %</div>
 
                     <h5 class="card-title" style="font-weight: bold;">{{mins5buyDetails.company}}</h5>
 <!--                    
@@ -45,7 +45,7 @@
   </h5>
 
                     <p class="card-text">{{mins5buyDetails.lastBuyEvent}} GMT</p>
-                    <p class="card-text">Entry Criteria: <b>BUY when Market Price <= 100 GBX</b></p>
+                    <p class="card-text">Entry Criteria: <b>BUY when Market Price <= {{(mins5buyDetails.lastBuyPrice*1.002).toFixed(2)}} GBX</b></p>
                     
                   <div align="right">
                     <button type="button" (click)="navigateToSignalInfoPage(mins5buyDetails._id)" align="right" style="font-variant-caps: all-petite-caps; color: blue;">
