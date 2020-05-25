@@ -26,7 +26,7 @@ export class ShoppingCartComponent implements OnInit {
    // this.items =this.authService.getOrderFromItems();
     //if(this.items==null){
       //this.flashMessage.show('Please add some items to Cart', { cssClass: 'alert-danger', timeout: 2000 });
-      this.flashMessage.show('Please note only one subscription can be added', { cssClass: 'alert-danger', timeout: 2000 });
+    //  this.flashMessage.show('Please note only one subscription can be added', { cssClass: 'alert-danger', timeout: 2000 });
       // this.subtotal=0;
       // this.total=0;
       // this.totalitems=0;
