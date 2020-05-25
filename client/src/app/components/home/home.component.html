@@ -1,4 +1,6 @@
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet"/>
+
 <div class="container">
 
   <div class="wrapper">
@@ -14,10 +16,27 @@
     
   <form align=center #searchForm="ngForm" (ngSubmit)="searchForm.valid && onSubmit()">
 
-    <input type="text" name="symbol" #symbol="ngModel" [(ngModel)]="model.symbol" placeholder="Type symbol to search" 
+    <!--input type="text" list="symbols" name="symbol" #symbol="ngModel" [(ngModel)]="model.symbol" placeholder="Type symbol to search" 
     required [ngClass]="{'invalid-textbox' :searchForm.submitted}">
+
+    <datalist id="symbols">
+      <option value="BRBY        Burberry:LSE">
+      <option value="Firefox">
+      <option value="Chrome">
+      <option value="Opera">
+      <option value="Safari">
+    </datalist-->
+
+    <select class="select2 form-control" 
+    name="symbol" #symbol="ngModel" [(ngModel)]="model.symbol">
+      <option value="BRBY" style="color:#10085A;font-weight: bold;">Burberry Private Limited - LSE : BRBY</option>
+      <option value="EZJ" style="color:#10085A;font-weight: bold;">EasyJet Airline Limited - LSE : EZJ</option>
+      <option value="RIL" style="color:#10085A;font-weight: bold;">Reliance Industries - NSE : RIL</option>
+      <option value="RCOM" style="color:#10085A;font-weight: bold;">Reliance Communications - NSE : RCOM</option>
+      
+    </select>
     
-                    <input type="submit" value="GO">
+    <input type="submit" value="SEARCH BY SYMBOL">
            
     </form>
   </div>
