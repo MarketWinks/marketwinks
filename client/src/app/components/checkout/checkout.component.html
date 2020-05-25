@@ -1,67 +1,78 @@
   
 <div class="container">
-
-  <div class="wrapper">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</div>
-   
-</div>
+    <br><br><br><br>
 
 
 <div class="container">
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="mb-3">Billing address</h4>
+      <h4 class="mb-3">Billing Address</h4>
       <form class="needs-validation" novalidate>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName" placeholder="" required>
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName" placeholder="First Name" required>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName" placeholder="" required>
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName" placeholder="Last Name" required>
           </div>
         </div>
-
-        <div class="mb-3">
-          <label for="email">Email
-            <span class="text-muted">(Optional)</span>
+        <div class="row">
+        
+        <div class="col-md-6 mb-3">
+          <label for="email">Email Address
           </label>
-          <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="you@example.com">
+          <input type="text" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="you@example.com" required>
         </div>
 
+        <div class="col-md-6 mb-3">
+          <label for="phone">Phone Number
+          </label>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="phone" name="phone" placeholder="+1 (0) 999-9999" required>
+        </div>
+      </div>
+
         <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" [(ngModel)]="Address" name="Address" placeholder="1234 Main St" required>
+          <label for="address">Address 1</label>
+          <input type="text" class="form-control" id="address" [(ngModel)]="Address" name="Address" placeholder="Door, Street, Locality" required>
         </div>
 
         <div class="mb-3">
           <label for="address2">Address 2
-            <span class="text-muted">(Optional)</span>
+            
           </label>
-          <input type="text" class="form-control" id="address2" [(ngModel)]="address2" name="address2" placeholder="Apartment or suite">
+          <input type="text" class="form-control" id="address2" [(ngModel)]="address2" name="address2" placeholder="Apartment or Suite (Optional)">
         </div>
 
         <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="State">State</label>
-            <input type="text" class="form-control" [(ngModel)]="state" name="state" placeholder="" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="City">City</label>
+          
+          <div class="col-md-6 mb-3">
+            <label for="City">City / Town</label>
             <input type="text" class="form-control" [(ngModel)]="city" name="city" placeholder="" required>
           </div>
-          <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
+          <div class="col-md-6 mb-3">
+            <label for="zip">Zip / Post Code</label>
             <input type="text" class="form-control" [(ngModel)]="zip" name="zip" placeholder="" required>
           </div>
         </div>
-        
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="State">Province / State</label>
+            <input type="text" class="form-control" [(ngModel)]="state" name="state" placeholder="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="Country">Country of Residence</label>
+            <input type="text" class="form-control" [(ngModel)]="country" name="country" placeholder="" required>
+          </div>
+
+        </div>
+ 
         <hr class="mb-4">
 
-        <h4 class="mb-3">Payment</h4>
+        <h4 class="mb-3">Payment Card</h4>
 
         <div class="d-block my-3">
           <!--div class="custom-control custom-radio">
@@ -75,35 +86,83 @@
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="cc-name">Name on card</label>
-            <input type="text" class="form-control" [(ngModel)]="ccname" name="ccname" placeholder="" required>
-            <small class="text-muted">Full name as displayed on card</small>
+            <label for="cc-name">Name On Card</label>
+            <input type="text" class="form-control" [(ngModel)]="ccname" name="ccname" placeholder="Full Name as displayed on Card" required>
+            
           </div>
           <div class="col-md-6 mb-3">
-            <label for="cc-number">Credit/Debit card number</label>
-            <input type="text" class="form-control" [(ngModel)]="ccnumber" name="ccnumber" placeholder="" required>
+            <label for="cc-number">Credit / Debit Card Number</label>
+            <input type="text" class="form-control" [(ngModel)]="ccnumber" name="ccnumber" placeholder="16-digit Number" required>
           </div>
         </div>
         <div class="row">
           <div class="col-md-3 mb-3">
             <label for="cc-expiration">Expiration Month</label>
-            <input type="text" class="form-control" [(ngModel)]="ccexpiration_month" name="ccexpiration_month" placeholder="" required>
-            <small class="text-muted">Full name as displayed on card</small>
+            <input type="text" class="form-control" [(ngModel)]="ccexpiration_month" name="ccexpiration_month" placeholder="MM" required>
           </div>
           <div class="col-md-3 mb-3">
               <label for="cc-expiration">Expiration Year</label>
-              <input type="text" class="form-control" [(ngModel)]="ccexpiration_year" name="ccexpiration_year" placeholder="" required>
-              <small class="text-muted">Full name as displayed on card</small>
+              <input type="text" class="form-control" [(ngModel)]="ccexpiration_year" name="ccexpiration_year" placeholder="YYYY" required>
+              
             </div>
           <div class="col-md-3 mb-3">
             <label for="cc-expiration">CVV</label>
-            <input type="text" class="form-control" [(ngModel)]="cccvv" name="cccvv" placeholder="" required>
+            <input type="text" class="form-control" [(ngModel)]="cccvv" name="cccvv" placeholder="3-digit Number" required>
           </div>
         </div>
-        <hr class="mb-4">
+        <hr class="mb-3">
         <button class="btn btn-primary btn-lg btn-block" type="button" (click)="orderPlaced()">Click to Pay</button>
       </form>
     </div>
   </div>
 </div>
 </div>
+   
+</div>
+
+
+<br>
+<br>
+
+
+<div class="footer" style="background-color: #10085A;">
+  <p>Posted by: MarketWinks LLC</p>
+  <p>Contact information: <a href="mailto:contact@marketwinks.com">
+    contact@marketwinks.com</a>.</p>
+    
+    <a href="www.google.com">  
+      YouTube
+      <!--img class="ytube-ico" src="../../../assets/images/rsz_ytube_ico.jpg"-->
+    </a>
+    
+    <br>
+    <a href="www.google.com">  
+      FaceBook
+      <!--img class="fb-ico" src="../../../assets/images/rsz_fb_ico.jpg"-->
+    </a>
+    
+    <br>
+    
+    <a href="www.google.com">  
+      Instagram
+      <!--img class="insta-ico" src="../../../assets/images/rsz_insta_ico.jpg"-->
+    </a>
+    
+    <br>
+    
+    <a href="www.google.com">  
+      Linkedin
+      <!--img class="linkedin-ico" src="../../../assets/images/rsz_linkedin_ico.jpg"-->
+    </a>
+    
+    <br>
+    <br>
+    <a href="www.google.com">  
+      Privacy Policy
+      <!--img class="ytube-ico" src="../../../assets/images/rsz_ytube_ico.jpg"-->
+    </a>
+    
+    <br>
+    </div>  
+
+
