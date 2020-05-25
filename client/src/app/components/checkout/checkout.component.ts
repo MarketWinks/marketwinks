@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
   cccvv: String;
   currentselection: String;
   price: number;
+  phone: String;
 
   constructor(private flashMessage: FlashMessagesService, public authService: AuthService,
     private router: Router, private validateService: ValidateService) { }
@@ -51,7 +52,8 @@ this.router.navigate(['/cart']);
       state: this.state,
       city: this.state,
       zip: this.zip,
-      country: this.country
+      country: this.country,
+      phone: this.phone
     }
 
     const card = {
@@ -74,6 +76,7 @@ this.router.navigate(['/cart']);
       city: this.state,
       zip: this.zip,
       country: this.country,
+      phone: this.phone,
 
       type: this.type,
       ccname: this.ccname,
