@@ -5,14 +5,14 @@
   <br>
 
 <div class="container">
-  <h4>User Category: {{email}}</h4>
-  <h4>Subscription Expiration: {{email}}</h4>
+  <h4>Category <div style="color:blueviolet;">{{usercategory}} USER</div></h4>
+  <h4>Subscription Expiration<br><div style="color:blueviolet;">{{validTillDate |  date:'dd-MMM-yyyy'}}</div></h4>
 
 </div>
 
 <div class="container">
-<h1>User Profile</h1>
-<h2>{{name}}</h2>
+<!--h1>User Profile</h1-->
+<h1>{{name}}</h1>
   <img src="../../../assets/images/single_user.png" alt="profile-picture" border="0" />
   <h3>{{email}}</h3>
 
@@ -20,7 +20,7 @@
     <h4> <app-inline-edit [(ngModel)]="location" label="Location" type="text">
     </app-inline-edit></h4>
 
-    <h4> <app-inline-edit [(ngModel)]="dateOfBirth" label="Date Of Birth" type="text">
+    <h4> <app-inline-edit [(ngModel)]="dateOfBirth" label="Date of Birth" type="text">
     </app-inline-edit></h4>
 
     <h4> <app-inline-edit [(ngModel)]="mobile" label="Mobile" type="text">
@@ -30,15 +30,87 @@
     </app-inline-edit></h4>
 
   </div>
-  
-  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Save Changes</button>
-  
-  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Reset Password</button>
-  
-  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Download My Receipts</button>
+
 
   
-  <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Change Profile Pic</button>
+    <button (click)="navigateToEditProfile()" id="buttonToEdit" class="buttonToEdit" >Save Changes</button>
+  
+</div>
+
+
 
 </div>
+
+<br>
+
+
+<br>
+<div class="container">
+
+  <h2>Profile Actions</h2>
+
+  <br>
+  <br>
+  <button (click)="navigateToEditProfile()" id="buttonToEdit2" class="buttonToEdit2" >Change Profile Pic</button>
+
+  <br>
+  <br>
+
+  <button (click)="navigateToEditProfile()" id="buttonToEdit2" class="buttonToEdit2" >Reset Credentials</button>
+
+  <br>
+  <br>
+  
+  <button (click)="navigateToEditProfile()" id="buttonToEdit2" class="buttonToEdit2" >Download My Receipts</button>
+
+  
+
 </div>
+
+
+
+<br>
+<br>
+
+
+<div class="footer" style="background-color: #10085A;">
+  <p>Posted by: MarketWinks LLC</p>
+  <p>Contact information: <a href="mailto:contact@marketwinks.com">
+    contact@marketwinks.com</a>.</p>
+    
+    <a href="www.google.com">  
+      YouTube
+      <!--img class="ytube-ico" src="../../../assets/images/rsz_ytube_ico.jpg"-->
+    </a>
+    
+    <br>
+    <a href="www.google.com">  
+      FaceBook
+      <!--img class="fb-ico" src="../../../assets/images/rsz_fb_ico.jpg"-->
+    </a>
+    
+    <br>
+    
+    <a href="www.google.com">  
+      Instagram
+      <!--img class="insta-ico" src="../../../assets/images/rsz_insta_ico.jpg"-->
+    </a>
+    
+    <br>
+    
+    <a href="www.google.com">  
+      Linkedin
+      <!--img class="linkedin-ico" src="../../../assets/images/rsz_linkedin_ico.jpg"-->
+    </a>
+    
+    <br>
+    <br>
+    <a href="www.google.com">  
+      Privacy Policy
+      <!--img class="ytube-ico" src="../../../assets/images/rsz_ytube_ico.jpg"-->
+    </a>
+    
+    <br>
+    </div>  
+
+

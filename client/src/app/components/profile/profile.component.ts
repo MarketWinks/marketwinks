@@ -18,6 +18,8 @@ dateOfBirth: String;
 occupation: String;
 name: String;
 _id: String;
+validTillDate: Date;
+usercategory: String;
 
   constructor(private authSerivce:AuthService,
     private flashMessage:FlashMessagesService,
@@ -37,6 +39,8 @@ console.log("profile received");
     this.mobile =  this.profile.mobile;
     this.dateOfBirth =  this.profile.dateOfBirth;
     this.occupation =  this.profile.occupation;
+    this.validTillDate = new Date(this.profile.validtilldate);
+    this.usercategory = this.profile.usercategory;
     
   })
 }
