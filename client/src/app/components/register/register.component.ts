@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
     email: '',
     password: '',
     recoverywordpetname: '',
+    agreeTC: false,
     role: ''
   }
 
@@ -36,6 +37,7 @@ export class RegisterComponent implements OnInit {
       email: this.model.email,
       password: this.model.password,
       recoverywordpetname: this.model.recoverywordpetname,
+      agreeTC: this.model.agreeTC,
       role: 'users'
     }
 
@@ -76,6 +78,7 @@ export class RegisterComponent implements OnInit {
     this.model.password = '';
     this.model.recoverywordpetname = '';
     this.serverErrorMessages = '';
+    this.model.agreeTC = false;
   }
 
 }

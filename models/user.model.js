@@ -30,7 +30,9 @@ var userSchema = new mongoose.Schema({
     default: false
 },
 activeToken: String,
-activeExpires: Date
+activeExpires: Date,
+acceptTC: Boolean,
+acceptTCDateTime: Date
 
 
 });
@@ -43,13 +45,13 @@ userSchema.path('email').validate((val) => {
 
 // Events
 userSchema.pre('save', function (next) {
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(this.password, salt, (err, hash) => {
-            this.password = hash;
-         //   this.saltSecret = salt;
-         //   next();
-        });
-    });
+    // bcrypt.genSalt(10, (err, salt) => {
+    //     bcrypt.hash(this.password, salt, (err, hash) => {
+    //         this.password = hash;
+    //      //   this.saltSecret = salt;
+    //      //   next();
+    //     });
+    // });
 
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(this.recoverywordpetname, salt, (err, hash) => {
@@ -58,6 +60,24 @@ userSchema.pre('save', function (next) {
             next();
         });
     });
+});
+
+userSchema.pre('save', function (next) {
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(this.password, salt, (err, hash) => {
+            this.password = hash;
+         //   this.saltSecret = salt;
+            next();
+        });
+    });
+
+    // bcrypt.genSalt(10, (err, salt) => {
+    //     bcrypt.hash(this.recoverywordpetname, salt, (err, hash) => {
+    //         this.recoverywordpetname = hash;
+    //        // this.saltSecret1 = salt;
+    //         next();
+    //     });
+    // });
 });
 
 

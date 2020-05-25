@@ -18,6 +18,8 @@ module.exports.register = (req, res, next) => {
     user.recoverywordpetname = req.body.recoverywordpetname;
     user.activeToken = Math.floor((Math.random() * 123456789) + Math.random());
     user.activeExpires = Date.now() + 24 * 3600 * 1000;
+    user.acceptTC = req.body.agreeTC;
+    user.acceptTCDateTime = Date.now();
 
     user.save((err, doc) => {
         if (!err){
