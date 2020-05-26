@@ -1,18 +1,59 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet"/>
+<!-- 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet"/> -->
 
-<div class="container">
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+  />
+
+<br><br><br>
+
+<div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover" style='background-image: url("https://images.unsplash.com/photo-1583752028088-91e3e9880b46?ixlib=rb-1.2.1&auto=format&amp;fit=crop&amp;w=1267&amp;q=80");'>
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-75 bg-black"
+      ></span>
+    </div>
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="pr-12">
+            <h1 class="text-white font-semibold text-5xl">
+              AI Driven Live Trading Forecasts with Confidence Level.
+            </h1><br>
+            <h3 class="text-white" style="font-size: x-large;">
+              Global Equities. Indices
+              <br>Forex. Cryptos. Commodities
+            </h3>
+            <br><br>
+            <button *ngIf="!authService.loggedIn()" (click)="gotoSignup()" class="text-black font-bold py-2 px-4 rounded" style="background-color: white;">
+              Get 7 Days Free
+            </button>
+            <button *ngIf="authService.loggedIn()" (click)="gotoCart()" class="text-black font-bold py-2 px-4 rounded" style="background-color: white;">
+              Renew Now
+            </button>
+
+            
+            <!-- <p class="mt-4 text-lg text-gray-300">
+              This is a simple example of a Landing Page you can build using
+              Tailwind Starter Kit. It features multiple CSS components
+              based on the Tailwindcss design system.
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+
+    <br>
+
+
+<div class="container" *ngIf="authService.loggedIn()">
 
   <div class="wrapper">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</div>
-   
-</div>
-
-
-<div class="container">
-
-  <div class="wrapper" *ngIf="authService.loggedIn()">
     
   <form align=center #searchForm="ngForm" (ngSubmit)="searchForm.valid && onSubmit()">
 
@@ -43,7 +84,7 @@
   </div>
 
 
-
+<!-- 
 
 <div class="container">
 
@@ -61,7 +102,7 @@
    
 </div>
 
-</div>
+</div> -->
 
 
 
@@ -82,14 +123,15 @@
 
  <div class="container">
 
- <div style="text-align:center;color: #10085A;">
-   <p><b><h1>Live Market News Snippets</h1></b></p>
+ <div style="text-align:center;color: #10085A;font-weight: bold;font-size: xx-large;">
+   <b><h1>Live Market News Snippets</h1></b>
    </div>
   </div>
 
 <br>
   
-<div class="container">
+
+<div class="container content-center items-center justify-center">
 
   <div class="row ">
     <div *ngFor="let rssfeedNewsArticles of rssfeedNewsArticles" class="col-md-12">
@@ -97,7 +139,7 @@
         
       
         <div class="card-body">
-          <h3 class="card-title">{{rssfeedNewsArticles.title}}</h3>
+          <h3 class="card-title" style="font-weight: bold;">{{rssfeedNewsArticles.title}}</h3>
           <h5 class="card-text">{{rssfeedNewsArticles.content}}</h5>
           <span class="name" value="MMM d h:mm a">{{rssfeedNewsArticles.time | date:'MMM d h:mm a'}}(UK Time)</span>
 <!--                
@@ -123,7 +165,7 @@
 
 
 
-
+<br><br>
 
 
 
