@@ -18,6 +18,9 @@ export class SignalinfopageComponent implements OnInit {
   signalID: string;
   signal: any;
   signalDetails: any;
+  timeframe: string;
+  forecast: string;
+  exchange: string;
 
 constructor(public signalinfopageService: SignalinfopageService, 
   public router: Router, public authSerivce:AuthService,
@@ -28,6 +31,13 @@ constructor(public signalinfopageService: SignalinfopageService,
     this.signalTable = localStorage.getItem('mongoSignalrequestedTable');
 
     this.signalID = localStorage.getItem('mongoSignalrequestedSignalID');
+
+    this.timeframe = localStorage.getItem('mongoSignaltimeframe');
+    
+    this.forecast = localStorage.getItem('mongoSignalForecast');
+
+    this.exchange = localStorage.getItem('mongoSignalexchange');
+    
 
     const input = {
       _id: this.signalID,

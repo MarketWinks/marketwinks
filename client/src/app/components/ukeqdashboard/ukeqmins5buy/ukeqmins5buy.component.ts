@@ -213,6 +213,13 @@ export class UkeqMins5buyComponent implements OnInit {
   }
 
   navigateToSignalInfoPage(mins5buyDetails_idparameter){
+    
+    localStorage.setItem('mongoSignaltimeframe', "5 Mins");
+    
+    localStorage.setItem('mongoSignalForecast', "BUY/LONG");
+
+    localStorage.setItem('mongoSignalexchange', "UK : LSE : EQ");
+    
     localStorage.setItem('mongoSignalrequestedTable', "uk_lse_5minbuys");
     localStorage.setItem('mongoSignalrequestedSignalID', mins5buyDetails_idparameter);
     this.router.navigate(['/signalinfopage']);

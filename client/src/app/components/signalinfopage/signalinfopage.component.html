@@ -1,35 +1,29 @@
-<div class="container">
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+/>
+
+<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <br>
   <br>
 
 
-
-<div class="container">
-  <br>
+<!-- 
    
-  
-  <div class="container">
-  
-            <div class="row ">
-                <div class="shadow-box">
-                  
-                
-                  <div class="card-body">
 
                     
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.company}}</h5>
-
-
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.confidence_level}}</h5>
-
                     
                     <h5 class="card-title" style="font-weight: bold;">{{signalDetails.expiryprice}}</h5>
 
   
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.indicator}}</h5>
-
                     
                     <h5 class="card-title" style="font-weight: bold;">{{signalDetails.lastBuyEvent}}</h5>
 
@@ -44,11 +38,156 @@
 
 
           
-                  </div>
-                </div>
-            </div>
-  
-    </div>
-  </div>
+       -->
 
-</div>
+<section class="pb-20 -mt-24">
+  <div class="mx-auto px-4">
+    <div class="flex flex-wrap">
+      <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+        <div
+          class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+        >
+          <div class="px-4 py-5 flex-auto">
+            <div
+              class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
+            >
+           <i></i>
+            </div>
+            <h6 class="text-xl font-semibold">{{signalDetails.company}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Symbol
+            </p><br>
+           
+            <h6 class="text-xl">{{timeframe}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Charting Timeframe
+            </p><br>
+           
+            <h6 class="text-xl">{{forecast}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Forecast
+            </p><br>
+           
+            <h6 class="text-xl">{{exchange}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Exchange
+            </p><br>
+           
+           
+            <h6 class="text-xl">{{signalDetails.confidence_level}}%</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Confidence Level
+            </p><br>
+            
+            <h6 class="text-xl">{{signalDetails.indicator}}</h6>
+            
+            <p class="mt-2 mb-4 text-gray-600">
+              Status
+            </p>
+
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 px-4 text-center">
+        <div
+          class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+        >
+          <div class="px-4 py-5 flex-auto">
+            <div
+              class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
+            >
+              <i></i>
+            </div>
+
+              <h6 class="text-xl font-semibold">{{signalDetails.company}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Symbol
+            </p><br>
+           
+            <h6 class="text-xl">{{timeframe}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Charting Timeframe
+            </p><br>
+           
+            <h6 class="text-xl">{{forecast}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Forecast
+            </p><br>
+           
+            <h6 class="text-xl">{{exchange}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Exchange
+            </p><br>
+           
+           
+            <h6 class="text-xl">{{signalDetails.confidence_level}}%</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Confidence Level
+            </p><br>
+            
+            <h6 class="text-xl">{{signalDetails.indicator}}</h6>
+            
+            <p class="mt-2 mb-4 text-gray-600">
+              Status
+            </p>
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+        <div
+          class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+        >
+          <div class="px-4 py-5 flex-auto">
+            <div
+              class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
+            >
+              <i></i>
+            </div>
+          
+
+
+            <h6 class="text-xl font-semibold">{{signalDetails.company}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Symbol
+            </p><br>
+           
+            <h6 class="text-xl">{{timeframe}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Charting Timeframe
+            </p><br>
+           
+            <h6 class="text-xl">{{forecast}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Forecast
+            </p><br>
+           
+            <h6 class="text-xl">{{exchange}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Exchange
+            </p><br>
+           
+           
+            <h6 class="text-xl">{{signalDetails.confidence_level}}%</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Confidence Level
+            </p><br>
+            
+            <h6 class="text-xl">{{signalDetails.indicator}}</h6>
+            
+            <p class="mt-2 mb-4 text-gray-600">
+              Status
+            </p>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
