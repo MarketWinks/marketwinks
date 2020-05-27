@@ -4,6 +4,8 @@ rel="stylesheet"
 href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
 />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <br>
   <br>
   <br>
@@ -16,29 +18,6 @@ href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compi
   <br>
 
 
-<!-- 
-   
-
-                    
-                    
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.expiryprice}}</h5>
-
-  
-                    
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.lastBuyEvent}}</h5>
-
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.lastBuyPrice}}</h5>
-
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.lasttradedprice}}</h5>
-
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.stoplosshighrisk}}</h5>
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.stoplosslowrisk}}</h5>
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.targethighrisk}}</h5>
-                    <h5 class="card-title" style="font-weight: bold;">{{signalDetails.targetlowrisk}}</h5>
-
-
-          
-       -->
 
 <section class="pb-20 -mt-24">
   <div class="mx-auto px-4">
@@ -51,12 +30,14 @@ href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compi
             <div
               class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
             >
-           <i></i>
+            <button style="font-size:24px; font-weight: bold;">+</button>
             </div>
             <h6 class="text-xl font-semibold">{{signalDetails.company}}</h6>
             <p class="mt-2 mb-4 text-gray-600">
               Symbol
             </p><br>
+
+          
            
             <h6 class="text-xl">{{timeframe}}</h6>
             <p class="mt-2 mb-4 text-gray-600">
@@ -96,27 +77,28 @@ href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compi
             <div
               class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
             >
-              <i></i>
-            </div>
+          <div style="font-size:24px; font-weight: bold;">UK</div>
+          
+          </div>
 
               <h6 class="text-xl font-semibold">{{signalDetails.company}}</h6>
             <p class="mt-2 mb-4 text-gray-600">
               Symbol
             </p><br>
            
-            <h6 class="text-xl">{{timeframe}}</h6>
+            <h6 class="text-xl">{{signalDetails.lastBuyEvent}} UTC</h6>
             <p class="mt-2 mb-4 text-gray-600">
-              Charting Timeframe
+              Forecast Time
             </p><br>
            
-            <h6 class="text-xl">{{forecast}}</h6>
+            <h6 class="text-xl">Market Price < {{signalDetails.lastBuyPrice}} {{currency}}</h6>
             <p class="mt-2 mb-4 text-gray-600">
-              Forecast
+              Entry Criteria
             </p><br>
            
-            <h6 class="text-xl">{{exchange}}</h6>
+            <h6 class="text-xl">{{signalDetails.expiryprice}} {{currency}}</h6>
             <p class="mt-2 mb-4 text-gray-600">
-              Exchange
+              Expiry Price
             </p><br>
            
            
@@ -145,8 +127,8 @@ href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compi
             <div
               class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
             >
-              <i></i>
-            </div>
+            <button style="font-size:24px"><i class="fa">&#xf087;</i></button>
+          </div>
           
 
 
@@ -155,33 +137,34 @@ href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compi
               Symbol
             </p><br>
            
-            <h6 class="text-xl">{{timeframe}}</h6>
+            <h6 class="text-xl">{{signalDetails.lasttradedprice}} {{currency}}</h6>
             <p class="mt-2 mb-4 text-gray-600">
-              Charting Timeframe
+              Last Traded Price
             </p><br>
-           
-            <h6 class="text-xl">{{forecast}}</h6>
-            <p class="mt-2 mb-4 text-gray-600">
-              Forecast
-            </p><br>
-           
-            <h6 class="text-xl">{{exchange}}</h6>
-            <p class="mt-2 mb-4 text-gray-600">
-              Exchange
-            </p><br>
-           
-           
-            <h6 class="text-xl">{{signalDetails.confidence_level}}%</h6>
-            <p class="mt-2 mb-4 text-gray-600">
-              Confidence Level
-            </p><br>
-            
-            <h6 class="text-xl">{{signalDetails.indicator}}</h6>
-            
-            <p class="mt-2 mb-4 text-gray-600">
-              Status
-            </p>
 
+            
+            <h6 class="text-xl">{{signalDetails.targetlowrisk}} {{currency}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Target Price - Low Risk
+            </p><br>
+            
+           
+            <h6 class="text-xl">{{signalDetails.stoplosslowrisk}} {{currency}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              StopLoss Price - Low Risk
+            </p><br>
+           
+            <h6 class="text-xl">{{signalDetails.targethighrisk}} {{currency}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              Target Price - High Risk
+            </p><br>
+           
+           
+            <h6 class="text-xl">{{signalDetails.stoplosshighrisk}} {{currency}}</h6>
+            <p class="mt-2 mb-4 text-gray-600">
+              StopLoss Price - High Risk
+            </p><br>
+           
 
 
           </div>

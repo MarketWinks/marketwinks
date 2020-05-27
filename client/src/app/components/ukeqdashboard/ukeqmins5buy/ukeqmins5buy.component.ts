@@ -219,6 +219,10 @@ export class UkeqMins5buyComponent implements OnInit {
     localStorage.setItem('mongoSignalForecast', "BUY/LONG");
 
     localStorage.setItem('mongoSignalexchange', "UK : LSE : EQ");
+
+    
+    localStorage.setItem('mongoSignalcurrency', "GBX");
+
     
     localStorage.setItem('mongoSignalrequestedTable', "uk_lse_5minbuys");
     localStorage.setItem('mongoSignalrequestedSignalID', mins5buyDetails_idparameter);

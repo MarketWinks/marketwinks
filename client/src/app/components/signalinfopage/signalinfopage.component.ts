@@ -21,6 +21,7 @@ export class SignalinfopageComponent implements OnInit {
   timeframe: string;
   forecast: string;
   exchange: string;
+  currency: string;
 
 constructor(public signalinfopageService: SignalinfopageService, 
   public router: Router, public authSerivce:AuthService,
@@ -38,6 +39,7 @@ constructor(public signalinfopageService: SignalinfopageService,
 
     this.exchange = localStorage.getItem('mongoSignalexchange');
     
+    this.currency = localStorage.getItem('mongoSignalcurrency');
 
     const input = {
       _id: this.signalID,
