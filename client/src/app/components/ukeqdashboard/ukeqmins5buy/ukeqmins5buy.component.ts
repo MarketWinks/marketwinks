@@ -223,7 +223,7 @@ export class UkeqMins5buyComponent implements OnInit {
     
     localStorage.setItem('mongoSignalcurrency', "GBX");
 
-    
+    localStorage.setItem('mongoSignaltradeterm', "Short Term");
     localStorage.setItem('mongoSignalrequestedTable', "uk_lse_5minbuys");
     localStorage.setItem('mongoSignalrequestedSignalID', mins5buyDetails_idparameter);
     this.router.navigate(['/signalinfopage']);
