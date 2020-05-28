@@ -40,6 +40,12 @@ export class UkeqMins15buyComponent implements OnInit {
     //  ),
 
     
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
+    
     if(localStorage.getItem('UserCategory') == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;

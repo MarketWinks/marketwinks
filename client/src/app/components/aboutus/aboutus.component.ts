@@ -12,6 +12,10 @@ export class AboutusComponent implements OnInit {
   constructor(public authService:AuthService,private router:Router)  { }
 
   ngOnInit() {
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+    }
     
   
   }

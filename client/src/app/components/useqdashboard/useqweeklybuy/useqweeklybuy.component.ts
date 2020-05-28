@@ -20,6 +20,14 @@ export class UseqWeeklybuyComponent implements OnInit {
   constructor(public weeklybuyService: UseqWeeklybuyService, public router: Router) { }
 
   ngOnInit() {
+
+    
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
+    
     this.weeklybuyService.getWeeklybuyProfile().
     subscribe((res: any[]) => {
         console.log("RESPONSE");

@@ -23,6 +23,11 @@ export class ShoppingCartComponent implements OnInit {
 
 
   ngOnInit() {
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+    }
+    
    // this.items =this.authService.getOrderFromItems();
     //if(this.items==null){
       //this.flashMessage.show('Please add some items to Cart', { cssClass: 'alert-danger', timeout: 2000 });

@@ -34,6 +34,11 @@ export class CheckoutComponent implements OnInit {
     private router: Router, private validateService: ValidateService) { }
 
   ngOnInit() {
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+    }
+    
     if(!this.authService.checkTotalNotZero()){
 this.router.navigate(['/cart']);
     }

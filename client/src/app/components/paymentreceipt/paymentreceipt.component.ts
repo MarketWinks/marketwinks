@@ -17,6 +17,11 @@ export class PaymentreceiptComponent implements OnInit {
     private router: Router, private validateService: ValidateService) { }
 
   ngOnInit() {
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+    }
+    
   this.paymentReferenceId = this.authService.getPaymentReferenceId();
   this.receiptURL = localStorage.getItem("receiptURL");
   

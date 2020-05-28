@@ -20,6 +20,12 @@ export class UkeqDailysellComponent implements OnInit {
   constructor(public dailysellService: UkeqDailysellService, public router: Router) { }
 
   ngOnInit() {
+    
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
     // this.userService.getUserProfile().subscribe(
     //   res => {
     //   console.log("RESPONSE");

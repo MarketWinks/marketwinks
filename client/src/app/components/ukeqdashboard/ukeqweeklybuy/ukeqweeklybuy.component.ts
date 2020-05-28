@@ -22,6 +22,13 @@ export class UkeqWeeklybuyComponent implements OnInit {
   ngOnInit() {
 
     
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
+
+    
     if(localStorage.getItem('UserCategory') == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;

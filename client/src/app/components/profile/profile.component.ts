@@ -26,6 +26,10 @@ usercategory: String;
     private router:Router) { }
 
   ngOnInit() {
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+    }
 
     this.email = localStorage.getItem("LoggedInUserEmail");
     this.authSerivce.getProfile(this.email.toString()).subscribe((data: any[]) =>{

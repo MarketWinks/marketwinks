@@ -43,6 +43,10 @@ constructor(public infopageService: InfopageService,
 
   ngOnInit() {
   
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+    }
 
     this.symbol = localStorage.getItem('searchsymbol');
 

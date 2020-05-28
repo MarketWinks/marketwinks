@@ -21,6 +21,13 @@ export class UkeqMonthlysellComponent implements OnInit {
   constructor(public monthlysellService: UkeqMonthlysellService, public router: Router) { }
 
   ngOnInit() {
+
+    
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
     // this.userService.getUserProfile().subscribe(
     //   res => {
     //   console.log("RESPONSE");

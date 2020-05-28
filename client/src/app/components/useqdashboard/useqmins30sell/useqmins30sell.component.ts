@@ -21,6 +21,14 @@ export class UseqMins30sellComponent implements OnInit {
   constructor(public mins30sellService: UseqMins30sellService, public router: Router) { }
 
   ngOnInit() {
+
+    
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
+    
     // this.userService.getUserProfile().subscribe(
     //   res => {
     //   console.log("RESPONSE");

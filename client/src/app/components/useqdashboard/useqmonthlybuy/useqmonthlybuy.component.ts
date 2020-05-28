@@ -28,6 +28,14 @@ export class UseqMonthlybuyComponent implements OnInit {
   constructor(public monthlybuyService: UseqMonthlybuyService, public router: Router) { }
 
   ngOnInit() {
+
+    
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
+    
     // this.userService.getUserProfile().subscribe(
     //   res => {
     //   console.log("RESPONSE");

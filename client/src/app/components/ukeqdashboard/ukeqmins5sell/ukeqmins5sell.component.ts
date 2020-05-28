@@ -21,6 +21,12 @@ export class UkeqMins5sellComponent implements OnInit {
   constructor(public mins5sellService: UkeqMins5sellService, public router: Router) { }
 
   ngOnInit() {
+    
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
     // this.userService.getUserProfile().subscribe(
     //   res => {
     //   console.log("RESPONSE");

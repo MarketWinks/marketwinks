@@ -30,6 +30,11 @@ constructor(public signalinfopageService: SignalinfopageService,
 
   ngOnInit() {
 
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+    }
+
     this.signalTable = localStorage.getItem('mongoSignalrequestedTable');
 
     this.signalID = localStorage.getItem('mongoSignalrequestedSignalID');

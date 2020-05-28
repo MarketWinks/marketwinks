@@ -28,6 +28,14 @@ export class UkeqHourlybuyComponent implements OnInit {
   constructor(public hourlybuyService: UkeqHourlybuyService, public router: Router) { }
 
   ngOnInit() {
+
+    
+    if(!localStorage.getItem('id_token')){
+      this.router.navigate(['/login']);
+      return;
+
+    }
+    
     // this.userService.getUserProfile().subscribe(
     //   res => {
     //   console.log("RESPONSE");
