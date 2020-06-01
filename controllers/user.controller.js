@@ -117,6 +117,11 @@ module.exports.verifyandactivateEmail = (req, res, next) => {
     User.findOne({ activeToken : req.query.id },
     (err, user) => {
 
+        if (err){
+            res.send("User already activated or some issues with activation. Please contact support@marketwinks.com");
+            return;
+        } 
+
         console.log("User identified");
         console.log(user);
 
@@ -196,6 +201,7 @@ module.exports.changePassword = (req, res, next) => {
 
     User.findOne({ email: req.body.email },
         (err, user) => {
+
             if (!user)
                 return res.status(404).json({ status: false, message: 'User record not found.' });
             else
