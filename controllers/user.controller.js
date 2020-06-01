@@ -125,6 +125,14 @@ module.exports.verifyandactivateEmail = (req, res, next) => {
         console.log("User identified");
         console.log(user);
 
+        if (user == null){
+
+            res.send("User already activated");
+            return;
+
+        }
+
+
         var myquery = { email: user.email };
         var newvalues = { $set: {active: true, activeToken: "TOKENUSED"} };
             User.updateOne(myquery, newvalues, function(err, res) {
