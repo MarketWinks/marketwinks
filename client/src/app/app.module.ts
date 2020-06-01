@@ -81,6 +81,7 @@ import { UseqMins5buyComponent } from './components/useqdashboard/useqmins5buy/u
 
 import { InfopageComponent } from './components/infopage/infopage.component';
 import { SignalinfopageComponent } from './components/signalinfopage/signalinfopage.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 //safe piping for videos to dynamically load in iframe
@@ -309,6 +310,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     InfopageComponent,
     SignalinfopageComponent,
     ResetpasswordComponent,
+    FooterComponent,
  
 
     SafePipe
