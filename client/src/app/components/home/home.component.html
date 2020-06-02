@@ -28,7 +28,7 @@
             </h3>
             <br><br>
             <button *ngIf="!authService.loggedIn()" (click)="gotoSignup()" class="text-black font-bold py-2 px-4 rounded" style="background-color: white;">
-              Get 7 Days Free
+              Get 7 Days Free Trial
             </button>
             <button *ngIf="authService.loggedIn()" (click)="gotoCart()" class="text-black font-bold py-2 px-4 rounded" style="background-color: white;">
               Renew Now
@@ -137,9 +137,9 @@
       <div class="shadow-box">
         
       
-        <div class="card-body">
-          <h3 class="card-title" style="font-weight: bold;">{{rssfeedNewsArticles.title}}</h3>
-          <h5 class="card-text">{{rssfeedNewsArticles.content}}</h5>
+        <div class="container content-center items-center justify-center card-body">
+          <h3 class="container content-center items-center justify-center card-title" style="font-weight: bold;">{{rssfeedNewsArticles.title}}</h3>
+          <h5 class="container content-center items-center justify-center card-text">{{rssfeedNewsArticles.content}}</h5>
           <span class="name" value="MMM d h:mm a">{{rssfeedNewsArticles.time | date:'MMM d h:mm a'}}(UK Time)</span>
 <!--                
           <option value="MM/dd/yyyy">{{rssfeedNewsArticles.time | date:'MM/dd/yyyy'}}</option>
