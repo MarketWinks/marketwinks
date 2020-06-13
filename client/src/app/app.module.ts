@@ -78,6 +78,7 @@ import { UseqMins15buyComponent } from './components/useqdashboard/useqmins15buy
 import { UseqMins5sellComponent } from './components/useqdashboard/useqmins5sell/useqmins5sell.component';
 import { UseqMins5buyComponent } from './components/useqdashboard/useqmins5buy/useqmins5buy.component';
 
+import { InfopageDailybuyComponent } from './components/infopage/infopagedailybuy/infopagedailybuy.component';
 
 import { InfopageComponent } from './components/infopage/infopage.component';
 import { SignalinfopageComponent } from './components/signalinfopage/signalinfopage.component';
@@ -252,7 +253,12 @@ children: [{ path: '', component: UseqMins5sellComponent }]
 {
 path: 'useqmins5buy', component: UseqDashboardComponent,
 children: [{ path: '', component: UseqMins5buyComponent }]
-}
+},
+
+{
+  path: 'infopagedailybuy', component: InfopageComponent,
+  children: [{ path: '', component: InfopageDailybuyComponent }]
+},
 
 ]
 
@@ -311,7 +317,8 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     SignalinfopageComponent,
     ResetpasswordComponent,
     FooterComponent,
- 
+    InfopageDailybuyComponent,
+    
 
     SafePipe
   ],

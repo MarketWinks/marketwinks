@@ -1,0 +1,74 @@
+<div class="container">
+  <br>
+   
+  
+  <div class="container">
+  
+            <div class="row ">
+              <div *ngFor="let mins5buyDetails of mins5buyDetails" class="col-md-12">
+                <div class="shadow-box">
+                  
+                
+                  <div class="card-body">
+                    
+                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">{{mins5buyDetails.indicator}}</div>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: {{(mins5buyDetails.lasttradedprice)}} GBX</div>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L%*: {{((mins5buyDetails.lasttradedprice - mins5buyDetails.lastBuyPrice*1.002)*100/(mins5buyDetails.lastBuyPrice*1.002))}} %</div>
+
+                    <h5 class="card-title" style="font-weight: bold;">{{mins5buyDetails.company}}</h5>
+<!--                    
+                    <h5 class="card-title">{{mins5buyDetails.confidence_level}}%</h5> -->
+
+                    <h5 class="card-title">
+
+<!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+                      <circle-progress
+      [percent]="mins5buyDetails.confidence_level"
+      [radius]="30"
+      [outerStrokeWidth]="8"
+      [innerStrokeWidth]="2"
+      [outerStrokeColor]="'#00FF22'"
+      [innerStrokeColor]="'#e2e2e2'"
+      [animation]="true"
+      [animationDuration]="300"
+      [space]="5"
+      [showSubtitle]= "false"
+      [showUnits]= "true"
+      [unitsFontSize]= "10"
+      [titleFontSize]= "15"
+      [clockwise]= "true">
+  </circle-progress>
+  </h5>
+
+                    <p class="card-text">{{mins5buyDetails.lastBuyEvent}} GMT</p>
+                    <p class="card-text">Entry Criteria: <b>BUY when Market Price <= {{(mins5buyDetails.lastBuyPrice*1.002)}} GBX</b></p>
+                    
+                  <div align="right">
+                    <button type="button" (click)="navigateToSignalInfoPage(mins5buyDetails._id)" align="right" style="font-variant-caps: all-petite-caps; color: blue;">
+                      More Details...
+                      </button>
+                    </div>
+                    
+                    <div class="like-content" align="left">
+  
+
+                      <button class="btn-secondary like-review" align="left" onclick="">
+                        <i class="fa fa-heart" aria-hidden="true"></i> 25
+                      </button>
+
+                    </div>
+
+        
+  
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+    </div>
+  </div>

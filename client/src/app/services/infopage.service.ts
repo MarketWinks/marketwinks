@@ -302,9 +302,10 @@ export class InfopageService {
     return localStorage.getItem('token');
   }
 
-  // deleteToken() {
-  //   localStorage.removeItem('token');
-  // }
+  deleteToken() {
+    localStorage.removeItem('token');
+  }
+
 
   getInfopagePayload() {
     var token = this.getToken();

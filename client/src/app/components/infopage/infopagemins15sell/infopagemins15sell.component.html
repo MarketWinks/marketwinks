@@ -1,0 +1,68 @@
+<div class="container">
+  <br>
+   
+  
+  <div class="container">
+  
+            <div class="row ">
+              <div *ngFor="let mins15sellDetails of mins15sellDetails" class="col-md-12">
+                <div class="shadow-box">
+                  
+                
+                  <div class="card-body">
+
+                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">{{mins15sellDetails.indicator}}</div>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: {{(mins15sellDetails.lasttradedprice)}} GBX</div>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10 GBX</div>
+
+
+
+                                        <h5 class="card-title" style="font-weight: bold;">{{mins15sellDetails.company}}</h5>
+                                        <h5 class="card-title">
+
+                                          <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+                                          -->
+                                          
+                                                                <circle-progress
+                                                [percent]="mins15sellDetails.confidence_level"
+                                                [radius]="30"
+                                                [outerStrokeWidth]="8"
+                                                [innerStrokeWidth]="2"
+                                                [outerStrokeColor]="'#ff0000'"
+                                                [innerStrokeColor]="'#e2e2e2'"
+                                                [animation]="true"
+                                                [animationDuration]="300"
+                                                [space]="5"
+                                                [showSubtitle]= "false"
+                                                [showUnits]= "true"
+                                                [unitsFontSize]= "10"
+                                                [titleFontSize]= "15"
+                                                [clockwise]= "true">
+                                            </circle-progress>
+                                            </h5>
+                                          
+                   
+                                        <p class="card-text">{{mins15sellDetails.lastSellEvent}} GMT</p>
+                                        <p class="card-text">Entry Criteria: <b>SELL when Market Price >= 100 GBX</b></p>
+                    
+                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
+                    <div class="like-content" align="left">
+  
+                      <button class="btn-secondary like-review" align="left" onclick="">
+                        <i class="fa fa-heart" aria-hidden="true"></i> 25
+                      </button>
+
+                    </div>
+
+        
+  
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+    </div>
+  </div>
