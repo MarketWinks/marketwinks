@@ -110,169 +110,169 @@ console.log(input);
 
 
 
-    const inputforallsignalsalltimes = {
-      symbol: this.symbol,
-      exchange: this.exchange.toString()
-    }
+    // const inputforallsignalsalltimes = {
+    //   symbol: this.symbol,
+    //   exchange: this.exchange.toString()
+    // }
     
-  this.infopageService.getallsignalsfor5minsbuy(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsfor5minsbuy(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsfor5minsbuy = data;
+  //   this.allsignalsfor5minsbuy = data;
 
-    console.log("result");
-    console.log(this.allsignalsfor5minsbuy);
+  //   console.log("result");
+  //   console.log(this.allsignalsfor5minsbuy);
         
     
-      });
+  //     });
 
       
-  this.infopageService.getallsignalsfor15minsbuy(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsfor15minsbuy(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsfor15minsbuy = data;
+  //   this.allsignalsfor15minsbuy = data;
 
-    console.log("result");
-    console.log(this.allsignalsfor15minsbuy);
+  //   console.log("result");
+  //   console.log(this.allsignalsfor15minsbuy);
         
     
-      });
+  //     });
 
 
 
-      this.infopageService.getallsignalsfor30minsbuy(inputforallsignalsalltimes).subscribe(data => {
+  //     this.infopageService.getallsignalsfor30minsbuy(inputforallsignalsalltimes).subscribe(data => {
     
-        this.allsignalsfor30minsbuy = data;
+  //       this.allsignalsfor30minsbuy = data;
     
-        console.log("result");
-        console.log(this.allsignalsfor30minsbuy);
+  //       console.log("result");
+  //       console.log(this.allsignalsfor30minsbuy);
             
         
-          });
+  //         });
 
           
-  this.infopageService.getallsignalsforhourlybuy(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsforhourlybuy(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsforhourlybuy = data;
+  //   this.allsignalsforhourlybuy = data;
 
-    console.log("result");
-    console.log(this.allsignalsforhourlybuy);
+  //   console.log("result");
+  //   console.log(this.allsignalsforhourlybuy);
         
     
-      });
+  //     });
 
 
-      this.infopageService.getallsignalsfordailybuy(inputforallsignalsalltimes).subscribe(data => {
+  //     this.infopageService.getallsignalsfordailybuy(inputforallsignalsalltimes).subscribe(data => {
     
-        this.allsignalsfordailybuy = data;
+  //       this.allsignalsfordailybuy = data;
     
-        console.log("result");
-        console.log(this.allsignalsfordailybuy);
+  //       console.log("result");
+  //       console.log(this.allsignalsfordailybuy);
             
         
-          });
+  //         });
 
           
-  this.infopageService.getallsignalsforweeklybuy(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsforweeklybuy(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsforweeklybuy = data;
+  //   this.allsignalsforweeklybuy = data;
 
-    console.log("result");
-    console.log(this.allsignalsforweeklybuy);
+  //   console.log("result");
+  //   console.log(this.allsignalsforweeklybuy);
         
     
-      });
+  //     });
 
       
-  this.infopageService.getallsignalsformonthlybuy(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsformonthlybuy(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsformonthlybuy = data;
+  //   this.allsignalsformonthlybuy = data;
 
-    console.log("result");
-    console.log(this.allsignalsformonthlybuy);
+  //   console.log("result");
+  //   console.log(this.allsignalsformonthlybuy);
         
     
-      });
+  //     });
 
 
 
 
 
       
-  this.infopageService.getallsignalsfor5minssell(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsfor5minssell(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsfor5minssell = data;
+  //   this.allsignalsfor5minssell = data;
 
-    console.log("result");
-    console.log(this.allsignalsfor5minssell);
+  //   console.log("result");
+  //   console.log(this.allsignalsfor5minssell);
         
     
-      });
+  //     });
 
       
-  this.infopageService.getallsignalsfor15minssell(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsfor15minssell(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsfor15minssell = data;
+  //   this.allsignalsfor15minssell = data;
 
-    console.log("result");
-    console.log(this.allsignalsfor15minssell);
+  //   console.log("result");
+  //   console.log(this.allsignalsfor15minssell);
         
     
-      });
+  //     });
 
 
 
-      this.infopageService.getallsignalsfor30minssell(inputforallsignalsalltimes).subscribe(data => {
+  //     this.infopageService.getallsignalsfor30minssell(inputforallsignalsalltimes).subscribe(data => {
     
-        this.allsignalsfor30minssell = data;
+  //       this.allsignalsfor30minssell = data;
     
-        console.log("result");
-        console.log(this.allsignalsfor30minssell);
+  //       console.log("result");
+  //       console.log(this.allsignalsfor30minssell);
             
         
-          });
+  //         });
 
           
-  this.infopageService.getallsignalsforhourlysell(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsforhourlysell(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsforhourlysell = data;
+  //   this.allsignalsforhourlysell = data;
 
-    console.log("result");
-    console.log(this.allsignalsforhourlysell);
+  //   console.log("result");
+  //   console.log(this.allsignalsforhourlysell);
         
     
-      });
+  //     });
 
 
-      this.infopageService.getallsignalsfordailysell(inputforallsignalsalltimes).subscribe(data => {
+  //     this.infopageService.getallsignalsfordailysell(inputforallsignalsalltimes).subscribe(data => {
     
-        this.allsignalsfordailysell = data;
+  //       this.allsignalsfordailysell = data;
     
-        console.log("result");
-        console.log(this.allsignalsfordailysell);
+  //       console.log("result");
+  //       console.log(this.allsignalsfordailysell);
             
         
-          });
+  //         });
 
           
-  this.infopageService.getallsignalsforweeklysell(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsforweeklysell(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsforweeklysell = data;
+  //   this.allsignalsforweeklysell = data;
 
-    console.log("result");
-    console.log(this.allsignalsforweeklysell);
+  //   console.log("result");
+  //   console.log(this.allsignalsforweeklysell);
         
     
-      });
+  //     });
 
       
-  this.infopageService.getallsignalsformonthlysell(inputforallsignalsalltimes).subscribe(data => {
+  // this.infopageService.getallsignalsformonthlysell(inputforallsignalsalltimes).subscribe(data => {
     
-    this.allsignalsformonthlysell = data;
+  //   this.allsignalsformonthlysell = data;
 
-    console.log("result");
-    console.log(this.allsignalsformonthlysell);
+  //   console.log("result");
+  //   console.log(this.allsignalsformonthlysell);
         
     
-      });
+  //     });
 
 
 
