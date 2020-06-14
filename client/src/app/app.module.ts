@@ -79,6 +79,19 @@ import { UseqMins5sellComponent } from './components/useqdashboard/useqmins5sell
 import { UseqMins5buyComponent } from './components/useqdashboard/useqmins5buy/useqmins5buy.component';
 
 import { InfopageDailybuyComponent } from './components/infopage/infopagedailybuy/infopagedailybuy.component';
+import { InfopageDailysellComponent } from './components/infopage/infopagedailysell/infopagedailysell.component';
+import { InfopageWeeklybuyComponent } from './components/infopage/infopageweeklybuy/infopageweeklybuy.component';
+import { InfopageWeeklysellComponent } from './components/infopage/infopageweeklysell/infopageweeklysell.component';
+import { InfopageMonthlybuyComponent } from './components/infopage/infopagemonthlybuy/infopagemonthlybuy.component';
+import { InfopageMonthlysellComponent } from './components/infopage/infopagemonthlysell/infopagemonthlysell.component';
+import { InfopageHourlybuyComponent } from './components/infopage/infopagehourlybuy/infopagehourlybuy.component';
+import { InfopageHourlysellComponent } from './components/infopage/infopagehourlysell/infopagehourlysell.component';
+import { Infopage30MinsbuyComponent } from './components/infopage/infopagemins30buy/infopagemins30buy.component';
+import { Infopage30MinssellComponent } from './components/infopage/infopagemins30sell/infopagemins30sell.component';
+import { Infopage15MinsbuyComponent } from './components/infopage/infopagemins15buy/infopagemins15buy.component';
+import { Infopage15MinssellComponent } from './components/infopage/infopagemins15sell/infopagemins15sell.component';
+import { Infopage5MinsbuyComponent } from './components/infopage/infopagemins5buy/infopagemins5buy.component';
+import { Infopage5MinssellComponent } from './components/infopage/infopagemins5sell/infopagemins5sell.component';
 
 import { InfopageComponent } from './components/infopage/infopage.component';
 import { SignalinfopageComponent } from './components/signalinfopage/signalinfopage.component';
@@ -260,6 +273,87 @@ children: [{ path: '', component: UseqMins5buyComponent }]
   children: [{ path: '', component: InfopageDailybuyComponent }]
 },
 
+
+{
+  path: 'infopagedailysell', component: InfopageComponent,
+  children: [{ path: '', component: InfopageDailysellComponent }]
+},
+
+
+
+{
+  path: 'infopageweeklybuy', component: InfopageComponent,
+  children: [{ path: '', component: InfopageWeeklybuyComponent }]
+},
+
+
+{
+  path: 'infopageweeklysell', component: InfopageComponent,
+  children: [{ path: '', component: InfopageWeeklysellComponent }]
+},
+
+
+
+{
+  path: 'infopagemonthlybuy', component: InfopageComponent,
+  children: [{ path: '', component: InfopageMonthlybuyComponent }]
+},
+
+
+{
+  path: 'infopagemonthlysell', component: InfopageComponent,
+  children: [{ path: '', component: InfopageMonthlysellComponent }]
+},
+
+
+
+{
+  path: 'infopagehourlybuy', component: InfopageComponent,
+  children: [{ path: '', component: InfopageHourlybuyComponent }]
+},
+
+
+{
+  path: 'infopagehourlysell', component: InfopageComponent,
+  children: [{ path: '', component: InfopageHourlysellComponent }]
+},
+
+
+
+{
+  path: 'infopage30minsbuy', component: InfopageComponent,
+  children: [{ path: '', component: Infopage30MinsbuyComponent }]
+},
+
+
+{
+  path: 'infopage30minssell', component: InfopageComponent,
+  children: [{ path: '', component: Infopage30MinssellComponent }]
+},
+
+
+
+{
+  path: 'infopage15minsbuy', component: InfopageComponent,
+  children: [{ path: '', component: Infopage15MinsbuyComponent }]
+},
+
+
+{
+  path: 'infopage15minssell', component: InfopageComponent,
+  children: [{ path: '', component: Infopage15MinssellComponent }]
+},
+
+{
+  path: 'infopage5minsbuy', component: InfopageComponent,
+  children: [{ path: '', component: Infopage5MinsbuyComponent }]
+},
+
+
+{
+  path: 'infopage5minssell', component: InfopageComponent,
+  children: [{ path: '', component: Infopage5MinssellComponent }]
+}
 ]
 
 @NgModule({
@@ -317,9 +411,22 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     SignalinfopageComponent,
     ResetpasswordComponent,
     FooterComponent,
-    InfopageDailybuyComponent,
-    
 
+    InfopageDailybuyComponent,
+    InfopageDailysellComponent,
+    InfopageWeeklybuyComponent,
+    InfopageWeeklysellComponent,
+    InfopageMonthlybuyComponent,
+    InfopageMonthlysellComponent,
+    InfopageHourlybuyComponent,
+    InfopageHourlysellComponent,
+    Infopage30MinsbuyComponent,
+    Infopage30MinssellComponent,
+    Infopage15MinsbuyComponent,
+    Infopage15MinssellComponent,
+    Infopage5MinsbuyComponent,
+    Infopage5MinssellComponent,
+   
     SafePipe
   ],
   imports: [

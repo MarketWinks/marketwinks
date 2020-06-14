@@ -1,27 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-//import { UserService } from '../shared/user.service';
-import { UkeqWeeklybuyService } from '../../../services/ukeqweeklybuy.service';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
+import { InfopageService } from '../../../services/infopage.service';
 
 
 @Component({
-  selector: 'app-ukeqweeklybuy',
-  templateUrl: './ukeqweeklybuy.component.html',
-  styleUrls: ['./ukeqweeklybuy.component.css']
+  selector: 'app-infopageweeklybuy',
+  templateUrl: './infopageweeklybuy.component.html',
+  styleUrls: ['./infopageweeklybuy.component.css']
 })
 
+export class InfopageWeeklybuyComponent implements OnInit {
+  
+symbol: string;
+symbolDetails: any;
 
-export class UkeqWeeklybuyComponent implements OnInit {
-  weeklybuyDetails;
-  weeklybuyDetailsUnique;
-  weeklybuyDetails_length;
-  constructor(public weeklybuyService: UkeqWeeklybuyService, public router: Router) { }
+allsignalsforweeklybuy: any;
+
+exchange:any;
+
+
+
+  constructor(public infopageService: InfopageService, public router: Router) { }
 
   ngOnInit() {
 
-    
     if(!localStorage.getItem('id_token')){
       this.router.navigate(['/login']);
       return;
@@ -29,100 +31,55 @@ export class UkeqWeeklybuyComponent implements OnInit {
     }
 
     
+
     if(localStorage.getItem('UserCategory') == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
     }
-    
-    this.weeklybuyService.getWeeklybuyProfile().
-    subscribe((res: any[]) => {
-        console.log("RESPONSE");
-        console.log(res);
-        console.log("RESPONSE_LENGTH");
-        console.log(res.length);
-
-
-        console.log("RESPONSE UNIQUE");
-        
-        this.weeklybuyDetailsUnique = Array.from(new Set(res.map(a => a.company)))
-        .map(company => {
-          return res.find(a => a.company === company)
-        });
-        
-        console.log(this.weeklybuyDetailsUnique);
-
-        
-        console.log("RESPONSE unique LENGTH");
-        console.log(this.weeklybuyDetailsUnique.length);
-
-        //this.weeklybuyDetails_length=res.length;
-        //this.weeklybuyDetails = res;
 
     
-    
-        
-     for(var i=0; i<this.weeklybuyDetailsUnique.length; i++){
+    this.symbol = localStorage.getItem('searchsymbol');
 
-      if (this.weeklybuyDetailsUnique[i].lastBuyEvent == undefined){
-
-        console.log("null found completed");
-
-  
-        console.log("before SPLICE");
-        console.log(this.weeklybuyDetailsUnique.length);
-
-        this.weeklybuyDetailsUnique.splice(i, 1);
-
-        console.log("after SPLICE");
-        console.log(this.weeklybuyDetailsUnique.length);
-
-      
-      
+    const input = {
+      symbol: this.symbol
     }
 
-     }
+    this.infopageService.getInfopageProfile(input).subscribe(data => {
 
-
-     
-
-
-
-
-
-        
-      this.weeklybuyDetailsUnique.sort((obj1, obj2) => {
-        if (new Date(obj1.lastBuyEvent.toString()).getTime() > new Date(obj2.lastBuyEvent.toString())
-        .getTime()) {
-            return 1;
-        }
-
-        if (new Date(obj1.lastBuyEvent.toString()).getTime() < new Date(obj2.lastBuyEvent.toString())
-        .getTime()) {
-            return -1;
-        }
+      console.log(input);
+          this.symbolDetails = data[0];
+          this.exchange = data[0].exchange;
+          console.log("sending this othe her yu go");
+          console.log(this.exchange.toString());
     
-        return 0;
-    });
+    const inputforallsignalsalltimes = {
+      symbol: this.symbol,
+      exchange: this.exchange.toString()
+    }
 
-        this.weeklybuyDetails_length=this.weeklybuyDetailsUnique.length;
-        this.weeklybuyDetails = this.weeklybuyDetailsUnique;
+
+      this.infopageService.getallsignalsforweeklybuy(inputforallsignalsalltimes).subscribe(data => {
+    
+        this.allsignalsforweeklybuy = data;
+    
+        console.log("result");
+        console.log(this.allsignalsforweeklybuy);
+            
+        
+          });
+
+        });      
 
 
-        if(localStorage.getItem('UserCategory') == "TRIAL"){
-          this.weeklybuyDetails = this.weeklybuyDetails.slice(0,3);
-  
-        }
 
-      },
-      err => { 
-        console.log(err);
-      }
-    );
+
   }
 
-  onLogout(){
-   this.weeklybuyService.deleteToken();
+  onLogout() {
+    // this.userService.deleteToken();
+    this.infopageService.deleteToken();
     this.router.navigate(['/login']);
   }
+
 }

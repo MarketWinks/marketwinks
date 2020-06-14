@@ -1,138 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-import { UkeqDailysellService } from '../../../services/ukeqdailysell.service';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
+import { InfopageService } from '../../../services/infopage.service';
 
 
 @Component({
-  selector: 'app-ukeqdailysell',
-  templateUrl: './ukeqdailysell.component.html',
-  styleUrls: ['./ukeqdailysell.component.css']
+  selector: 'app-infopagedailysell',
+  templateUrl: './infopagedailysell.component.html',
+  styleUrls: ['./infopagedailysell.component.css']
 })
 
-export class UkeqDailysellComponent implements OnInit {
-  //userDetails;
-  dailysellDetails;
-  dailysellDetailsUnique;
-  dailysellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public dailysellService: UkeqDailysellService, public router: Router) { }
+export class InfopageDailysellComponent implements OnInit {
+  
+symbol: string;
+symbolDetails: any;
+
+allsignalsfordailysell: any;
+
+exchange:any;
+
+
+
+  constructor(public infopageService: InfopageService, public router: Router) { }
 
   ngOnInit() {
-    
+
     if(!localStorage.getItem('id_token')){
       this.router.navigate(['/login']);
       return;
 
     }
-    // this.userService.getUserProfile().subscribe(
-    //   res => {
-    //   console.log("RESPONSE");
-    //     console.log(res['user']);
-    //     this.userDetails = res['user'];
-    //   },
-    //   err => { 
-    //     console.log(err);
-        
-    //   }
-    //  ),
 
     
+
     if(localStorage.getItem('UserCategory') == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
     }
-    this.dailysellService.getDailysellProfile().
-    subscribe((res: any[]) => {
-        console.log("RESPONSE");
-        console.log(res);
-        console.log("RESPONSE_LENGTH");
-        console.log(res.length);
 
+    
+    this.symbol = localStorage.getItem('searchsymbol');
 
-        console.log("RESPONSE UNIQUE");
-        
-        this.dailysellDetailsUnique = Array.from(new Set(res.map(a => a.company)))
-        .map(company => {
-          return res.find(a => a.company === company)
-        });
-        
-        console.log(this.dailysellDetailsUnique);
-
-
-        console.log("RESPONSE unique LENGTH");
-        console.log(this.dailysellDetailsUnique.length);
-
-
-   // this.dailysellDetails_length=res.length;
-     //   this.dailysellDetails = res;
-
-     for(var i=0; i<this.dailysellDetailsUnique.length; i++){
-
-      if (this.dailysellDetailsUnique[i].lastSellEvent == undefined){
-
-        console.log("null found completed");
-
-  
-        console.log("before SPLICE");
-        console.log(this.dailysellDetailsUnique.length);
-
-        this.dailysellDetailsUnique.splice(i, 1);
-
-        console.log("after SPLICE");
-        console.log(this.dailysellDetailsUnique.length);
-
-      
-      
+    const input = {
+      symbol: this.symbol
     }
 
-     }
+    this.infopageService.getInfopageProfile(input).subscribe(data => {
+
+      console.log(input);
+          this.symbolDetails = data[0];
+          this.exchange = data[0].exchange;
+          console.log("sending this othe her yu go");
+          console.log(this.exchange.toString());
+    
+    const inputforallsignalsalltimes = {
+      symbol: this.symbol,
+      exchange: this.exchange.toString()
+    }
 
 
-
-     
-
-
-     this.dailysellDetailsUnique.sort((obj1, obj2) => {
-
-
-      if (new Date(obj1.lastSellEvent.toString()).getTime() > new Date(obj2.lastSellEvent.toString())
-      .getTime()) {
-          return 1;
-      }
-
-      if (new Date(obj1.lastSellEvent.toString()).getTime() < new Date(obj2.lastSellEvent.toString())
-      .getTime()) {
-          return -1;
-      }
-  
-      return 0;
-  });
-
-      this.dailysellDetails_length=this.dailysellDetailsUnique.length;
-      this.dailysellDetails = this.dailysellDetailsUnique;
-
-      
-      if(localStorage.getItem('UserCategory') == "TRIAL"){
-        this.dailysellDetails = this.dailysellDetails.slice(0,3);
-
-      }
-      
-
-
-      },
-      err => { 
-        console.log(err);
+      this.infopageService.getallsignalsfordailysell(inputforallsignalsalltimes).subscribe(data => {
+    
+        this.allsignalsfordailysell = data;
+    
+        console.log("result");
+        console.log(this.allsignalsfordailysell);
+            
         
-      }
-    );
+          });
+
+        });      
+
+
+
+
   }
 
-  onLogout(){
-  // this.userService.deleteToken();
-   this.dailysellService.deleteToken();
+  onLogout() {
+    // this.userService.deleteToken();
+    this.infopageService.deleteToken();
     this.router.navigate(['/login']);
   }
 

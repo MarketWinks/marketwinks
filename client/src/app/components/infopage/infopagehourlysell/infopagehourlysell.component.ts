@@ -1,140 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-import { UkeqHourlysellService } from '../../../services/ukeqhourlysell.service';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
+import { InfopageService } from '../../../services/infopage.service';
 
 
 @Component({
-  selector: 'app-ukeqhourlysell',
-  templateUrl: './ukeqhourlysell.component.html',
-  styleUrls: ['./ukeqhourlysell.component.css']
+  selector: 'app-infopagehourlysell',
+  templateUrl: './infopagehourlysell.component.html',
+  styleUrls: ['./infopagehourlysell.component.css']
 })
 
-export class UkeqHourlysellComponent implements OnInit {
-  //userDetails;
-  hourlysellDetails;
-  hourlysellDetailsUnique;
-  hourlysellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public hourlysellService: UkeqHourlysellService, public router: Router) { }
+export class InfopageHourlysellComponent implements OnInit {
+  
+symbol: string;
+symbolDetails: any;
+
+allsignalsforhourlysell: any;
+
+exchange:any;
+
+
+
+  constructor(public infopageService: InfopageService, public router: Router) { }
 
   ngOnInit() {
 
-
-    
     if(!localStorage.getItem('id_token')){
       this.router.navigate(['/login']);
       return;
 
     }
-    
-    // this.userService.getUserProfile().subscribe(
-    //   res => {
-    //   console.log("RESPONSE");
-    //     console.log(res['user']);
-    //     this.userDetails = res['user'];
-    //   },
-    //   err => { 
-    //     console.log(err);
-        
-    //   }
-    //  ),
 
     
+
     if(localStorage.getItem('UserCategory') == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
     }
+
     
-    this.hourlysellService.getHourlysellProfile().
-    subscribe((res: any[]) => {
-        console.log("RESPONSE");
-        console.log(res);
-        console.log("RESPONSE_LENGTH");
-        console.log(res.length);
+    this.symbol = localStorage.getItem('searchsymbol');
 
-
-        console.log("RESPONSE UNIQUE");
-        
-        this.hourlysellDetailsUnique = Array.from(new Set(res.map(a => a.company)))
-        .map(company => {
-          return res.find(a => a.company === company)
-        });
-        
-        console.log(this.hourlysellDetailsUnique);
-
-
-        console.log("RESPONSE unique LENGTH");
-        console.log(this.hourlysellDetailsUnique.length);
-
-
-   // this.hourlysellDetails_length=res.length;
-     //   this.hourlysellDetails = res;
-
-     for(var i=0; i<this.hourlysellDetailsUnique.length; i++){
-
-      if (this.hourlysellDetailsUnique[i].lastSellEvent == undefined){
-
-        console.log("null found completed");
-
-  
-        console.log("before SPLICE");
-        console.log(this.hourlysellDetailsUnique.length);
-
-        this.hourlysellDetailsUnique.splice(i, 1);
-
-        console.log("after SPLICE");
-        console.log(this.hourlysellDetailsUnique.length);
-
-      
-      
+    const input = {
+      symbol: this.symbol
     }
 
-     }
+    this.infopageService.getInfopageProfile(input).subscribe(data => {
+
+      console.log(input);
+          this.symbolDetails = data[0];
+          this.exchange = data[0].exchange;
+          console.log("sending this othe her yu go");
+          console.log(this.exchange.toString());
+    
+    const inputforallsignalsalltimes = {
+      symbol: this.symbol,
+      exchange: this.exchange.toString()
+    }
 
 
-
-     
-
-
-     this.hourlysellDetailsUnique.sort((obj1, obj2) => {
-
-
-      if (new Date(obj1.lastSellEvent).getTime() > new Date(obj2.lastSellEvent)
-      .getTime()) {
-          return 1;
-      }
-
-      if (new Date(obj1.lastSellEvent).getTime() < new Date(obj2.lastSellEvent)
-      .getTime()) {
-          return -1;
-      }
-  
-      return 0;
-  });
-
-      this.hourlysellDetails_length=this.hourlysellDetailsUnique.length;
-      this.hourlysellDetails = this.hourlysellDetailsUnique;
-
-      if(localStorage.getItem('UserCategory') == "TRIAL"){
-        this.hourlysellDetails = this.hourlysellDetails.slice(0,3);
-
-      }
-      
-
-      },
-      err => { 
-        console.log(err);
+      this.infopageService.getallsignalsforhourlysell(inputforallsignalsalltimes).subscribe(data => {
+    
+        this.allsignalsforhourlysell = data;
+    
+        console.log("result");
+        console.log(this.allsignalsforhourlysell);
+            
         
-      }
-    );
+          });
+
+        });      
+
+
+
+
   }
 
-  onLogout(){
-  // this.userService.deleteToken();
-   this.hourlysellService.deleteToken();
+  onLogout() {
+    // this.userService.deleteToken();
+    this.infopageService.deleteToken();
     this.router.navigate(['/login']);
   }
 

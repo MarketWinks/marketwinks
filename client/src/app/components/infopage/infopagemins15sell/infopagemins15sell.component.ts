@@ -1,140 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-//import { UserService } from '../shared/user.service';
-import { UkeqMins15sellService } from '../../../services/ukeqmins15sell.service';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
+import { InfopageService } from '../../../services/infopage.service';
 
 
 @Component({
-  selector: 'app-ukeqmins15sell',
-  templateUrl: './ukeqmins15sell.component.html',
-  styleUrls: ['./ukeqmins15sell.component.css']
+  selector: 'app-infopagemins15sell',
+  templateUrl: './infopagemins15sell.component.html',
+  styleUrls: ['./infopagemins15sell.component.css']
 })
 
-export class UkeqMins15sellComponent implements OnInit {
-  //userDetails;
-  mins15sellDetails;
-  mins15sellDetailsUnique;
-  mins15sellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public mins15sellService: UkeqMins15sellService, public router: Router) { }
+export class Infopage15MinssellComponent implements OnInit {
+  
+symbol: string;
+symbolDetails: any;
+
+allsignalsfor15minssell: any;
+
+exchange:any;
+
+
+
+  constructor(public infopageService: InfopageService, public router: Router) { }
 
   ngOnInit() {
 
-    
     if(!localStorage.getItem('id_token')){
       this.router.navigate(['/login']);
       return;
 
     }
-    // this.userService.getUserProfile().subscribe(
-    //   res => {
-    //   console.log("RESPONSE");
-    //     console.log(res['user']);
-    //     this.userDetails = res['user'];
-    //   },
-    //   err => { 
-    //     console.log(err);
-        
-    //   }
-    //  ),
 
     
+
     if(localStorage.getItem('UserCategory') == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
     }
+
     
-    this.mins15sellService.getMins15sellProfile().
-    subscribe((res: any[]) => {
-        console.log("RESPONSE");
-        console.log(res);
-        console.log("RESPONSE_LENGTH");
-        console.log(res.length);
+    this.symbol = localStorage.getItem('searchsymbol');
 
-
-        console.log("RESPONSE UNIQUE");
-        
-        this.mins15sellDetailsUnique = Array.from(new Set(res.map(a => a.company)))
-        .map(company => {
-          return res.find(a => a.company === company)
-        });
-        
-        console.log(this.mins15sellDetailsUnique);
-
-
-        console.log("RESPONSE unique LENGTH");
-        console.log(this.mins15sellDetailsUnique.length);
-
-
-   // this.mins15sellDetails_length=res.length;
-     //   this.mins15sellDetails = res;
-
-     for(var i=0; i<this.mins15sellDetailsUnique.length; i++){
-
-      if (this.mins15sellDetailsUnique[i].lastSellEvent == undefined){
-
-        console.log("null found completed");
-
-  
-        console.log("before SPLICE");
-        console.log(this.mins15sellDetailsUnique.length);
-
-        this.mins15sellDetailsUnique.splice(i, 1);
-
-        console.log("after SPLICE");
-        console.log(this.mins15sellDetailsUnique.length);
-
-      
-      
+    const input = {
+      symbol: this.symbol
     }
 
-     }
+    this.infopageService.getInfopageProfile(input).subscribe(data => {
+
+      console.log(input);
+          this.symbolDetails = data[0];
+          this.exchange = data[0].exchange;
+          console.log("sending this othe her yu go");
+          console.log(this.exchange.toString());
+    
+    const inputforallsignalsalltimes = {
+      symbol: this.symbol,
+      exchange: this.exchange.toString()
+    }
 
 
-
-     
-
-
-     this.mins15sellDetailsUnique.sort((obj1, obj2) => {
-
-
-      if (new Date(obj1.lastSellEvent).getTime() > new Date(obj2.lastSellEvent)
-      .getTime()) {
-          return 1;
-      }
-
-      if (new Date(obj1.lastSellEvent).getTime() < new Date(obj2.lastSellEvent)
-      .getTime()) {
-          return -1;
-      }
-  
-      return 0;
-  });
-
-      this.mins15sellDetails_length=this.mins15sellDetailsUnique.length;
-      this.mins15sellDetails = this.mins15sellDetailsUnique;
-      console.log(this.mins15sellDetails);
-
-      
-      if(localStorage.getItem('UserCategory') == "TRIAL"){
-        this.mins15sellDetails = this.mins15sellDetails.slice(0,3);
-
-      }
-
-      },
-      err => { 
-        console.log(err);
+      this.infopageService.getallsignalsfor15minssell(inputforallsignalsalltimes).subscribe(data => {
+    
+        this.allsignalsfor15minssell = data;
+    
+        console.log("result");
+        console.log(this.allsignalsfor15minssell);
+            
         
-      }
-    );
+          });
+
+        });      
+
+
+
+
   }
 
-  onLogout(){
-  // this.userService.deleteToken();
-   this.mins15sellService.deleteToken();
+  onLogout() {
+    // this.userService.deleteToken();
+    this.infopageService.deleteToken();
     this.router.navigate(['/login']);
   }
 

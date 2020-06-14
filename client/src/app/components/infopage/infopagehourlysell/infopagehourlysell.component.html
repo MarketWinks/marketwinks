@@ -1,66 +1,70 @@
 <div class="container">
   <br>
    
-  
+
+
   <div class="container">
-  
-            <div class="row ">
-              <div *ngFor="let hourlysellDetails of hourlysellDetails" class="col-md-12">
-                <div class="shadow-box">
-                  
-                
-                  <div class="card-body">
-                    
-                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">{{hourlysellDetails.indicator}}</div>
-                    
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: {{(hourlysellDetails.lasttradedprice)}} GBX</div>
-                    
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10 GBX</div>
 
-                    <h5 class="card-title" style="font-weight: bold;">{{hourlysellDetails.company}}</h5>
-
-                    <h5 class="card-title">
-
-<!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
--->
-
-                      <circle-progress
-      [percent]="hourlysellDetails.confidence_level"
-      [radius]="30"
-      [outerStrokeWidth]="8"
-      [innerStrokeWidth]="2"
-      [outerStrokeColor]="'#ff0000'"
-      [innerStrokeColor]="'#e2e2e2'"
-      [animation]="true"
-      [animationDuration]="300"
-      [space]="5"
-      [showSubtitle]= "false"
-      [showUnits]= "true"
-      [unitsFontSize]= "10"
-      [titleFontSize]= "15"
-      [clockwise]= "true">
-  </circle-progress>
-  </h5>
-
-                    <p class="card-text">{{hourlysellDetails.lastSellEvent}} GMT</p>
-                    <p class="card-text">Entry Criteria: <b>SELL when Market Price >= 100 GBX</b></p>
-                    
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
-                    <div class="like-content" align="left">
-  
-                      <button class="btn-secondary like-review" align="left" onclick="">
-                        <i class="fa fa-heart" aria-hidden="true"></i> 25
-                      </button>
-
-                    </div>
-
+    <div class="row ">
+      <div *ngFor="let allsignalsforhourlysell of allsignalsforhourlysell" class="col-md-12">
+        <div class="shadow-box">
+          
         
-  
-                 
-                  </div>
-                </div>
-              </div>
-            </div>
-  
+   
+         <div class="card-body">
+                     
+           <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">{{allsignalsforhourlysell.indicator}}</div>
+           
+           <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">LTP*: {{(allsignalsforhourlysell.lasttradedprice)}} ??</div>
+           
+           <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10 GBX</div>
+   
+           <h5 class="card-title" style="font-weight: bold;">{{allsignalsforhourlysell.company}}</h5>
+   
+           <h5 class="card-title">
+   
+            <circle-progress
+   [percent]="allsignalsforhourlysell.confidence_level"
+   [radius]="30"
+   [outerStrokeWidth]="8"
+   [innerStrokeWidth]="2"
+   [outerStrokeColor]="'##ff0000'"
+   [innerStrokeColor]="'#e2e2e2'"
+   [animation]="true"
+   [animationDuration]="300"
+   [space]="5"
+   [showSubtitle]= "false"
+   [showUnits]= "true"
+   [unitsFontSize]= "10"
+   [titleFontSize]= "15"
+   [clockwise]= "true">
+   </circle-progress>
+   </h5>
+   
+           <p class="card-text">{{allsignalsforhourlysell.lastSellEvent}} GMT</p>
+           <p class="card-text">Entry Criteria: <b>SELL when Market Price >= {{allsignalsforhourlysell.lastSellPrice}} ??</b></p>
+           
+           <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
+           <div class="like-content" align="left">
+   
+             <button class="btn-secondary like-review" align="left" onclick="">
+               <i class="fa fa-heart" aria-hidden="true"></i> 25
+             </button>
+   
+           </div>
+   
+   
+   
+        
+         </div>
+   
+   
+        </div>
+      </div>
     </div>
+   </div>
+   
+   
+   
+
   </div>
