@@ -45,6 +45,7 @@ const jwtHelper = require('../config/jwtHelper');
 
 router.get('/rssfeedNewsArticleProfile',ctrlRssfeedNewsArticle.rssfeedNewsArticleProfile);
 router.post('/getFullSignalDetailsProfile',ctrlGetFullSignalDetails.getFullSignalDetailsProfile);
+router.post('/addonemorelike',ctrlGetFullSignalDetails.addonemorelike);
 router.post('/getAllSignalsForSymbolDetailsProfile',ctrlGetFullSignalDetails.getAllSignalsForSymbolDetailsProfile);
 
 router.post('/getSymbolDetailsProfile',ctrlGetSymbolDetails.getSymbolDetailsProfile);

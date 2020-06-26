@@ -24,6 +24,11 @@ export class SignalinfopageComponent implements OnInit {
   currency: string;
   tradeterm: string;
 
+  input = {
+    _id: this.signalID,
+    table: this.signalTable
+  };
+
 constructor(public signalinfopageService: SignalinfopageService, 
   public router: Router, public authSerivce:AuthService,
   public flashMessage:FlashMessagesService) { }
@@ -48,10 +53,13 @@ constructor(public signalinfopageService: SignalinfopageService,
     this.currency = localStorage.getItem('mongoSignalcurrency');
     this.tradeterm = localStorage.getItem('mongoSignaltradeterm');
 
-    const input = {
-      _id: this.signalID,
-      table: this.signalTable
-    }
+    this.input._id = this.signalID;
+    this.input.table = this.signalTable;
+
+    // const input = {
+    //   _id: this.signalID,
+    //   table: this.signalTable
+    // }
 
   //   this.authSerivce.getSymbolDetails(this.email.toString()).subscribe((data: any[]) =>{
   //   this.profile = data[0];
@@ -68,7 +76,7 @@ constructor(public signalinfopageService: SignalinfopageService,
   // })
 
 
-  this.signalinfopageService.getSignalinfopageProfile(input).subscribe(data => {
+  this.signalinfopageService.getSignalinfopageProfile(this.input).subscribe(data => {
 
     this.signalDetails = data;
     console.log(data);
@@ -77,6 +85,16 @@ constructor(public signalinfopageService: SignalinfopageService,
 
 
 
+}
+
+addmorelikes(){
+  console.log("like button is clicked");
+  
+  this.signalinfopageService.addonemorelike(this.input).subscribe(data => {
+
+    console.log(data);
+
+  });
 }
 
 

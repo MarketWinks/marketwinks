@@ -19,6 +19,433 @@ const UK_LSE_WeeklySell = mongoose.model('UK_LSE_WeeklySell');
 const UK_LSE_MonthlySell = mongoose.model('UK_LSE_MonthlySell');
 
 
+
+
+module.exports.addonemorelike = (req, res, next) =>{
+
+    console.log("came to ootha controller");
+    console.log(req.body);
+    
+    if (req.body.table == "uk_lse_5minbuys"){
+        console.log("I am in 5mins table");
+
+    
+        UK_LSE_5MinBuy.findOne({_id:req.body._id}, 
+            (err, output) => {
+
+                console.log("gotta the response in the last loop");
+                console.log(output);
+
+                
+                var myquery = { _id:req.body._id };
+                var newvalues = { $set: {likes: 10} };
+
+                        UK_LSE_5MinBuy.updateOne(myquery,newvalues, function(err, res) {
+
+                            if(err){
+                                console.log(err);
+                            }
+
+                               
+             
+                                console.log(res);
+                                console.log("gotta the response");
+                               }
+                    );
+            
+        
+})
+    }
+
+
+else if (req.body.table == "uk_lse_15minbuys"){
+    UK_LSE_15MinBuy.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_15MinBuy.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+
+else if (req.body.table == "uk_lse_30minbuys"){
+    UK_LSE_30MinBuy.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_30MinBuy.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+
+else if (req.body.table == "uk_lse_hourlybuys"){
+    UK_LSE_HourlyBuy.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_HourlyBuy.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_dailybuys"){
+    UK_LSE_DailyBuy.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_DailyBuy.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_weeklybuys"){
+    UK_LSE_WeeklyBuy.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_WeeklyBuy.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_monthlybuys"){
+    UK_LSE_MonthlyBuy.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_MonthlyBuy.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+
+else if (req.body.table == "uk_lse_5minsells"){
+    UK_LSE_5MinSell.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_5MinSell.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_15minsells"){
+    UK_LSE_15MinSell.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_15MinSell.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_30minsells"){
+    UK_LSE_30MinSell.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_30MinSell.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+
+else if (req.body.table == "uk_lse_hourlysells"){
+    UK_LSE_HourlySell.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_HourlySell.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_dailysells"){
+    UK_LSE_DailySell.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_DailySell.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_weeklysells"){
+    UK_LSE_WeeklySell.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_WeeklySell.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+else if (req.body.table == "uk_lse_monthlysells"){
+    UK_LSE_MonthlySell.findOne({_id:req.body._id}, 
+        (err, output) => {
+
+            console.log("gotta the response in the last loop");
+            console.log(output);
+
+            
+            var myquery = { _id:req.body._id };
+            var newvalues = { $set: {likes: 10} };
+
+                    UK_LSE_MonthlySell.updateOne(myquery,newvalues, function(err, res) {
+
+                        if(err){
+                            console.log(err);
+                        }
+
+                           
+         
+                            console.log(res);
+                            console.log("gotta the response");
+                           }
+                );
+        
+    
+})
+}
+
+
+
+};
+
+
+
+
+
 module.exports.getFullSignalDetailsProfile = (req, res, next) =>{
 
     console.log("came to ootha controller");

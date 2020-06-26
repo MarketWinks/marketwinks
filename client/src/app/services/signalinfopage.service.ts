@@ -3,6 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import { signalinfopage } from './signalinfopage.model';
+import { Http, Headers } from "@angular/http";
+// import "rxjs/add/operator/map";
+// import "rxjs/Rx";
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,12 +30,23 @@ export class SignalinfopageService {
   getSignalinfopageProfile(input) {
     console.log("sending this");
     console.log(input);
+    console.log(environment.apiBaseUrl + '/getFullSignalDetailsProfile');
     return this.http.post(environment.apiBaseUrl + '/getFullSignalDetailsProfile', input);
 
 
   }
 
   
+  
+  addonemorelike(input) {
+    console.log("sending this");
+    console.log(input);
+    console.log(environment.apiBaseUrl + '/addonemorelike');
+    console.log(this.http.post(environment.apiBaseUrl + '/addonemorelike', input));
+    return this.http.post(environment.apiBaseUrl + '/addonemorelike', input);
+
+
+  }
 
   // getLivePrice(){
   //   return this.http.get('http://localhost:8085/baseURL/LSEDailyMarketFeedPriceService/KAZ');
