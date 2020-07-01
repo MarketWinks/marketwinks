@@ -6,9 +6,19 @@ const RssfeedNewsArticle = mongoose.model('RssfeedNewsArticle');
 
 module.exports.rssfeedNewsArticleProfile = (req, res, next) =>{
 
-    RssfeedNewsArticle.find({}, (err, rssfeedNewsArticle) => {
+    console.log("trying to reach rssfeed");
+  
+    //RssfeedNewsArticle.find({}).sort({"_id": -1}).limit(100, (err, rssfeedNewsArticle) => {
+        RssfeedNewsArticle.find({},null,{sort: {time: -1}}, (err, rssfeedNewsArticle) => {
+        if (err){
+            console.log(err);
+            res.send(err);
+        
+        } else {
+        rssfeedNewsArticle = rssfeedNewsArticle.slice(0,30);
         console.log("Here we get");
         res.send(rssfeedNewsArticle);
+    }
     }
 )};
 
