@@ -4,6 +4,8 @@ const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
+const request = require('request');
+
 
 
 
@@ -46,6 +48,13 @@ module.exports.register = (req, res, next) => {
               newProfile.save((err, doc) => {
                 if (!err){
                     console.log(newProfile);
+                    
+                    message = "Hello "+req.body.fullName+", Welcome%20to%20the%20MarketWinks%20Platform";
+                    notificationlink = "http://mwnotifications.herokuapp.com/notifications/"+req.body.email.toString()+"/"+message.toString()+"/add";
+                    request(notificationlink, (err, res) => {
+                        if (err) { console.log(err); }
+                        else if (!err){ console.log("Welcome notification added"); }
+                    });
 
                 }
 
