@@ -3,6 +3,8 @@ require('./user.model');
 require('./profile.model');
 
 require('./rssfeedNewsArticle.model');
+
+require('./notification.model');
 require('./symbol.model');
 
 require('./uK_LSE_MonthlySell.model');

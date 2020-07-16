@@ -3,6 +3,7 @@ const router = express.Router();
 
 const ctrlUser = require('../controllers/user.controller');
 const ctrlRssfeedNewsArticle = require('../controllers/rssfeedNewsArticle.controller');
+const ctrlNotification = require('../controllers/notification.controller');
 
 
 const ctrlGetFullSignalDetails = require('../controllers/getFullSignalDetails.controller');
@@ -44,6 +45,8 @@ const ctrlUS_5MinBuy = require('../controllers/uS_5MinBuy.controller');
 const jwtHelper = require('../config/jwtHelper');
 
 router.get('/rssfeedNewsArticleProfile',ctrlRssfeedNewsArticle.rssfeedNewsArticleProfile);
+router.get('/notification/:email',ctrlNotification.notificationProfile);
+
 router.post('/getFullSignalDetailsProfile',ctrlGetFullSignalDetails.getFullSignalDetailsProfile);
 router.post('/addonemorelike',ctrlGetFullSignalDetails.addonemorelike);
 router.post('/getAllSignalsForSymbolDetailsProfile',ctrlGetFullSignalDetails.getAllSignalsForSymbolDetailsProfile);

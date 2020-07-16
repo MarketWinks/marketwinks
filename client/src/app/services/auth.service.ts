@@ -137,6 +137,19 @@ console.log(input);
 
   }
 
+  
+  getNotification(email) {
+    let headers = new Headers();
+
+    console.log("checking for..");
+    console.log(email);
+
+    
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(environment.apiBaseUrl + '/notification/'+email, email)
+    .pipe(map(res => res.json()));
+
+  }
 
   // getPayment(paymentReferenceId) {
   //   let headers = new Headers();

@@ -20,6 +20,9 @@ import { UkeqDashboardComponent } from './components/ukeqdashboard/ukeqdashboard
 import { UseqDashboardComponent } from './components/useqdashboard/useqdashboard.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
+import { NotificationComponent } from './components/notification/notification.component';
+
+
 import { CourseComponent } from './components/course/course.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -117,6 +120,7 @@ const appRoutes: Routes =  [
   {path:'ourframework', component: OurframeworkComponent},
   { path: 'course', component: CourseComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard]},
   { path: 'addproduct', component: AddProductComponent, canActivate: [AuthGuard] },
   { path: 'editproduct', component: EditProductComponent, canActivate: [AuthGuard]},
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
@@ -426,6 +430,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     Infopage15MinssellComponent,
     Infopage5MinsbuyComponent,
     Infopage5MinssellComponent,
+    NotificationComponent,
    
     SafePipe
   ],
