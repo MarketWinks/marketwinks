@@ -48,6 +48,16 @@ export class SignalinfopageService {
 
   }
 
+  additemtowatchlist(input) {
+    console.log("sending this watchlist");
+    console.log(input);
+    console.log(environment.apiBaseUrl + '/additemtowatchlist');
+    console.log(this.http.post(environment.apiBaseUrl + '/additemtowatchlist', input));
+    return this.http.post(environment.apiBaseUrl + '/additemtowatchlist', input);
+
+
+  }
+
   // getLivePrice(){
   //   return this.http.get('http://localhost:8085/baseURL/LSEDailyMarketFeedPriceService/KAZ');
 

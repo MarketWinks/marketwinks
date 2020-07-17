@@ -49,6 +49,8 @@ router.get('/notification/:email',ctrlNotification.notificationProfile);
 
 router.post('/getFullSignalDetailsProfile',ctrlGetFullSignalDetails.getFullSignalDetailsProfile);
 router.post('/addonemorelike',ctrlGetFullSignalDetails.addonemorelike);
+router.post('/additemtowatchlist',ctrlGetFullSignalDetails.additemtowatchlist);
+
 router.post('/getAllSignalsForSymbolDetailsProfile',ctrlGetFullSignalDetails.getAllSignalsForSymbolDetailsProfile);
 
 router.post('/getSymbolDetailsProfile',ctrlGetSymbolDetails.getSymbolDetailsProfile);

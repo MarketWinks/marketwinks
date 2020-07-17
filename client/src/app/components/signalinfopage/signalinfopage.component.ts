@@ -24,11 +24,20 @@ export class SignalinfopageComponent implements OnInit {
   currency: string;
   tradeterm: string;
   public show:boolean = false;
+  public addshow:boolean = false;
 
 
   input = {
     _id: this.signalID,
     table: this.signalTable
+  };
+
+  watchlistitem = {
+    _id: this.signalID,
+    table: this.signalTable,
+    user: null,
+    status: null
+
   };
 
 constructor(public signalinfopageService: SignalinfopageService, 
@@ -102,6 +111,28 @@ addmorelikes(){
   });
 }
 
+addtowatchlist(){
+
+  this.addshow = !this.addshow;
+
+
+  this.watchlistitem._id = this.signalID;
+    this.watchlistitem.table = this.signalTable;
+    this.watchlistitem.user = localStorage.getItem('user');
+    this.watchlistitem.status = "ACTIVE";
+
+    console.log("watchlist item is built");
+    console.log(this.watchlistitem);
+
+    
+  this.signalinfopageService.additemtowatchlist(this.watchlistitem).subscribe(data => {
+
+    console.log(data);
+
+  });
+
+
+}
 
 
 }

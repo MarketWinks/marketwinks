@@ -19,6 +19,28 @@ const UK_LSE_DailySell = mongoose.model('UK_LSE_DailySell');
 const UK_LSE_WeeklySell = mongoose.model('UK_LSE_WeeklySell');
 const UK_LSE_MonthlySell = mongoose.model('UK_LSE_MonthlySell');
 
+const Watchlist = mongoose.model('Watchlist');
+
+module.exports.additemtowatchlist = (req, res, next) =>{
+
+    console.log("came to watchlist controller ");
+    
+    var watchlist = new Watchlist();
+    watchlist.user = req.body.user;
+    watchlist.table = req.body.table;
+    watchlist.id = req.body._id;
+    watchlist.status = req.body.status;
+
+    watchlist.save((err, doc) => {
+        if (!err){
+console.log("watchlist item added");
+        } else {
+            console.log("watchlist item error");
+        }
+    });
+
+    
+}
 
 
 

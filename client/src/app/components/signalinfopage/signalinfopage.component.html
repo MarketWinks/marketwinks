@@ -30,7 +30,18 @@ href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compi
             <div
               class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
             >
-            <button style="font-size:24px; font-weight: bold;">+</button>
+            <button style="font-size:24px; font-weight: bold;"  (click)="addtowatchlist()">
+              
+              <ng-container *ngIf="addshow">
+              -
+              </ng-container>
+    
+              <ng-container *ngIf="!addshow">
+    
+              +
+              </ng-container>
+            
+            </button>
             </div>
             <h6 class="text-xl font-semibold">{{signalDetails.company}}</h6>
             <p class="mt-2 mb-4 text-gray-600">

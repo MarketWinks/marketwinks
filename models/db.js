@@ -7,6 +7,8 @@ require('./rssfeedNewsArticle.model');
 require('./notification.model');
 require('./symbol.model');
 
+require('./watchlist.model');
+
 require('./uK_LSE_MonthlySell.model');
 require('./uK_LSE_MonthlyBuy.model');
 require('./uK_LSE_WeeklySell.model');
