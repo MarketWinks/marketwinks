@@ -23,6 +23,8 @@ export class SignalinfopageComponent implements OnInit {
   exchange: string;
   currency: string;
   tradeterm: string;
+  public show:boolean = false;
+
 
   input = {
     _id: this.signalID,
@@ -88,6 +90,9 @@ constructor(public signalinfopageService: SignalinfopageService,
 }
 
 addmorelikes(){
+
+  this.show = !this.show;
+
   console.log("like button is clicked");
   
   this.signalinfopageService.addonemorelike(this.input).subscribe(data => {

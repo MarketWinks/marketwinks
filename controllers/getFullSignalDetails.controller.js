@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
+var NumberInt = require('mongoose-int32');
 
 const UK_LSE_5MinBuy = mongoose.model('UK_LSE_5MinBuy');
 const UK_LSE_15MinBuy = mongoose.model('UK_LSE_15MinBuy');
@@ -23,38 +24,47 @@ const UK_LSE_MonthlySell = mongoose.model('UK_LSE_MonthlySell');
 
 module.exports.addonemorelike = (req, res, next) =>{
 
-    console.log("came to ootha controller");
+    console.log("came to ootha controller mama i am gonna like");
     console.log(req.body);
     
     if (req.body.table == "uk_lse_5minbuys"){
         console.log("I am in 5mins table");
 
     
-        UK_LSE_5MinBuy.findOne({_id:req.body._id}, 
-            (err, output) => {
+        UK_LSE_5MinBuy.findOneAndUpdate({_id:req.body._id}, {$inc : {likes : 1}}, {new: true },function(err, response) {
+            if (err) {
+            console.log(err);
+           } else {
+            console.log(response);
+           }});
 
-                console.log("gotta the response in the last loop");
-                console.log(output);
+
+//             (err, output) => {
+
+//                 console.log("gotta the response in the last loop_5mins_printing likes");
+//                 console.log(output);
 
                 
-                var myquery = { _id:req.body._id };
-                var newvalues = { $set: {likes: 10} };
+//                 var myquery = { _id:output._id };
+//                 var newvalues = { $set: { likes: {type: [Number], value: 10} } };
 
-                        UK_LSE_5MinBuy.updateOne(myquery,newvalues, function(err, res) {
+//                         UK_LSE_5MinBuy.updateOne(myquery, newvalues, function(err, res) {
 
-                            if(err){
-                                console.log(err);
-                            }
+            
+
+//                             if(err){
+//                                 console.log(err);
+//                             }
 
                                
              
-                                console.log(res);
-                                console.log("gotta the response");
-                               }
-                    );
+//                                 console.log(res);
+//                                 console.log("gotta the response");
+//                                }
+//                     );
             
         
-})
+// })
     }
 
 

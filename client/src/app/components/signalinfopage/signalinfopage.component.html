@@ -125,10 +125,21 @@ href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compi
         >
           <div class="px-4 py-5 flex-auto">
             <div
-              class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
+              class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 rounded-full bg-green-400"
             >
 
-          <button style="font-size:24px" (click)="addmorelikes()"><i class="fa">&#xf087;</i></button>
+          <button style="font-size:24px" (click)="addmorelikes()">
+            <ng-container *ngIf="show">
+
+            <i class="fa fa fa-thumbs-up"></i>
+          </ng-container>
+
+          <ng-container *ngIf="!show">
+
+            <i class="fa fa fa-thumbs-o-up"></i>
+          </ng-container>
+          
+          </button>
           
         </div> 
 
