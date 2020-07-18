@@ -63,12 +63,16 @@ export class RegisterComponent implements OnInit {
         this.resetForm();
         this.router.navigate(['/login']);
       } else {
+        console.log(data);
+        //console.log(err);
         this.serverErrorMessages = 'Something went wrong.Please contact admin.';
         this.router.navigate(['/register']);
       }
     },
       (err) => {
-        this.serverErrorMessages = err.json().message.toString();
+
+        this.serverErrorMessages = err.json()[0];
+
       });
   }
 
@@ -79,6 +83,10 @@ export class RegisterComponent implements OnInit {
     this.model.recoverywordpetname = '';
     this.serverErrorMessages = '';
     this.model.agreeTC = false;
+  }
+
+  gotoTC(){
+    this.router.navigate(['/termsandconditions']);
   }
 
 }

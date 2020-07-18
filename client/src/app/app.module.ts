@@ -124,6 +124,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 
 import { InlineEditComponent } from './components/inline-edit/inline-edit.component';
 
+import { TermsandconditionsComponent } from './components/termsandconditions/termsandconditions.component';
+
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -134,6 +136,7 @@ const appRoutes: Routes =  [
   {path:'aboutus', component: AboutusComponent},
   {path:'contactus', component: ContactusComponent},
   {path:'support', component: SupportComponent},
+  {path:'termsandconditions', component: TermsandconditionsComponent},
   {path:'ourframework', component: OurframeworkComponent},
   { path: 'course', component: CourseComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
@@ -553,6 +556,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     Watchlist5MinsbuyComponent,
     Watchlist5MinssellComponent,
     NotificationComponent,
+    TermsandconditionsComponent,
    
     SafePipe
   ],

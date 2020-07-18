@@ -53,12 +53,14 @@
   <br>
 <input type="checkbox" #agreeTC="ngModel" [(ngModel)]="model.agreeTC" name="agreeTC" 
   required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !agreeTC.true }">
-  <label>&nbsp;&nbsp;&nbsp;&nbsp;I agree to the Terms and Conditions</label><br>
+  <label>&nbsp;&nbsp;&nbsp;&nbsp;I agree to the Terms and Conditions <a style="color: black" (click)="gotoTC()"><b> - Read here</b></a></label><br>
   <div *ngIf="signUpForm.submitted && agreeTC.errors">
     <label *ngIf="agreeTC.errors.required" class="validation-message">Please agree to the Terms and Conditions</label>
   </div>
   <br>
 
+  
+  
   <input type="submit" value="Sign Up">
 </form>
 
