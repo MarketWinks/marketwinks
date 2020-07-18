@@ -46,6 +46,8 @@ this.router.navigate(['/cart']);
 
   orderPlaced() {
 
+    localStorage.setItem("receiptURL", "empty");
+
 
     const checkout = {
       firstName: this.firstName,
@@ -91,7 +93,8 @@ this.router.navigate(['/cart']);
       cccvv: this.cccvv,
 
       currentselection: this.authService.getCurrentselection(),
-      price: this.authService.getTotal()
+      price: this.authService.getTotal(),
+      beneficiaryemail: localStorage.getItem("LoggedInUserEmail")
 
 
     }
@@ -121,7 +124,8 @@ this.authService.makePayment(paymentDetails).subscribe(data=>{
     this.router.navigate(['/paymentreceipt']);
     //navigate to a new page called payment receipt page and show transaction references etc
   }else{
-    this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
+    this.router.navigate(['/paymentreceipt']);
+    //this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
     //this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
    //navigate to a failure page, not payment recepit
   }

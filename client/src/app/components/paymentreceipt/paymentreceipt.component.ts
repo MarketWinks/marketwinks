@@ -12,6 +12,7 @@ import { ValidateService } from "../../services/validate.service";
 export class PaymentreceiptComponent implements OnInit {
   paymentReferenceId: String;
   receiptURL: String;
+  paymentsuccess: Boolean;
   
   constructor(private flashMessage: FlashMessagesService, public authService: AuthService,
     private router: Router, private validateService: ValidateService) { }
@@ -22,9 +23,20 @@ export class PaymentreceiptComponent implements OnInit {
       return;
     }
     
-  this.paymentReferenceId = this.authService.getPaymentReferenceId();
-  this.receiptURL = localStorage.getItem("receiptURL");
+    if(localStorage.getItem("receiptURL") == "empty"){
+      this.paymentsuccess = false;
+
+    } else {
+      this.paymentsuccess = true;
+      this.paymentReferenceId = this.authService.getPaymentReferenceId();
+      this.receiptURL = localStorage.getItem("receiptURL");
+      
+    }
   
+  }
+
+  paymentstatus(){
+    return this.paymentsuccess;
   }
 
 }

@@ -19,6 +19,10 @@ const paymentSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    payerEmail: {
+        type: String,
+        required: true
+    },
     currentselection: {
         type: String,
         required: true

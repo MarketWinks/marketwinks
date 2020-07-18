@@ -135,7 +135,7 @@ const Payment = require('../models/payment');
       amount: req.body.price*100,
       currency: "usd",
       source: token.id, // obtained with Stripe.js
-      description: req.body.email+" "+req.body.currentselection,
+      description: req.body.beneficiaryemail+" "+req.body.currentselection,
     }, function(err, charge) {
       if(err) {
         console.log(err);
@@ -157,9 +157,10 @@ console.log("payment completed;receipt page can be redirected if needed");
   transactionId: new Date().getDate().toString() + new Date().getHours().toString(),
   paymentDate: new Date().getDate().toString(),
   paymentTime: new Date().getHours().toString(),
-  profileEmail: 'test@example.com',
+  profileEmail: req.body.beneficiaryemail,
+  payerEmail: req.body.email,
   currentselection: req.body.currentselection,
-  price: req.body.amount*100,
+  price: req.body.price,
   currency: 'usd',
   // card: , //need to build object
   // billingAddress: ,//need to build object

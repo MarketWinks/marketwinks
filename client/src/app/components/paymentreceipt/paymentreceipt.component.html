@@ -1,20 +1,45 @@
 <div class="container">
 
+        <br><br><br><br><br><br>
 
-
-<div class="row">
-        <h2 style="align-content: center; font-style: italic;">
+<div *ngIf="paymentstatus()" class="container">
+        <!-- <h2 style="align-content: center; font-style: italic;">
                 <p>Successful payment</p>
                 <p>Reference ID: {{paymentReferenceId}}</p> 
                 
         
-        </h2>
-        
-      </div>
-<div>{{receiptURL}}
-</div>
+        </h2> -->
+        <!-- <div>{{receiptURL}}
+        </div> -->
 
+        
+<br>
+
+<div style="font-weight: bolder; text-align: center;font-size: x-large; color: #10085A;">Payment initiated!
 </div>
+<br><br><br>
+<div style="font-weight: bold; text-align: center;font-size: large; color: #10085A;">Reference ID: {{paymentReferenceId}}</div>
+
+  <div style="font-weight: bold; text-align: center;font-size: large; color: #10085A;">Your subscription renewal status will reflect on your profile shortly. Please contact support for any issues.</div>
+
+
 
 <br>
+
+                
+      </div>
+
+      
+<div *ngIf="!paymentstatus()" class="container">
+       
+       
+<div style="font-weight: bolder; text-align: center;font-size: x-large; color: #10085A;">Sorry, Payment denied or failed. Please retry or contact support.
+</div>
+                
+      </div>
+
+
+</div>
+
+<br><br><br>
 <app-footer></app-footer>
