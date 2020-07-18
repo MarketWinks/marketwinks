@@ -115,8 +115,8 @@ this.authService.makePayment(paymentDetails).subscribe(data=>{
     this.authService.storePaymentReferenceId(data.paymentReferenceId);
 
     localStorage.setItem("receiptURL", data.receiptURL);
-    
-    this.flashMessage.show('Your order is Placed and Successfully Paid', { cssClass: 'alert-success', timeout: 3000 });
+    console.log("reached the main step");
+   // this.flashMessage.show('Your order is Placed and Successfully Paid', { cssClass: 'alert-success', timeout: 3000 });
    // this.authService.orderClear();
     this.router.navigate(['/paymentreceipt']);
     //navigate to a new page called payment receipt page and show transaction references etc
