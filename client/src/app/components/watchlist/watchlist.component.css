@@ -1,0 +1,118 @@
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+      padding-top: calc(var(--jumbotron-padding-y) * 2);
+      padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.btn-to-step-in {
+  background-color: #10085A;
+  width: fit-content;
+  color: white;
+}
+
+
+.shadow-box{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+align-content: center;
+-webkit-border-radius: 10px 10px 10px 10px;
+border-radius: 10px 10px 10px 10px;
+background: #fff;
+-webkit-box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+
+.like-content {
+  left: 0px;
+  display: inline-block;
+  width: 100%;
+  margin: 2px 0 0;
+  padding: 0px 0 0;
+  font-size: 10px;
+  border-top: 0px dashed #eee;
+  text-align: left;
+}
+.like-content span {
+color: #ed2553;
+font-family: monospace;
+}
+.like-content .btn-secondary {
+  display: block;
+  margin: 2px auto 0px;
+  text-align: left;
+  background: #ed2553;
+  border-radius: 2px;
+  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+  padding: 2px 2px;
+  font-size: 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.like-content .btn-secondary:hover {
+  transform: translateY(-3px);
+}
+.like-content .btn-secondary .fa {
+  margin-right: 2px;
+}
+.animate-like {
+animation-name: likeAnimation;
+animation-iteration-count: 1;
+animation-fill-mode: forwards;
+animation-duration: 0.65s;
+}
+@keyframes likeAnimation {
+0%   { transform: scale(30); }
+100% { transform: scale(1); }
+}
+
+.tradingview-widget-container {
+height: 100mm;
+} 

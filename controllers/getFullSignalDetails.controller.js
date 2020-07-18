@@ -21,6 +21,19 @@ const UK_LSE_MonthlySell = mongoose.model('UK_LSE_MonthlySell');
 
 const Watchlist = mongoose.model('Watchlist');
 
+
+module.exports.getlistofWatchlistIDs = (req, res, next) =>{
+    
+    console.log(req.body);
+
+    Watchlist.find({user: req.body.user, table: req.body.table, status: req.body.status}, (err, idlist) => {
+        console.log("Here we get idlist");
+        res.send(idlist);
+    }
+)
+
+}
+
 module.exports.additemtowatchlist = (req, res, next) =>{
 
     console.log("came to watchlist controller ");
@@ -617,8 +630,129 @@ else if (req.body.table == "uk_lse_monthlysells"){
 
 };
 
+module.exports.getAllSignalsForAllIDsProfile = (req, res, next) =>{
+    console.log("came to ootha controller for all signal table new new new");
+    console.log(req.body);
+    
+    if (req.body.table == "uk_lse_5minbuys"){
+    UK_LSE_5MinBuy.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
 
 
+
+else if (req.body.table == "uk_lse_15minbuys"){
+    UK_LSE_15MinBuy.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+
+else if (req.body.table == "uk_lse_30minbuys"){
+    UK_LSE_30MinBuy.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+
+else if (req.body.table == "uk_lse_hourlybuys"){
+    UK_LSE_HourlyBuy.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_dailybuys"){
+    
+    UK_LSE_DailyBuy.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_weeklybuys"){
+    UK_LSE_WeeklyBuy.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_monthlybuys"){
+    UK_LSE_MonthlyBuy.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+
+else if (req.body.table == "uk_lse_5minsells"){
+    UK_LSE_5MinSell.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_15minsells"){
+    UK_LSE_15MinSell.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_30minsells"){
+    UK_LSE_30MinSell.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+
+else if (req.body.table == "uk_lse_hourlysells"){
+    UK_LSE_HourlySell.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_dailysells"){
+    UK_LSE_DailySell.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_weeklysells"){
+    UK_LSE_WeeklySell.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+}
+
+
+else if (req.body.table == "uk_lse_monthlysells"){
+    UK_LSE_MonthlySell.find({_id: {$in: req.body._id}}, (err, signal) => {
+        res.send(signal);
+    });
+
+
+}
+
+}
 
 module.exports.getAllSignalsForSymbolDetailsProfile = (req, res, next) =>{
 

@@ -101,6 +101,23 @@ import { SignalinfopageComponent } from './components/signalinfopage/signalinfop
 import { FooterComponent } from './components/footer/footer.component';
 
 
+import { WatchlistDailybuyComponent } from './components/watchlist/watchlistdailybuy/watchlistdailybuy.component';
+import { WatchlistDailysellComponent } from './components/watchlist/watchlistdailysell/watchlistdailysell.component';
+import { WatchlistWeeklybuyComponent } from './components/watchlist/watchlistweeklybuy/watchlistweeklybuy.component';
+import { WatchlistWeeklysellComponent } from './components/watchlist/watchlistweeklysell/watchlistweeklysell.component';
+import { WatchlistMonthlybuyComponent } from './components/watchlist/watchlistmonthlybuy/watchlistmonthlybuy.component';
+import { WatchlistMonthlysellComponent } from './components/watchlist/watchlistmonthlysell/watchlistmonthlysell.component';
+import { WatchlistHourlybuyComponent } from './components/watchlist/watchlisthourlybuy/watchlisthourlybuy.component';
+import { WatchlistHourlysellComponent } from './components/watchlist/watchlisthourlysell/watchlisthourlysell.component';
+import { Watchlist30MinsbuyComponent } from './components/watchlist/watchlistmins30buy/watchlistmins30buy.component';
+import { Watchlist30MinssellComponent } from './components/watchlist/watchlistmins30sell/watchlistmins30sell.component';
+import { Watchlist15MinsbuyComponent } from './components/watchlist/watchlistmins15buy/watchlistmins15buy.component';
+import { Watchlist15MinssellComponent } from './components/watchlist/watchlistmins15sell/watchlistmins15sell.component';
+import { Watchlist5MinsbuyComponent } from './components/watchlist/watchlistmins5buy/watchlistmins5buy.component';
+import { Watchlist5MinssellComponent } from './components/watchlist/watchlistmins5sell/watchlistmins5sell.component';
+
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
+
 //safe piping for videos to dynamically load in iframe
 import { SafePipe } from './components/course/safe.pipe';
 import { ContactusComponent } from './components/contactus/contactus.component';
@@ -127,6 +144,7 @@ const appRoutes: Routes =  [
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'paymentreceipt', component: PaymentreceiptComponent, canActivate: [AuthGuard] },
   { path: 'infopage', component: InfopageComponent, canActivate: [AuthGuard] },
+  { path: 'watchlist', component: WatchlistComponent, canActivate: [AuthGuard] },
   { path: 'signalinfopage', component: SignalinfopageComponent, canActivate: [AuthGuard] },
   
   {
@@ -357,7 +375,94 @@ children: [{ path: '', component: UseqMins5buyComponent }]
 {
   path: 'infopage5minssell', component: InfopageComponent,
   children: [{ path: '', component: Infopage5MinssellComponent }]
+},
+{
+  path: 'watchlistdailybuy', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistDailybuyComponent }]
+},
+
+
+{
+  path: 'watchlistdailysell', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistDailysellComponent }]
+},
+
+
+
+{
+  path: 'watchlistweeklybuy', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistWeeklybuyComponent }]
+},
+
+
+{
+  path: 'watchlistweeklysell', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistWeeklysellComponent }]
+},
+
+
+
+{
+  path: 'watchlistmonthlybuy', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistMonthlybuyComponent }]
+},
+
+
+{
+  path: 'watchlistmonthlysell', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistMonthlysellComponent }]
+},
+
+
+
+{
+  path: 'watchlisthourlybuy', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistHourlybuyComponent }]
+},
+
+
+{
+  path: 'watchlisthourlysell', component: WatchlistComponent,
+  children: [{ path: '', component: WatchlistHourlysellComponent }]
+},
+
+
+
+{
+  path: 'watchlist30minsbuy', component: WatchlistComponent,
+  children: [{ path: '', component: Watchlist30MinsbuyComponent }]
+},
+
+
+{
+  path: 'watchlist30minssell', component: WatchlistComponent,
+  children: [{ path: '', component: Watchlist30MinssellComponent }]
+},
+
+
+
+{
+  path: 'watchlist15minsbuy', component: WatchlistComponent,
+  children: [{ path: '', component: Watchlist15MinsbuyComponent }]
+},
+
+
+{
+  path: 'watchlist15minssell', component: WatchlistComponent,
+  children: [{ path: '', component: Watchlist15MinssellComponent }]
+},
+
+{
+  path: 'watchlist5minsbuy', component: WatchlistComponent,
+  children: [{ path: '', component: Watchlist5MinsbuyComponent }]
+},
+
+
+{
+  path: 'watchlist5minssell', component: WatchlistComponent,
+  children: [{ path: '', component: Watchlist5MinssellComponent }]
 }
+
 ]
 
 @NgModule({
@@ -411,11 +516,11 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     UseqMins15buyComponent,
     UseqMins5sellComponent,
     UseqMins5buyComponent,
-    InfopageComponent,
     SignalinfopageComponent,
     ResetpasswordComponent,
     FooterComponent,
-
+    InfopageComponent,
+    
     InfopageDailybuyComponent,
     InfopageDailysellComponent,
     InfopageWeeklybuyComponent,
@@ -430,6 +535,23 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     Infopage15MinssellComponent,
     Infopage5MinsbuyComponent,
     Infopage5MinssellComponent,
+
+    WatchlistComponent,
+    
+    WatchlistDailybuyComponent,
+    WatchlistDailysellComponent,
+    WatchlistWeeklybuyComponent,
+    WatchlistWeeklysellComponent,
+    WatchlistMonthlybuyComponent,
+    WatchlistMonthlysellComponent,
+    WatchlistHourlybuyComponent,
+    WatchlistHourlysellComponent,
+    Watchlist30MinsbuyComponent,
+    Watchlist30MinssellComponent,
+    Watchlist15MinsbuyComponent,
+    Watchlist15MinssellComponent,
+    Watchlist5MinsbuyComponent,
+    Watchlist5MinssellComponent,
     NotificationComponent,
    
     SafePipe

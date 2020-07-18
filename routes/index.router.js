@@ -51,6 +51,9 @@ router.post('/getFullSignalDetailsProfile',ctrlGetFullSignalDetails.getFullSigna
 router.post('/addonemorelike',ctrlGetFullSignalDetails.addonemorelike);
 router.post('/additemtowatchlist',ctrlGetFullSignalDetails.additemtowatchlist);
 
+router.post('/getlistofWatchlistIDs',ctrlGetFullSignalDetails.getlistofWatchlistIDs);
+router.post('/getAllSignalsForAllIDsProfile',ctrlGetFullSignalDetails.getAllSignalsForAllIDsProfile);
+
 router.post('/getAllSignalsForSymbolDetailsProfile',ctrlGetFullSignalDetails.getAllSignalsForSymbolDetailsProfile);
 
 router.post('/getSymbolDetailsProfile',ctrlGetSymbolDetails.getSymbolDetailsProfile);
