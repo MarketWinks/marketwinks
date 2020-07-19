@@ -94,7 +94,10 @@ this.router.navigate(['/cart']);
 
       currentselection: this.authService.getCurrentselection(),
       price: this.authService.getTotal(),
-      beneficiaryemail: localStorage.getItem("LoggedInUserEmail")
+      beneficiaryemail: localStorage.getItem("LoggedInUserEmail"),
+      
+      renewintent: localStorage.getItem("renewintent")
+   
 
 
     }
@@ -111,7 +114,8 @@ this.router.navigate(['/cart']);
 
 //call the server side api and make a stripe payment
 
-
+console.log("pay details sending");
+console.log(paymentDetails);
 this.authService.makePayment(paymentDetails).subscribe(data=>{
   console.log(data);
   if(data.success){

@@ -73,10 +73,13 @@ export class ShoppingCartComponent implements OnInit {
 
   addProduct30Days(){
 
+
     this.currentselection="30 Days Subscription";
     this.total=36;
     
     this.authService.storeTotal(this.total);
+console.log("Great, 30 day chosenn");
+    localStorage.setItem("renewintent", "30Days");
    
     
   }
@@ -89,6 +92,8 @@ export class ShoppingCartComponent implements OnInit {
     
     this.authService.storeTotal(this.total);
    
+    localStorage.setItem("renewintent", "60Days");
+   
     
   }
 
@@ -99,6 +104,8 @@ export class ShoppingCartComponent implements OnInit {
     this.total=97;
     
     this.authService.storeTotal(this.total);
+   
+    localStorage.setItem("renewintent", "90Days");
    
     
   }

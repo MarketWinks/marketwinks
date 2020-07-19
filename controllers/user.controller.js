@@ -158,7 +158,7 @@ module.exports.verifyandactivateEmail = (req, res, next) => {
 
 module.exports.updateUserCategorytoFull = (req, res, next) => {
 
-    Profile.findOne({ email : req.query.id },
+    Profile.findOne({ email : req.query.email },
     (err, profile) => {
         var date = new Date(Date.now());
         date.setDate(date.getDate() + 30);

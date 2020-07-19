@@ -23,6 +23,10 @@ const paymentSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    renewintent: {
+        type: String,
+        required: true
+    },
     currentselection: {
         type: String,
         required: true

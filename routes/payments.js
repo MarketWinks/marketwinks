@@ -8,6 +8,7 @@ const User = require('../models/user.model');
 // var Cart = require('../models/cart');
 // var Order = require('../models/order');
 const Payment = require('../models/payment');
+const Profile = require('../models/profile.model');
 
 // router.get('/init', function(req, res, next) {
 //     var successMsg = req.flash('success')[0];
@@ -159,6 +160,7 @@ console.log("payment completed;receipt page can be redirected if needed");
   paymentTime: new Date().getHours().toString(),
   profileEmail: req.body.beneficiaryemail,
   payerEmail: req.body.email,
+  renewintent: req.body.renewintent,
   currentselection: req.body.currentselection,
   price: req.body.price,
   currency: 'usd',
@@ -196,8 +198,36 @@ console.log("payment completed;receipt page can be redirected if needed");
     }
   });
 
+  
 
-  //write a block to update the profile table and set the user category to FULL and the valid Till field
+  Profile.findOne({ email : req.body.beneficiaryemail },
+    (err, profile) => {
+        var date = new Date(Date.now());
+
+    if (Date.parse(profile.validtilldate) - date > 0) {
+      date = new Date(Date.parse(profile.validtilldate))
+    }
+
+        if(req.body.renewintent == "30Days"){
+        date.setDate(date.getDate() + 30);
+      } else if(req.body.renewintent == "60Days"){
+        date.setDate(date.getDate() + 60);
+      } else if(req.body.renewintent == "90Days"){
+        date.setDate(date.getDate() + 90);
+      } 
+    
+        var myquery = { email: profile.email };
+        var newvalues = { $set: {usercategory: "FULL", validtilldate: date.toString()} };
+        Profile.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("User Category in Profile updated to FULL");
+        });
+        
+    
+    }
+    );
+
+
 
       return res.json({
         success: true,
