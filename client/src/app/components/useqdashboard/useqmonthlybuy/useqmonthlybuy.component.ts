@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
 
 import { environment } from 'src/environments/environment';
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqmonthlybuy',
@@ -24,8 +25,8 @@ export class UseqMonthlybuyComponent implements OnInit {
   monthlybuyDetailsTransit_length;
   monthlybuyDetailsUniqueComparitor: any;
 
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public monthlybuyService: UseqMonthlybuyService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public monthlybuyService: UseqMonthlybuyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

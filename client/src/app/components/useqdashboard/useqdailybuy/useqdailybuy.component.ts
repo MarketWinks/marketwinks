@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
 
 import { environment } from 'src/environments/environment';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqdailybuy',
@@ -25,8 +25,8 @@ export class UseqDailybuyComponent implements OnInit {
   dailybuyDetailsTransit_length;
   dailybuyDetailsUniqueComparitor: any;
 
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public dailybuyService: UseqDailybuyService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public dailybuyService: UseqDailybuyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

@@ -4,7 +4,7 @@ import { UkeqWeeklysellService } from '../../../services/ukeqweeklysell.service'
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-ukeqweeklysell',
@@ -17,8 +17,8 @@ export class UkeqWeeklysellComponent implements OnInit {
   weeklysellDetails;
   weeklysellDetailsUnique;
   weeklysellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public weeklysellService: UkeqWeeklysellService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public weeklysellService: UkeqWeeklysellService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
@@ -42,7 +42,7 @@ export class UkeqWeeklysellComponent implements OnInit {
     //  ),
 
     
-    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
@@ -119,7 +119,7 @@ export class UkeqWeeklysellComponent implements OnInit {
         this.weeklysellDetails = this.weeklysellDetailsUnique;
 
         
-      if(localStorage.getItem('UserCategory') == "TRIAL"){
+      if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL"){
         this.weeklysellDetails = this.weeklysellDetails.slice(0,3);
 
       }

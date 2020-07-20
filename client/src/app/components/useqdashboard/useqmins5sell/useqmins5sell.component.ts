@@ -4,7 +4,7 @@ import { UseqMins5sellService } from '../../../services/useqmins5sell.service';
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqmins5sell',
@@ -17,8 +17,8 @@ export class UseqMins5sellComponent implements OnInit {
   mins5sellDetails;
   mins5sellDetailsUnique;
   mins5sellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public mins5sellService: UseqMins5sellService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public mins5sellService: UseqMins5sellService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

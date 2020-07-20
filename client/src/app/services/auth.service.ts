@@ -5,7 +5,7 @@ import { Http, Headers } from "@angular/http";
 // import "rxjs/Rx";
 import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 import { environment } from '../../environments/environment';
 //import { truncate } from 'fs';
@@ -32,8 +32,8 @@ export class AuthService {
 
   //  constructor(private http: Http) { }
 
-  constructor(public http: Http) {
-console.log("AuthService constructor called");
+  constructor(public http: Http, private EncrDecr: EncrDecrService) {
+    console.log("AuthService constructor called");
   }
 
   registerUser(user) {
@@ -272,8 +272,8 @@ console.log("AuthService constructor called");
 
   isUserCategoryTrial() {
     console.log("checking user category");
-    console.log(localStorage.getItem('UserCategory'));
-    if (localStorage.getItem('UserCategory') == "TRIAL") {
+    console.log(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')));
+    if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
       return true;
 
     } else {
@@ -283,7 +283,7 @@ console.log("AuthService constructor called");
 
 
   isUserCategoryFull() {
-    if (localStorage.getItem('UserCategory') == "FULL") {
+    if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "FULL") {
       return true;
 
     } else {
@@ -293,7 +293,7 @@ console.log("AuthService constructor called");
 
 
   isUserCategoryNonRenew() {
-    if (localStorage.getItem('UserCategory') == "NONRENEW") {
+    if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW") {
       return true;
 
     } else {
@@ -371,8 +371,8 @@ console.log("AuthService constructor called");
   }
 
   logout() {
-     this.authToken = null;
-     this.user = null;
+    this.authToken = null;
+    this.user = null;
     localStorage.clear();
   }
 }

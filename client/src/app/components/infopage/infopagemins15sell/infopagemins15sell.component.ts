@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { InfopageService } from '../../../services/infopage.service';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-infopagemins15sell',
@@ -20,7 +20,7 @@ exchange:any;
 
 
 
-  constructor(public infopageService: InfopageService, public router: Router) { }
+  constructor(public infopageService: InfopageService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
@@ -32,7 +32,7 @@ exchange:any;
 
     
 
-    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 

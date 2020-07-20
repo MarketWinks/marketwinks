@@ -3,6 +3,7 @@ import { ValidateService } from '../../services/validate.service'
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
   constructor(private validateService: ValidateService,
     //private flashMessage:FlashMessagesService,
     public authService: AuthService,
-    private router: Router) { }
+    private router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
   }

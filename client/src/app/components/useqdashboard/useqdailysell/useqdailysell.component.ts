@@ -3,7 +3,7 @@ import { UseqDailysellService } from '../../../services/useqdailysell.service';
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqdailysell',
@@ -16,8 +16,8 @@ export class UseqDailysellComponent implements OnInit {
   dailysellDetails;
   dailysellDetailsUnique;
   dailysellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public dailysellService: UseqDailysellService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public dailysellService: UseqDailysellService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

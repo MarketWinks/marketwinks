@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqdashboard',
@@ -12,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class UseqDashboardComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
     if(!localStorage.getItem('id_token')){

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
 
 import { environment } from 'src/environments/environment';
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqhourlybuy',
@@ -24,8 +25,8 @@ export class UseqHourlybuyComponent implements OnInit {
   hourlybuyDetailsTransit_length;
   hourlybuyDetailsUniqueComparitor: any;
 
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public hourlybuyService: UseqHourlybuyService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public hourlybuyService: UseqHourlybuyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

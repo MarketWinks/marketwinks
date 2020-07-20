@@ -4,7 +4,7 @@ import { UseqWeeklybuyService } from '../../../services/useqweeklybuy.service';
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqweeklybuy',
@@ -17,7 +17,7 @@ export class UseqWeeklybuyComponent implements OnInit {
   weeklybuyDetails;
   weeklybuyDetailsUnique;
   weeklybuyDetails_length;
-  constructor(public weeklybuyService: UseqWeeklybuyService, public router: Router) { }
+  constructor(public weeklybuyService: UseqWeeklybuyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
 import { environment } from 'src/environments/environment';
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-useqmins30buy',
@@ -23,8 +24,8 @@ export class UseqMins30buyComponent implements OnInit {
   mins30buyDetailsTransit_length;
   mins30buyDetailsUniqueComparitor: any;
 
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public mins30buyService: UseqMins30buyService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public mins30buyService: UseqMins30buyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

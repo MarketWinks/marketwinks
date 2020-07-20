@@ -4,6 +4,7 @@ import { ValidateService } from '../../services/validate.service'
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-add-product',
@@ -20,7 +21,7 @@ export class AddProductComponent implements OnInit {
 
   constructor(private validateService: ValidateService, private flashMessage: FlashMessagesService,
     public authService: AuthService,
-    private router: Router) { }
+    private router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
   }

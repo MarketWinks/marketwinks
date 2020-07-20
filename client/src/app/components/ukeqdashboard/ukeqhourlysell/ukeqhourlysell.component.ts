@@ -3,7 +3,7 @@ import { UkeqHourlysellService } from '../../../services/ukeqhourlysell.service'
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-ukeqhourlysell',
@@ -16,8 +16,8 @@ export class UkeqHourlysellComponent implements OnInit {
   hourlysellDetails;
   hourlysellDetailsUnique;
   hourlysellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public hourlysellService: UkeqHourlysellService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public hourlysellService: UkeqHourlysellService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
@@ -42,7 +42,7 @@ export class UkeqHourlysellComponent implements OnInit {
     //  ),
 
     
-    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
@@ -118,7 +118,7 @@ export class UkeqHourlysellComponent implements OnInit {
       this.hourlysellDetails_length=this.hourlysellDetailsUnique.length;
       this.hourlysellDetails = this.hourlysellDetailsUnique;
 
-      if(localStorage.getItem('UserCategory') == "TRIAL"){
+      if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL"){
         this.hourlysellDetails = this.hourlysellDetails.slice(0,3);
 
       }

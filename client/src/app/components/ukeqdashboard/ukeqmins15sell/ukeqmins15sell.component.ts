@@ -4,7 +4,7 @@ import { UkeqMins15sellService } from '../../../services/ukeqmins15sell.service'
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
   selector: 'app-ukeqmins15sell',
@@ -17,8 +17,8 @@ export class UkeqMins15sellComponent implements OnInit {
   mins15sellDetails;
   mins15sellDetailsUnique;
   mins15sellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public mins15sellService: UkeqMins15sellService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public mins15sellService: UkeqMins15sellService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
@@ -41,7 +41,7 @@ export class UkeqMins15sellComponent implements OnInit {
     //  ),
 
     
-    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
@@ -119,7 +119,7 @@ export class UkeqMins15sellComponent implements OnInit {
       console.log(this.mins15sellDetails);
 
       
-      if(localStorage.getItem('UserCategory') == "TRIAL"){
+      if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL"){
         this.mins15sellDetails = this.mins15sellDetails.slice(0,3);
 
       }

@@ -3,6 +3,7 @@ import { UseqHourlysellService } from '../../../services/useqhourlysell.service'
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 
 @Component({
@@ -16,8 +17,8 @@ export class UseqHourlysellComponent implements OnInit {
   hourlysellDetails;
   hourlysellDetailsUnique;
   hourlysellDetails_length;
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public hourlysellService: UseqHourlysellService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public hourlysellService: UseqHourlysellService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 

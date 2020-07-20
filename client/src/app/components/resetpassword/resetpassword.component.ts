@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ValidateService } from '../../services/validate.service'
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 import { NgForm } from '@angular/forms';
 
@@ -24,7 +25,7 @@ export class ResetpasswordComponent implements OnInit {
 
   constructor(private validateService: ValidateService,
     public authService: AuthService,
-    private router: Router) { }
+    private router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
   }

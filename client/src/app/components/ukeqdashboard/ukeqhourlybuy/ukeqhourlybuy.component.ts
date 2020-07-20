@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
 
 import { environment } from 'src/environments/environment';
-
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 @Component({
   selector: 'app-ukeqhourlybuy',
   templateUrl: './ukeqhourlybuy.component.html',
@@ -24,8 +24,8 @@ export class UkeqHourlybuyComponent implements OnInit {
   hourlybuyDetailsTransit_length;
   hourlybuyDetailsUniqueComparitor: any;
 
-  //constructor(public userService: UserService, public router: Router) { }
-  constructor(public hourlybuyService: UkeqHourlybuyService, public router: Router) { }
+  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  constructor(public hourlybuyService: UkeqHourlybuyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
@@ -49,7 +49,7 @@ export class UkeqHourlybuyComponent implements OnInit {
     //  ),
 
     
-    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
       this.router.navigate(['/cart']);
       return;
 
@@ -167,7 +167,7 @@ export class UkeqHourlybuyComponent implements OnInit {
         this.hourlybuyDetailsUniqueforTransitWork = this.hourlybuyDetailsUnique;
 
 
-        if(localStorage.getItem('UserCategory') == "TRIAL"){
+        if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL"){
           this.hourlybuyDetails = this.hourlybuyDetails.slice(0,3);
   
         }

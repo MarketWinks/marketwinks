@@ -46,12 +46,12 @@ export class LoginComponent implements OnInit {
     // console.log("Hey het heu");
     // console.log(this.checkuseremail.toString());
 
+//reference
+    // var encrypted = this.EncrDecr.set('123456$#@$^@1ERF', this.model.email);
+    // var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
 
-    var encrypted = this.EncrDecr.set('123456$#@$^@1ERF', this.model.email);
-    var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
-
-    console.log('Encrypted :' + encrypted);
-    console.log('Decrypted :' + decrypted);
+    // console.log('Encrypted :' + encrypted);
+    // console.log('Decrypted :' + decrypted);
 
 
 
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
 
         this.authService.getProfile(user.email).subscribe(profiledata => {
 
-          localStorage.setItem('UserCategory', profiledata.usercategory);
+          localStorage.setItem('_q1_', this.EncrDecr.set('123456$#@$^@1ERF', profiledata.usercategory));
 
 
 
