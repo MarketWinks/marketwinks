@@ -1,6 +1,6 @@
 {
-  "name": "broadwise",
-  "version": "0.0.0",
+  "name": "marketwinks",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.0",
+    "@types/crypto-js": "^3.1.47",
     "@types/node": "~8.9.4",
     "angular2-flash-message": "^1.0.2",
     "angular2-flash-messages": "^2.0.5",
@@ -32,6 +33,7 @@
     "bootstrap": "^4.0.0",
     "chart.js": "^2.7.1",
     "core-js": "^2.5.4",
+    "crypto-js": "^4.0.0",
     "ng-circle-progress": "^1.5.1",
     "ng2-order-pipe": "^0.1.5",
     "ng2-toastr": "^4.1.2",
@@ -67,6 +69,8 @@
     "tslint": "~5.9.1",
     "typescript": "~3.1.1",
     "chart.js": "^2.7.1",
-    "karma-remap-istanbul": "^0.6.0"
+    "karma-remap-istanbul": "^0.6.0",
+    "@types/crypto-js": "^3.1.47",
+    "crypto-js": "^4.0.0"
   }
 }

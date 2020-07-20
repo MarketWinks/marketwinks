@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { UserdetailsService } from 'src/app/services/userdetails.service';
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
+
+
 
 @Component({
   selector: 'app-login',
@@ -9,7 +13,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authSerivce: AuthService, private router: Router) { }
+
+  constructor(public authService: AuthService, private router: Router,
+    private userdetailsService: UserdetailsService,
+    private EncrDecr: EncrDecrService) { }
 
 
   model = {
@@ -18,7 +25,7 @@ export class LoginComponent implements OnInit {
   };
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   serverErrorMessages: string;
-
+  checkuseremail: any;
 
   ngOnInit() {
   }
@@ -33,16 +40,33 @@ export class LoginComponent implements OnInit {
       password: this.model.password
     }
 
-    localStorage.setItem('LoggedInUserEmail', this.model.email.toString());
-    this.authSerivce.authenticateUser(user).subscribe(data => {
+
+    //    this.userdetailsService.storeUseremail(this.model.email);
+    // this.checkuseremail = this.userdetailsService.getUseremail();
+    // console.log("Hey het heu");
+    // console.log(this.checkuseremail.toString());
+
+
+    var encrypted = this.EncrDecr.set('123456$#@$^@1ERF', this.model.email);
+    var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
+
+    console.log('Encrypted :' + encrypted);
+    console.log('Decrypted :' + decrypted);
+
+
+
+    localStorage.setItem('_p0_', this.EncrDecr.set('123456$#@$^@1ERF', this.model.email));
+
+    this.authService.authenticateUser(user).subscribe(data => {
 
 
       if (data.token) {
-        this.authSerivce.storeUserData(data.token);
-        localStorage.setItem('user', user.email);
-        localStorage.setItem('LoggedInUserEmail', user.email);
+        this.authService.storeUserData(data.token);
 
-        this.authSerivce.getProfile(user.email).subscribe(profiledata => {
+        //this.authService.storeUseremail(user.email);
+
+
+        this.authService.getProfile(user.email).subscribe(profiledata => {
 
           localStorage.setItem('UserCategory', profiledata.usercategory);
 
@@ -50,10 +74,10 @@ export class LoginComponent implements OnInit {
 
         });
         this.router.navigate(['']);
-      } else if (data == "Please verify the email account"){
+      } else if (data == "Please verify the email account") {
         this.serverErrorMessages = 'Please verify the email account';
         this.router.navigate(['login']);
-      }else {
+      } else {
         this.serverErrorMessages = 'Something went wrong.';
         this.router.navigate(['login']);
       }

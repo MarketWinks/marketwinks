@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { WatchlistService } from '../../../services/watchlist.service';
+import { AuthService } from "../../../services/auth.service";
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 
 @Component({
@@ -25,7 +27,10 @@ export class Watchlist30MinsbuyComponent implements OnInit {
 
 
 
-  constructor(public watchlistService: WatchlistService, public router: Router) { }
+  constructor(public watchlistService: WatchlistService, 
+    public authSerivce:AuthService,
+    public router: Router,
+    private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
@@ -43,9 +48,9 @@ export class Watchlist30MinsbuyComponent implements OnInit {
 
     }
 
-
-    this.user = localStorage.getItem('user');
-
+    this.user = this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_p0_'));
+    
+    
     const input = {
       user: this.user,
       table: "uk_lse_30minbuys",

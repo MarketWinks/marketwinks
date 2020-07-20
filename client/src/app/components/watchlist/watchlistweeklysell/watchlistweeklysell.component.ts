@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { WatchlistService } from '../../../services/watchlist.service';
+import { AuthService } from "../../../services/auth.service";
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
+
 
 
 @Component({
@@ -10,37 +13,39 @@ import { WatchlistService } from '../../../services/watchlist.service';
 })
 
 export class WatchlistWeeklysellComponent implements OnInit {
-  
-symbolDetails: any;
 
-allsignalsforweeklysell: any;
+  symbolDetails: any;
 
-exchange:any;
-outputdata:any;
-outputextract:any;
-user: string;
+  allsignalsforweeklysell: any;
+
+  exchange: any;
+  outputdata: any;
+  outputextract: any;
+  user: string;
 
 
-  constructor(public watchlistService: WatchlistService, public router: Router) { }
+  constructor(public watchlistService: WatchlistService, public authSerivce: AuthService,
+    public router: Router,
+    private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
-    if(!localStorage.getItem('id_token')){
+    if (!localStorage.getItem('id_token')) {
       this.router.navigate(['/login']);
       return;
 
     }
 
-    
 
-    if(localStorage.getItem('UserCategory') == "NONRENEW"){
+
+    if (localStorage.getItem('UserCategory') == "NONRENEW") {
       this.router.navigate(['/cart']);
       return;
 
     }
 
-    
-    this.user = localStorage.getItem('user');
+    this.user = this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_p0_'));
+
 
     const input = {
       user: this.user,
@@ -54,39 +59,39 @@ user: string;
 
       let jsonArrayObject = [];
 
-      for(var i=0;i<this.outputdata.length;i++){
-      
+      for (var i = 0; i < this.outputdata.length; i++) {
+
         this.outputextract = Array.from(new Set(this.outputdata.map(a => a.id)))
-      .map(id => {
-        return this.outputdata.find(a => a.id === id)
-      });
+          .map(id => {
+            return this.outputdata.find(a => a.id === id)
+          });
 
 
         jsonArrayObject.push(this.outputextract[i].id);
       }
 
       console.log(jsonArrayObject);
-        
-    const inputforallsignalsalltimes = {
-      table: "uk_lse_weeklysells",
-      _id: jsonArrayObject
-    }
 
-console.log(inputforallsignalsalltimes);
+      const inputforallsignalsalltimes = {
+        table: "uk_lse_weeklysells",
+        _id: jsonArrayObject
+      }
+
+      console.log(inputforallsignalsalltimes);
 
       this.watchlistService.getallsignalsforweeklysell(inputforallsignalsalltimes).subscribe(data => {
-    
+
         this.allsignalsforweeklysell = data;
-    
+
         console.log("result");
         console.log(this.allsignalsforweeklysell);
-            
-        
-          });
 
-        });      
 
-      
+      });
+
+    });
+
+
 
 
   }

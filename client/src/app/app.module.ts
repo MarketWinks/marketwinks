@@ -2,11 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {NgCircleProgressModule} from 'ng-circle-progress';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { Injector } from '@angular/core';
+import {EncrDecrService} from './services/encrdecr.service';
 
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -26,10 +29,10 @@ import { NotificationComponent } from './components/notification/notification.co
 import { CourseComponent } from './components/course/course.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr'; 
-import {ValidateService} from './services/validate.service';
-import {AuthService } from "./services/auth.service";
-import {FlashMessagesModule} from 'angular2-flash-messages';
+import { ToastrModule } from 'ngx-toastr';
+import { ValidateService } from './services/validate.service';
+import { AuthService } from "./services/auth.service";
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from "./guards/auth.guard";
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
@@ -118,6 +121,8 @@ import { Watchlist5MinssellComponent } from './components/watchlist/watchlistmin
 
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 
+import { UserdetailsService } from './services/userdetails.service';
+
 //safe piping for videos to dynamically load in iframe
 import { SafePipe } from './components/course/safe.pipe';
 import { ContactusComponent } from './components/contactus/contactus.component';
@@ -126,345 +131,344 @@ import { InlineEditComponent } from './components/inline-edit/inline-edit.compon
 
 import { TermsandconditionsComponent } from './components/termsandconditions/termsandconditions.component';
 
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'resetpassword', component: ResetpasswordComponent },
 
-const appRoutes: Routes =  [
-  {path:'', component: HomeComponent},
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
-  {path:'resetpassword', component: ResetpasswordComponent},
-  
-  {path:'aboutus', component: AboutusComponent},
-  {path:'contactus', component: ContactusComponent},
-  {path:'support', component: SupportComponent},
-  {path:'termsandconditions', component: TermsandconditionsComponent},
-  {path:'ourframework', component: OurframeworkComponent},
-  { path: 'course', component: CourseComponent, canActivate: [AuthGuard]},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard]},
+  { path: 'aboutus', component: AboutusComponent },
+  { path: 'contactus', component: ContactusComponent },
+  { path: 'support', component: SupportComponent },
+  { path: 'termsandconditions', component: TermsandconditionsComponent },
+  { path: 'ourframework', component: OurframeworkComponent },
+  { path: 'course', component: CourseComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
   { path: 'addproduct', component: AddProductComponent, canActivate: [AuthGuard] },
-  { path: 'editproduct', component: EditProductComponent, canActivate: [AuthGuard]},
+  { path: 'editproduct', component: EditProductComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'paymentreceipt', component: PaymentreceiptComponent, canActivate: [AuthGuard] },
   { path: 'infopage', component: InfopageComponent, canActivate: [AuthGuard] },
   { path: 'watchlist', component: WatchlistComponent, canActivate: [AuthGuard] },
   { path: 'signalinfopage', component: SignalinfopageComponent, canActivate: [AuthGuard] },
-  
+
   {
     path: 'ukeqdailysell', component: UkeqDashboardComponent,
     children: [{ path: '', component: UkeqDailysellComponent }]
-},
-{
-  path: 'ukeqdailybuy', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqDailybuyComponent }]
-},
-
-{
-  path: 'ukeqmonthlysell', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMonthlysellComponent }]
-},
-{
-  path: 'ukeqmonthlybuy', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMonthlybuyComponent }]
-},
-
-
-{
-  path: 'ukeqweeklysell', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqWeeklysellComponent }]
-},
-{
-  path: 'ukeqweeklybuy', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqWeeklybuyComponent }]
-},
-
-
-{
-  path: 'ukeqhourlysell', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqHourlysellComponent }]
-},
-{
-  path: 'ukeqhourlybuy', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqHourlybuyComponent }]
-},
-
-
-
-
-{
-  path: 'ukeqmins30sell', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMins30sellComponent }]
-},
-{
-  path: 'ukeqmins30buy', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMins30buyComponent }]
-},
-
-
-
-{
-  path: 'ukeqmins15sell', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMins15sellComponent }]
-},
-{
-  path: 'ukeqmins15buy', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMins15buyComponent }]
-},
-
-
-{
-  path: 'ukeqmins5sell', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMins5sellComponent }]
-},
-{
-  path: 'ukeqmins5buy', component: UkeqDashboardComponent,
-  children: [{ path: '', component: UkeqMins5buyComponent }]
-},
-
-
-{
-  path: 'useqdailysell', component: UseqDashboardComponent,
-  children: [{ path: '', component: UseqDailysellComponent }]
-},
-{
-path: 'useqdailybuy', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqDailybuyComponent }]
-},
-
-{
-path: 'useqmonthlysell', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMonthlysellComponent }]
-},
-{
-path: 'useqmonthlybuy', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMonthlybuyComponent }]
-},
+  },
+  {
+    path: 'ukeqdailybuy', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqDailybuyComponent }]
+  },
+
+  {
+    path: 'ukeqmonthlysell', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMonthlysellComponent }]
+  },
+  {
+    path: 'ukeqmonthlybuy', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMonthlybuyComponent }]
+  },
+
+
+  {
+    path: 'ukeqweeklysell', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqWeeklysellComponent }]
+  },
+  {
+    path: 'ukeqweeklybuy', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqWeeklybuyComponent }]
+  },
+
+
+  {
+    path: 'ukeqhourlysell', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqHourlysellComponent }]
+  },
+  {
+    path: 'ukeqhourlybuy', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqHourlybuyComponent }]
+  },
+
+
+
+
+  {
+    path: 'ukeqmins30sell', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMins30sellComponent }]
+  },
+  {
+    path: 'ukeqmins30buy', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMins30buyComponent }]
+  },
+
+
+
+  {
+    path: 'ukeqmins15sell', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMins15sellComponent }]
+  },
+  {
+    path: 'ukeqmins15buy', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMins15buyComponent }]
+  },
+
+
+  {
+    path: 'ukeqmins5sell', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMins5sellComponent }]
+  },
+  {
+    path: 'ukeqmins5buy', component: UkeqDashboardComponent,
+    children: [{ path: '', component: UkeqMins5buyComponent }]
+  },
+
+
+  {
+    path: 'useqdailysell', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqDailysellComponent }]
+  },
+  {
+    path: 'useqdailybuy', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqDailybuyComponent }]
+  },
+
+  {
+    path: 'useqmonthlysell', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMonthlysellComponent }]
+  },
+  {
+    path: 'useqmonthlybuy', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMonthlybuyComponent }]
+  },
 
 
-{
-path: 'useqweeklysell', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqWeeklysellComponent }]
-},
-{
-path: 'useqweeklybuy', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqWeeklybuyComponent }]
-},
+  {
+    path: 'useqweeklysell', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqWeeklysellComponent }]
+  },
+  {
+    path: 'useqweeklybuy', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqWeeklybuyComponent }]
+  },
 
 
-{
-path: 'useqhourlysell', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqHourlysellComponent }]
-},
-{
-path: 'useqhourlybuy', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqHourlybuyComponent }]
-},
+  {
+    path: 'useqhourlysell', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqHourlysellComponent }]
+  },
+  {
+    path: 'useqhourlybuy', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqHourlybuyComponent }]
+  },
 
 
 
 
-{
-path: 'useqmins30sell', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMins30sellComponent }]
-},
-{
-path: 'useqmins30buy', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMins30buyComponent }]
-},
+  {
+    path: 'useqmins30sell', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMins30sellComponent }]
+  },
+  {
+    path: 'useqmins30buy', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMins30buyComponent }]
+  },
 
 
 
-{
-path: 'useqmins15sell', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMins15sellComponent }]
-},
-{
-path: 'useqmins15buy', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMins15buyComponent }]
-},
+  {
+    path: 'useqmins15sell', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMins15sellComponent }]
+  },
+  {
+    path: 'useqmins15buy', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMins15buyComponent }]
+  },
 
 
-{
-path: 'useqmins5sell', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMins5sellComponent }]
-},
-{
-path: 'useqmins5buy', component: UseqDashboardComponent,
-children: [{ path: '', component: UseqMins5buyComponent }]
-},
+  {
+    path: 'useqmins5sell', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMins5sellComponent }]
+  },
+  {
+    path: 'useqmins5buy', component: UseqDashboardComponent,
+    children: [{ path: '', component: UseqMins5buyComponent }]
+  },
 
-{
-  path: 'infopagedailybuy', component: InfopageComponent,
-  children: [{ path: '', component: InfopageDailybuyComponent }]
-},
+  {
+    path: 'infopagedailybuy', component: InfopageComponent,
+    children: [{ path: '', component: InfopageDailybuyComponent }]
+  },
 
 
-{
-  path: 'infopagedailysell', component: InfopageComponent,
-  children: [{ path: '', component: InfopageDailysellComponent }]
-},
+  {
+    path: 'infopagedailysell', component: InfopageComponent,
+    children: [{ path: '', component: InfopageDailysellComponent }]
+  },
 
 
 
-{
-  path: 'infopageweeklybuy', component: InfopageComponent,
-  children: [{ path: '', component: InfopageWeeklybuyComponent }]
-},
+  {
+    path: 'infopageweeklybuy', component: InfopageComponent,
+    children: [{ path: '', component: InfopageWeeklybuyComponent }]
+  },
 
 
-{
-  path: 'infopageweeklysell', component: InfopageComponent,
-  children: [{ path: '', component: InfopageWeeklysellComponent }]
-},
+  {
+    path: 'infopageweeklysell', component: InfopageComponent,
+    children: [{ path: '', component: InfopageWeeklysellComponent }]
+  },
 
 
 
-{
-  path: 'infopagemonthlybuy', component: InfopageComponent,
-  children: [{ path: '', component: InfopageMonthlybuyComponent }]
-},
+  {
+    path: 'infopagemonthlybuy', component: InfopageComponent,
+    children: [{ path: '', component: InfopageMonthlybuyComponent }]
+  },
 
 
-{
-  path: 'infopagemonthlysell', component: InfopageComponent,
-  children: [{ path: '', component: InfopageMonthlysellComponent }]
-},
+  {
+    path: 'infopagemonthlysell', component: InfopageComponent,
+    children: [{ path: '', component: InfopageMonthlysellComponent }]
+  },
 
 
 
-{
-  path: 'infopagehourlybuy', component: InfopageComponent,
-  children: [{ path: '', component: InfopageHourlybuyComponent }]
-},
+  {
+    path: 'infopagehourlybuy', component: InfopageComponent,
+    children: [{ path: '', component: InfopageHourlybuyComponent }]
+  },
 
 
-{
-  path: 'infopagehourlysell', component: InfopageComponent,
-  children: [{ path: '', component: InfopageHourlysellComponent }]
-},
+  {
+    path: 'infopagehourlysell', component: InfopageComponent,
+    children: [{ path: '', component: InfopageHourlysellComponent }]
+  },
 
 
 
-{
-  path: 'infopage30minsbuy', component: InfopageComponent,
-  children: [{ path: '', component: Infopage30MinsbuyComponent }]
-},
+  {
+    path: 'infopage30minsbuy', component: InfopageComponent,
+    children: [{ path: '', component: Infopage30MinsbuyComponent }]
+  },
 
 
-{
-  path: 'infopage30minssell', component: InfopageComponent,
-  children: [{ path: '', component: Infopage30MinssellComponent }]
-},
+  {
+    path: 'infopage30minssell', component: InfopageComponent,
+    children: [{ path: '', component: Infopage30MinssellComponent }]
+  },
 
 
 
-{
-  path: 'infopage15minsbuy', component: InfopageComponent,
-  children: [{ path: '', component: Infopage15MinsbuyComponent }]
-},
+  {
+    path: 'infopage15minsbuy', component: InfopageComponent,
+    children: [{ path: '', component: Infopage15MinsbuyComponent }]
+  },
 
 
-{
-  path: 'infopage15minssell', component: InfopageComponent,
-  children: [{ path: '', component: Infopage15MinssellComponent }]
-},
+  {
+    path: 'infopage15minssell', component: InfopageComponent,
+    children: [{ path: '', component: Infopage15MinssellComponent }]
+  },
 
-{
-  path: 'infopage5minsbuy', component: InfopageComponent,
-  children: [{ path: '', component: Infopage5MinsbuyComponent }]
-},
+  {
+    path: 'infopage5minsbuy', component: InfopageComponent,
+    children: [{ path: '', component: Infopage5MinsbuyComponent }]
+  },
 
 
-{
-  path: 'infopage5minssell', component: InfopageComponent,
-  children: [{ path: '', component: Infopage5MinssellComponent }]
-},
-{
-  path: 'watchlistdailybuy', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistDailybuyComponent }]
-},
+  {
+    path: 'infopage5minssell', component: InfopageComponent,
+    children: [{ path: '', component: Infopage5MinssellComponent }]
+  },
+  {
+    path: 'watchlistdailybuy', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistDailybuyComponent }]
+  },
 
 
-{
-  path: 'watchlistdailysell', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistDailysellComponent }]
-},
+  {
+    path: 'watchlistdailysell', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistDailysellComponent }]
+  },
 
 
 
-{
-  path: 'watchlistweeklybuy', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistWeeklybuyComponent }]
-},
+  {
+    path: 'watchlistweeklybuy', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistWeeklybuyComponent }]
+  },
 
 
-{
-  path: 'watchlistweeklysell', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistWeeklysellComponent }]
-},
+  {
+    path: 'watchlistweeklysell', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistWeeklysellComponent }]
+  },
 
 
 
-{
-  path: 'watchlistmonthlybuy', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistMonthlybuyComponent }]
-},
+  {
+    path: 'watchlistmonthlybuy', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistMonthlybuyComponent }]
+  },
 
 
-{
-  path: 'watchlistmonthlysell', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistMonthlysellComponent }]
-},
+  {
+    path: 'watchlistmonthlysell', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistMonthlysellComponent }]
+  },
 
 
 
-{
-  path: 'watchlisthourlybuy', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistHourlybuyComponent }]
-},
+  {
+    path: 'watchlisthourlybuy', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistHourlybuyComponent }]
+  },
 
 
-{
-  path: 'watchlisthourlysell', component: WatchlistComponent,
-  children: [{ path: '', component: WatchlistHourlysellComponent }]
-},
+  {
+    path: 'watchlisthourlysell', component: WatchlistComponent,
+    children: [{ path: '', component: WatchlistHourlysellComponent }]
+  },
 
 
 
-{
-  path: 'watchlist30minsbuy', component: WatchlistComponent,
-  children: [{ path: '', component: Watchlist30MinsbuyComponent }]
-},
+  {
+    path: 'watchlist30minsbuy', component: WatchlistComponent,
+    children: [{ path: '', component: Watchlist30MinsbuyComponent }]
+  },
 
 
-{
-  path: 'watchlist30minssell', component: WatchlistComponent,
-  children: [{ path: '', component: Watchlist30MinssellComponent }]
-},
+  {
+    path: 'watchlist30minssell', component: WatchlistComponent,
+    children: [{ path: '', component: Watchlist30MinssellComponent }]
+  },
 
 
 
-{
-  path: 'watchlist15minsbuy', component: WatchlistComponent,
-  children: [{ path: '', component: Watchlist15MinsbuyComponent }]
-},
+  {
+    path: 'watchlist15minsbuy', component: WatchlistComponent,
+    children: [{ path: '', component: Watchlist15MinsbuyComponent }]
+  },
 
 
-{
-  path: 'watchlist15minssell', component: WatchlistComponent,
-  children: [{ path: '', component: Watchlist15MinssellComponent }]
-},
+  {
+    path: 'watchlist15minssell', component: WatchlistComponent,
+    children: [{ path: '', component: Watchlist15MinssellComponent }]
+  },
 
-{
-  path: 'watchlist5minsbuy', component: WatchlistComponent,
-  children: [{ path: '', component: Watchlist5MinsbuyComponent }]
-},
+  {
+    path: 'watchlist5minsbuy', component: WatchlistComponent,
+    children: [{ path: '', component: Watchlist5MinsbuyComponent }]
+  },
 
 
-{
-  path: 'watchlist5minssell', component: WatchlistComponent,
-  children: [{ path: '', component: Watchlist5MinssellComponent }]
-}
+  {
+    path: 'watchlist5minssell', component: WatchlistComponent,
+    children: [{ path: '', component: Watchlist5MinssellComponent }]
+  }
 
 ]
 
@@ -477,7 +481,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     HomeComponent,
     UkeqDashboardComponent,
     UseqDashboardComponent,
-    
+
     ProfileComponent,
     AddProductComponent,
     EditProductComponent,
@@ -504,7 +508,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     UkeqMins15buyComponent,
     UkeqMins5sellComponent,
     UkeqMins5buyComponent,
- 
+
     UseqDailysellComponent,
     UseqDailybuyComponent,
     UseqMonthlysellComponent,
@@ -523,7 +527,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     ResetpasswordComponent,
     FooterComponent,
     InfopageComponent,
-    
+
     InfopageDailybuyComponent,
     InfopageDailysellComponent,
     InfopageWeeklybuyComponent,
@@ -540,7 +544,7 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     Infopage5MinssellComponent,
 
     WatchlistComponent,
-    
+
     WatchlistDailybuyComponent,
     WatchlistDailysellComponent,
     WatchlistWeeklybuyComponent,
@@ -557,18 +561,21 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     Watchlist5MinssellComponent,
     NotificationComponent,
     TermsandconditionsComponent,
-   
+
+
     SafePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    
+
+
+
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot(),
-    NgbModule.forRoot(),
-    //NgbModule,
+    //NgbModule.forRoot(),
+    NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     CollapseModule,
@@ -580,8 +587,11 @@ children: [{ path: '', component: UseqMins5buyComponent }]
     }),
     RouterModule.forChild(appRoutes)
   ],
-  providers: [ValidateService,AuthService,AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, UserdetailsService, EncrDecrService],
+  //providers: [ValidateService, AuthService, AuthGuard],
 
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}

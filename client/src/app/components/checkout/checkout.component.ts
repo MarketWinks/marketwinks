@@ -4,6 +4,9 @@ import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { ValidateService } from "../../services/validate.service";
 
+import { EncrDecrService } from 'src/app/services/encrdecr.service';
+
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -29,18 +32,22 @@ export class CheckoutComponent implements OnInit {
   currentselection: String;
   price: number;
   phone: String;
+  beneficiaryemail: String;
 
   constructor(private flashMessage: FlashMessagesService, public authService: AuthService,
-    private router: Router, private validateService: ValidateService) { }
+    private router: Router,
+    public authSerivce: AuthService,
+    private validateService: ValidateService,
+    private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
-    if(!localStorage.getItem('id_token')){
+    if (!localStorage.getItem('id_token')) {
       this.router.navigate(['/login']);
       return;
     }
-    
-    if(!this.authService.checkTotalNotZero()){
-this.router.navigate(['/cart']);
+
+    if (!this.authService.checkTotalNotZero()) {
+      this.router.navigate(['/cart']);
     }
   }
 
@@ -94,10 +101,10 @@ this.router.navigate(['/cart']);
 
       currentselection: this.authService.getCurrentselection(),
       price: this.authService.getTotal(),
-      beneficiaryemail: localStorage.getItem("LoggedInUserEmail"),
-      
+      beneficiaryemail: this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_p0_')),
+
       renewintent: localStorage.getItem("renewintent")
-   
+
 
 
     }
@@ -112,28 +119,28 @@ this.router.navigate(['/cart']);
       return false;
     }
 
-//call the server side api and make a stripe payment
+    //call the server side api and make a stripe payment
 
-console.log("pay details sending");
-console.log(paymentDetails);
-this.authService.makePayment(paymentDetails).subscribe(data=>{
-  console.log(data);
-  if(data.success){
-    this.authService.storePaymentReferenceId(data.paymentReferenceId);
+    console.log("pay details sending");
+    console.log(paymentDetails);
+    this.authService.makePayment(paymentDetails).subscribe(data => {
+      console.log(data);
+      if (data.success) {
+        this.authService.storePaymentReferenceId(data.paymentReferenceId);
 
-    localStorage.setItem("receiptURL", data.receiptURL);
-    console.log("reached the main step");
-   // this.flashMessage.show('Your order is Placed and Successfully Paid', { cssClass: 'alert-success', timeout: 3000 });
-   // this.authService.orderClear();
-    this.router.navigate(['/paymentreceipt']);
-    //navigate to a new page called payment receipt page and show transaction references etc
-  }else{
-    this.router.navigate(['/paymentreceipt']);
-    //this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
-    //this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
-   //navigate to a failure page, not payment recepit
-  }
-});
+        localStorage.setItem("receiptURL", data.receiptURL);
+        console.log("reached the main step");
+        // this.flashMessage.show('Your order is Placed and Successfully Paid', { cssClass: 'alert-success', timeout: 3000 });
+        // this.authService.orderClear();
+        this.router.navigate(['/paymentreceipt']);
+        //navigate to a new page called payment receipt page and show transaction references etc
+      } else {
+        this.router.navigate(['/paymentreceipt']);
+        //this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
+        //this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+        //navigate to a failure page, not payment recepit
+      }
+    });
 
 
 

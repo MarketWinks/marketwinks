@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 import { Http, Headers } from "@angular/http";
 // import "rxjs/add/operator/map";
 // import "rxjs/Rx";
@@ -9,36 +10,47 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { environment } from '../../environments/environment';
 //import { truncate } from 'fs';
 
+
+// @Injectable({
+//   providedIn: 'root',
+// })
+
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
-  product: any;
-  oldproduct: any;
-  role: any;
-  iteml: any;
   totall: any;
   courseName: any;
   currentselection: any;
   paymentReferenceId: any;
   profileWithUpdates: any;
+  useremail: any;
+  product: any;
+  oldproduct: any;
+  role: any;
+  iteml: any;
 
-  constructor(private http: Http) { }
+  //  constructor(private http: Http) { }
+
+  constructor(public http: Http) {
+console.log("AuthService constructor called");
+  }
+
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-console.log(user);
-    return this.http.post(environment.apiBaseUrl+'/register',user, { headers: headers })
-    .pipe(map(res => res.json()));
+    console.log(user);
+    return this.http.post(environment.apiBaseUrl + '/register', user, { headers: headers })
+      .pipe(map(res => res.json()));
   };
 
 
   resetPassword(input) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-console.log(input);
-    return this.http.post(environment.apiBaseUrl+'/changePassword',input, { headers: headers })
-    .pipe(map(res => res.json()));
+    console.log(input);
+    return this.http.post(environment.apiBaseUrl + '/changePassword', input, { headers: headers })
+      .pipe(map(res => res.json()));
   };
 
 
@@ -65,7 +77,7 @@ console.log(input);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(environment.apiBaseUrl + '/authenticate', user, { headers: headers })
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
 
@@ -81,14 +93,14 @@ console.log(input);
     let headers = new Headers();
 
     // console.log(courseName);
-    
+
     // this.loadToken();
 
     // headers.append('Authorization', this.authToken);
-    
+
     headers.append('Content-Type', 'application/json');
     return this.http.get(environment.apiBaseUrl + '/users/course/' + courseName, courseName)
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
   getCmodulesByCourseName(courseName) {
@@ -99,29 +111,29 @@ console.log(input);
     let headers = new Headers();
 
     // console.log(courseName);
-    
+
     // this.loadToken();
 
     // headers.append('Authorization', this.authToken);
-    
+
     headers.append('Content-Type', 'application/json');
     return this.http.get(environment.apiBaseUrl + '/users/cmodulesByCourseName/' + courseName, courseName)
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
-  
+
   getCoursesByCourseCategory(courseCategory) {
     let headers = new Headers();
 
     // console.log(courseName);
-    
+
     // this.loadToken();
 
     // headers.append('Authorization', this.authToken);
-    
+
     headers.append('Content-Type', 'application/json');
     return this.http.get(environment.apiBaseUrl + '/users/coursesByCourseCategory/' + courseCategory, courseCategory)
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
   getProfile(email) {
@@ -130,33 +142,37 @@ console.log(input);
     console.log("checking for..");
     console.log(email);
 
-    
+
     headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.apiBaseUrl + '/profile/profile/'+email, email)
-    .pipe(map(res => res.json()));
+    return this.http.get(environment.apiBaseUrl + '/profile/profile/' + email, email)
+      .pipe(map(res => res.json()));
 
   }
 
-  
+
   getNotification(email) {
     let headers = new Headers();
 
     console.log("checking for..");
     console.log(email);
 
-    
+
     headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.apiBaseUrl + '/notification/'+email, email)
-    .pipe(map(res => res.json()));
+    return this.http.get(environment.apiBaseUrl + '/notification/' + email, email)
+      .pipe(map(res => res.json()));
 
   }
+
+
+
+
 
   // getPayment(paymentReferenceId) {
   //   let headers = new Headers();
   //  // this.loadToken();
 
   //  headers.append('Content-Type', 'application/json');
-    
+
   //   return this.http.get(environment.apiBaseUrl + '/payment/getpayment' + paymentReferenceId, paymentReferenceId)
   //   .pipe(map(res => res.json()));
   // }
@@ -166,7 +182,7 @@ console.log(input);
 
     headers.append('Content-Type', 'application/json');
     return this.http.get('users/product', { headers: headers })
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
   addProduct(product) {
@@ -176,7 +192,7 @@ console.log(input);
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.post(environment.apiBaseUrl + '/users/addproduct', product, { headers: headers })
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
   editProduct(product) {
@@ -186,7 +202,7 @@ console.log(input);
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.put(environment.apiBaseUrl + '/users/editproduct', product, { headers: headers })
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
 
@@ -197,13 +213,13 @@ console.log(input);
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.delete(environment.apiBaseUrl + '/users/deleteproduct/' + productID, { headers: headers })
-    .pipe(map(res => res.json()));
+      .pipe(map(res => res.json()));
   }
 
 
   storeUserData(token) {
-  
-  //storeUserData(token, user) {
+
+    //storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     // localStorage.setItem('user', JSON.stringify(user));
     // localStorage.setItem('role', user.role);
@@ -253,36 +269,36 @@ console.log(input);
     return tokenNotExpired('id_token');
   }
 
-  
+
   isUserCategoryTrial() {
     console.log("checking user category");
     console.log(localStorage.getItem('UserCategory'));
-    if (localStorage.getItem('UserCategory') == "TRIAL"){
-     return true;
+    if (localStorage.getItem('UserCategory') == "TRIAL") {
+      return true;
 
     } else {
-    return false;
-  }
+      return false;
+    }
   }
 
-  
+
   isUserCategoryFull() {
-    if (localStorage.getItem('UserCategory') == "FULL"){
-     return true;
+    if (localStorage.getItem('UserCategory') == "FULL") {
+      return true;
 
     } else {
-    return false;
-  }
+      return false;
+    }
   }
 
-  
+
   isUserCategoryNonRenew() {
-    if (localStorage.getItem('UserCategory') == "NONRENEW"){
-     return true;
+    if (localStorage.getItem('UserCategory') == "NONRENEW") {
+      return true;
 
     } else {
-    return false;
-  }
+      return false;
+    }
   }
 
 
@@ -301,7 +317,7 @@ console.log(input);
     this.currentselection = currentselection;
   }
 
-  getCurrentselection(){
+  getCurrentselection() {
     return this.currentselection;
   }
 
@@ -309,8 +325,19 @@ console.log(input);
     this.paymentReferenceId = paymentReferenceId;
   }
 
-  getPaymentReferenceId(){
+  getPaymentReferenceId() {
     return this.paymentReferenceId;
+  }
+
+
+  storeUseremail(useremaill: any) {
+    console.log("setting user email for auth serv:" + useremaill);
+    this.useremail = useremaill;
+  }
+
+  getUseremail() {
+    console.log("returning user email for auth serv:" + this.useremail);
+    return this.useremail;
   }
 
 
@@ -326,9 +353,9 @@ console.log(input);
       return false;
   }
 
-  checkTotalNotZero(){
-   
-    if(this.totall>0){
+  checkTotalNotZero() {
+
+    if (this.totall > 0) {
       return true;
     }
     else
@@ -344,8 +371,8 @@ console.log(input);
   }
 
   logout() {
-    this.authToken = null;
-    this.user = null;
+     this.authToken = null;
+     this.user = null;
     localStorage.clear();
   }
 }
