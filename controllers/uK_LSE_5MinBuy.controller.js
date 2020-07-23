@@ -5,10 +5,10 @@ const _ = require('lodash');
 const UK_LSE_5MinBuy = mongoose.model('UK_LSE_5MinBuy');
 
 module.exports.uK_LSE_5MinBuyProfile = (req, res, next) =>{
-
-    UK_LSE_5MinBuy.find({}, (err, uK_LSE_5MinBuy) => {
-        console.log("Here we go Chocs");
-        console.log(uK_LSE_5MinBuy);
+       
+    UK_LSE_5MinBuy.find({},null,{sort: {lastBuyEvent:-1}}, (err, uK_LSE_5MinBuy) => {
+        // console.log("Here we go Chocs");
+        // console.log(uK_LSE_5MinBuy);
         res.send(uK_LSE_5MinBuy);
     }
 )};

@@ -7,7 +7,7 @@ const UK_LSE_MonthlySell = mongoose.model('UK_LSE_MonthlySell');
 
 module.exports.uK_LSE_MonthlySellProfile = (req, res, next) =>{
 
-    UK_LSE_MonthlySell.find({}, (err, uK_LSE_MonthlySell) => {
+    UK_LSE_MonthlySell.find({},null,{sort: {lastSellEvent:-1}}, (err, uK_LSE_MonthlySell) => {
         //return res.status(200).json({ status: true, monthlySell: monthlySell});
         console.log("Here we go");
         res.send(uK_LSE_MonthlySell);

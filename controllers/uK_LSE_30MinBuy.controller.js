@@ -6,7 +6,7 @@ const UK_LSE_30MinBuy = mongoose.model('UK_LSE_30MinBuy');
 
 module.exports.uK_LSE_30MinBuyProfile = (req, res, next) =>{
 
-    UK_LSE_30MinBuy.find({}, (err, uK_LSE_30MinBuy) => {
+    UK_LSE_30MinBuy.find({},null,{sort: {lastBuyEvent:-1}}, (err, uK_LSE_30MinBuy) => {
         console.log("Here we go");
         res.send(uK_LSE_30MinBuy);
     }

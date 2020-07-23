@@ -271,8 +271,8 @@ export class AuthService {
 
 
   isUserCategoryTrial() {
-    console.log("checking user category");
-    console.log(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')));
+    // console.log("checking user category");
+    // console.log(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')));
     if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
       return true;
 

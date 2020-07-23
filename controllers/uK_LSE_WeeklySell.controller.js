@@ -7,7 +7,7 @@ const UK_LSE_WeeklySell = mongoose.model('UK_LSE_WeeklySell');
 
 module.exports.uK_LSE_WeeklySellProfile = (req, res, next) =>{
 
-    UK_LSE_WeeklySell.find({}, (err, uK_LSE_WeeklySell) => {
+    UK_LSE_WeeklySell.find({},null,{sort: {lastSellEvent:-1}}, (err, uK_LSE_WeeklySell) => {
         //return res.status(200).json({ status: true, weeklySell: weeklySell});
         console.log("Here we go");
         res.send(uK_LSE_WeeklySell);

@@ -6,7 +6,7 @@ const UK_LSE_HourlyBuy = mongoose.model('UK_LSE_HourlyBuy');
 
 module.exports.uK_LSE_HourlyBuyProfile = (req, res, next) =>{
 
-    UK_LSE_HourlyBuy.find({}, (err, uK_LSE_HourlyBuy) => {
+    UK_LSE_HourlyBuy.find({},null,{sort: {lastBuyEvent:-1}}, (err, uK_LSE_HourlyBuy) => {
         console.log("Here we go");
         res.send(uK_LSE_HourlyBuy);
     }

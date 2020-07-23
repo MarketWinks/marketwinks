@@ -6,8 +6,8 @@ const UK_LSE_5MinSell = mongoose.model('UK_LSE_5MinSell');
 //const Mins5Sell = mongoose.model('User');
 
 module.exports.uK_LSE_5MinSellProfile = (req, res, next) =>{
-
-    UK_LSE_5MinSell.find({}, (err, uK_LSE_5MinSell) => {
+    
+    UK_LSE_5MinSell.find({},null,{sort: {lastSellEvent:-1}}, (err, uK_LSE_5MinSell) => {
         //return res.status(200).json({ status: true, mins5Sell: mins5Sell});
         console.log("Here we go");
         res.send(uK_LSE_5MinSell);
