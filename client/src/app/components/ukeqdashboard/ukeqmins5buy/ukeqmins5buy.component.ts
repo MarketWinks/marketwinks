@@ -18,9 +18,18 @@ export class UkeqMins5buyComponent implements OnInit {
   button2: Boolean = false;
   button3: Boolean = false;
   button4: Boolean = false;
+  button5: Boolean = false;
+  button6: Boolean = false;
+  button7: Boolean = false;
+  button8: Boolean = false;
   block2: Boolean = false;
   block3: Boolean = false;
   block4: Boolean = false;
+  block5: Boolean = false;
+  block6: Boolean = false;
+  block7: Boolean = false;
+  block8: Boolean = false;
+
 
   constructor(public mins5buyService: UkeqMins5buyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
@@ -116,9 +125,42 @@ export class UkeqMins5buyComponent implements OnInit {
       this.button4 = true;
     }
   }
+
   onclickbutton4() {
+    this.block5 = true;
     this.button4 = false;
+    if (this.mins5buyDetails.length > 250) {
+      this.button5 = true;
+    }
   }
+  onclickbutton5() {
+    this.block6 = true;
+    this.button5 = false;
+    if (this.mins5buyDetails.length > 300) {
+      this.button6 = true;
+    }
+  }
+  onclickbutton6() {
+    this.block7 = true;
+    this.button6 = false;
+    if (this.mins5buyDetails.length > 350) {
+      this.button7 = true;
+    }
+  }
+  onclickbutton7() {
+    this.block8 = true;
+    this.button7 = false;
+    if (this.mins5buyDetails.length > 400) {
+      this.button8 = true;
+    }
+  }
+  onclickbutton8() {
+
+    this.button8 = false;
+
+  }
+
+
 
   getBlock2status() {
     return this.block2;
@@ -129,6 +171,19 @@ export class UkeqMins5buyComponent implements OnInit {
   }
   getBlock4status() {
     return this.block4;
+  }
+
+  getBlock5status() {
+    return this.block5;
+  }
+  getBlock6status() {
+    return this.block6;
+  }
+  getBlock7status() {
+    return this.block7;
+  }
+  getBlock8status() {
+    return this.block8;
   }
 
   getButton1status() {
@@ -142,6 +197,19 @@ export class UkeqMins5buyComponent implements OnInit {
   }
   getButton4status() {
     return this.button4;
+  }
+
+  getButton5status() {
+    return this.button5;
+  }
+  getButton6status() {
+    return this.button6;
+  }
+  getButton7status() {
+    return this.button7;
+  }
+  getButton8status() {
+    return this.button8;
   }
 
   onRefresh() {
