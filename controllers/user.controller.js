@@ -65,7 +65,8 @@ module.exports.register = (req, res, next) => {
                 port: 25,
                // secure: true,
                 auth: {
-                    user: 'globalhr@skillplaces.com',
+                    //user: 'globalhr@skillplaces.com',
+                    user: 'support@marketwinks.com',
                     pass: 'live9in@Us'
                 }
             };
@@ -81,9 +82,10 @@ module.exports.register = (req, res, next) => {
             
           
               mailOptions={
-                from: 'globalhr@skillplaces.com',
+                from: 'support@marketwinks.com',
+                //from: 'globalhr@skillplaces.com',
                 to : req.body.email,
-                subject : "Please confirm your Email account",
+                subject : "Please confirm your Email account for MarketWinks",
                 html : "Hello "+req.body.fullName+",<br><br> Welcome to MarketWinks!.<br><br>"+
                 "It’s time to confirm your email address.<br>"+
                 "Please Click on the link below to verify your email.<br><br>"+
