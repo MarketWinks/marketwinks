@@ -74,7 +74,7 @@ router.get('/uK_LSE_MonthlySellProfile',ctrlUK_LSE_MonthlySell.uK_LSE_MonthlySel
 router.get('/uK_LSE_MonthlyBuyProfile',ctrlUK_LSE_MonthlyBuy.uK_LSE_MonthlyBuyProfile);
 router.get('/uK_LSE_HourlySellProfile',ctrlUK_LSE_HourlySell.uK_LSE_HourlySellProfile);
 router.get('/uK_LSE_HourlyBuyProfile',ctrlUK_LSE_HourlyBuy.uK_LSE_HourlyBuyProfile);
-router.get('/uK_LSE_30SMinellProfile',ctrlUK_LSE_30MinSell.uK_LSE_30MinSellProfile);
+router.get('/uK_LSE_30MinSellProfile',ctrlUK_LSE_30MinSell.uK_LSE_30MinSellProfile);
 router.get('/uK_LSE_30MinBuyProfile',ctrlUK_LSE_30MinBuy.uK_LSE_30MinBuyProfile);
 router.get('/uK_LSE_15MinSellProfile',ctrlUK_LSE_15MinSell.uK_LSE_15MinSellProfile);
 router.get('/uK_LSE_15MinBuyProfile',ctrlUK_LSE_15MinBuy.uK_LSE_15MinBuyProfile);

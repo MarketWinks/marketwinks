@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import { UserService } from '../shared/user.service';
 import { UkeqMins30sellService } from '../../../services/ukeqmins30sell.service';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
 import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
@@ -12,129 +9,237 @@ import { EncrDecrService } from 'src/app/services/encrdecr.service';
   styleUrls: ['./ukeqmins30sell.component.css']
 })
 
+
 export class UkeqMins30sellComponent implements OnInit {
-  //userDetails;
-  mins30sellDetails;
+
+  mins30sellDetails: any;
   mins30sellDetailsUnique;
   mins30sellDetails_length;
-  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  button1: Boolean = true;
+  button2: Boolean = false;
+  button3: Boolean = false;
+  button4: Boolean = false;
+  button5: Boolean = false;
+  button6: Boolean = false;
+  button7: Boolean = false;
+  button8: Boolean = false;
+  block2: Boolean = false;
+  block3: Boolean = false;
+  block4: Boolean = false;
+  block5: Boolean = false;
+  block6: Boolean = false;
+  block7: Boolean = false;
+  block8: Boolean = false;
+
+
   constructor(public mins30sellService: UkeqMins30sellService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
-    
-    if(!localStorage.getItem('id_token')){
+    if (!localStorage.getItem('id_token')) {
       this.router.navigate(['/login']);
       return;
 
     }
-    // this.userService.getUserProfile().subscribe(
-    //   res => {
-    //   console.log("RESPONSE");
-    //     console.log(res['user']);
-    //     this.userDetails = res['user'];
-    //   },
-    //   err => { 
-    //     console.log(err);
-        
-    //   }
-    //  ),
 
-    
-    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
+    if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW") {
       this.router.navigate(['/cart']);
       return;
 
     }
-    
     this.mins30sellService.getMins30sellProfile().
-    subscribe((res: any[]) => {
-        console.log("RESPONSE");
-        console.log(res);
-        console.log("RESPONSE_LENGTH");
-        console.log(res.length);
+      subscribe((res: any[]) => {
+        // console.log("RESPONSE");
+        // console.log(res);
 
+        this.mins30sellDetailsUnique = res;
 
-        console.log("RESPONSE UNIQUE");
-        
-        this.mins30sellDetailsUnique = Array.from(new Set(res.map(a => a.company)))
-        .map(company => {
-          return res.find(a => a.company === company)
-        });
-        
-        console.log(this.mins30sellDetailsUnique);
+        if (res.length < 50) {
+          this.button1 = false;
+        }
 
+        this.mins30sellDetails_length = this.mins30sellDetailsUnique.length;
+        this.mins30sellDetails = this.mins30sellDetailsUnique;
 
-        console.log("RESPONSE unique LENGTH");
-        console.log(this.mins30sellDetailsUnique.length);
+        if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
+          this.mins30sellDetails = this.mins30sellDetails.slice(0, 3);
 
+          this.button1 = false;
 
-   // this.mins30sellDetails_length=res.length;
-     //   this.mins30sellDetails = res;
+        }
 
-     for(var i=0; i<this.mins30sellDetailsUnique.length; i++){
-
-      if (this.mins30sellDetailsUnique[i].lastSellEvent == undefined){
-
-        console.log("null found completed");
-
-  
-        console.log("before SPLICE");
-        console.log(this.mins30sellDetailsUnique.length);
-
-        this.mins30sellDetailsUnique.splice(i, 1);
-
-        console.log("after SPLICE");
-        console.log(this.mins30sellDetailsUnique.length);
-
-      
-      
-    }
-
-     }
-
-
-
-     
-
-
-     this.mins30sellDetailsUnique.sort((obj1, obj2) => {
-
-
-      if (new Date(obj1.lastSellEvent).getTime() > new Date(obj2.lastSellEvent)
-      .getTime()) {
-          return 1;
-      }
-
-      if (new Date(obj1.lastSellEvent).getTime() < new Date(obj2.lastSellEvent)
-      .getTime()) {
-          return -1;
-      }
-  
-      return 0;
-  });
-
-      this.mins30sellDetails_length=this.mins30sellDetailsUnique.length;
-      this.mins30sellDetails = this.mins30sellDetailsUnique;
-
-      
-      if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL"){
-        this.mins30sellDetails = this.mins30sellDetails.slice(0,3);
-
-      }
 
       },
-      err => { 
-        console.log(err);
-        
-      }
-    );
+        err => {
+          console.log(err);
+
+        }
+      );
   }
 
-  onLogout(){
-  // this.userService.deleteToken();
-   this.mins30sellService.deleteToken();
+
+  onLogout() {
+    // this.userService.deleteToken();
+    this.mins30sellService.deleteToken();
     this.router.navigate(['/login']);
+  }
+
+
+  navigateToSignalInfoPage(mins30sellDetails_idparameter) {
+
+    localStorage.setItem('mongoSignaltimeframe', "30 Mins");
+
+    localStorage.setItem('mongoSignalForecast', "SELL/LONG");
+
+    localStorage.setItem('mongoSignalexchange', "UK : LSE : EQ");
+
+
+    localStorage.setItem('mongoSignalcurrency', "GBX");
+
+    localStorage.setItem('mongoSignaltradeterm', "Short Term");
+    localStorage.setItem('mongoSignalrequestedTable', "uk_lse_30minsells");
+    localStorage.setItem('mongoSignalrequestedSignalID', mins30sellDetails_idparameter);
+    this.router.navigate(['/signalinfopage']);
+  }
+
+  onclickbutton1() {
+    this.block2 = true;
+    this.button1 = false;
+    if (this.mins30sellDetails.length > 100) {
+      this.button2 = true;
+    }
+
+  }
+
+  onclickbutton2() {
+    this.block3 = true;
+    this.button2 = false;
+    if (this.mins30sellDetails.length > 150) {
+      this.button3 = true;
+    }
+  }
+
+  onclickbutton3() {
+    this.block4 = true;
+    this.button3 = false;
+    if (this.mins30sellDetails.length > 200) {
+      this.button4 = true;
+    }
+  }
+
+  onclickbutton4() {
+    this.block5 = true;
+    this.button4 = false;
+    if (this.mins30sellDetails.length > 250) {
+      this.button5 = true;
+    }
+  }
+  onclickbutton5() {
+    this.block6 = true;
+    this.button5 = false;
+    if (this.mins30sellDetails.length > 300) {
+      this.button6 = true;
+    }
+  }
+  onclickbutton6() {
+    this.block7 = true;
+    this.button6 = false;
+    if (this.mins30sellDetails.length > 350) {
+      this.button7 = true;
+    }
+  }
+  onclickbutton7() {
+    this.block8 = true;
+    this.button7 = false;
+    if (this.mins30sellDetails.length > 400) {
+      this.button8 = true;
+    }
+  }
+  onclickbutton8() {
+
+    this.button8 = false;
+
+  }
+
+
+
+  getBlock2status() {
+    return this.block2;
+  }
+
+  getBlock3status() {
+    return this.block3;
+  }
+  getBlock4status() {
+    return this.block4;
+  }
+
+  getBlock5status() {
+    return this.block5;
+  }
+  getBlock6status() {
+    return this.block6;
+  }
+  getBlock7status() {
+    return this.block7;
+  }
+  getBlock8status() {
+    return this.block8;
+  }
+
+  getButton1status() {
+    return this.button1;
+  }
+  getButton2status() {
+    return this.button2;
+  }
+  getButton3status() {
+    return this.button3;
+  }
+  getButton4status() {
+    return this.button4;
+  }
+
+  getButton5status() {
+    return this.button5;
+  }
+  getButton6status() {
+    return this.button6;
+  }
+  getButton7status() {
+    return this.button7;
+  }
+  getButton8status() {
+    return this.button8;
+  }
+
+  onRefresh() {
+
+    this.mins30sellService.getMins30sellProfile().
+      subscribe((res: any[]) => {
+
+        this.mins30sellDetailsUnique = res;
+        if (res.length < 50) {
+          this.button1 = false;
+        }
+
+        this.mins30sellDetails_length = this.mins30sellDetailsUnique.length;
+        this.mins30sellDetails = this.mins30sellDetailsUnique;
+
+
+        if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
+          this.mins30sellDetails = this.mins30sellDetails.slice(0, 3);
+          this.button1 = false;
+        }
+
+      },
+        err => {
+          console.log(err);
+
+        }
+      );
+
+
   }
 
 }

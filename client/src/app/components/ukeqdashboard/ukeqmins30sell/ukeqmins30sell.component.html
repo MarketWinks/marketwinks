@@ -1,68 +1,620 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="container">
   <br>
-   
-  
+
+
   <div class="container">
-  
-            <div class="row ">
-              <div *ngFor="let mins30sellDetails of mins30sellDetails" class="col-md-12">
-                <div class="shadow-box">
-                  
-                
-                  <div class="card-body">
 
-                    <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">{{mins30sellDetails.indicator}}</div>
-                    
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry Price/LTP*: {{(mins30sellDetails.lasttradedprice)}} GBX</div>
-                    
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM P/L*: 10 GBX</div>
+    <button style="font-size:12px;" (click)="onRefresh()"><i class="fa">&#xf021;</i></button>
 
-
-
-                                        <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
-                                        <h5 class="card-title">
-
-                                          <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
-                                          -->
-                                          
-                                                                <circle-progress
-                                                [percent]="mins30sellDetails.confidence_level"
-                                                [radius]="30"
-                                                [outerStrokeWidth]="8"
-                                                [innerStrokeWidth]="2"
-                                                [outerStrokeColor]="'#ff0000'"
-                                                [innerStrokeColor]="'#e2e2e2'"
-                                                [animation]="true"
-                                                [animationDuration]="300"
-                                                [space]="5"
-                                                [showSubtitle]= "false"
-                                                [showUnits]= "true"
-                                                [unitsFontSize]= "10"
-                                                [titleFontSize]= "15"
-                                                [clockwise]= "true">
-                                            </circle-progress>
-                                            </h5>
-                                          
-                   
-                                        <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
-                                        <p class="card-text">Entry Criteria: <b>SELL when Market Price >= 100 GBX</b></p>
-                    
-                    <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blue;">More Details...</div>
-                    <div class="like-content" align="left">
-  
-                      <button class="btn-secondary like-review" align="left" onclick="">
-                        <i class="fa fa-heart" aria-hidden="true"></i> 25
-                      </button>
-
-                    </div>
-
-        
-  
-                 
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-    </div>
   </div>
+
+  <div class="container">
+
+    <div class="row ">
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(0, 50);" class="col-md-12">
+
+        <div class="shadow-box">
+
+          <div class="card-body">
+
+            <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+              {{mins30sellDetails.indicator}}</div>
+
+            <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+              Price/LTP*:
+              {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+            <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+              P/L%*:
+              {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+              %</div>
+
+            <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+            <!--                    
+                    <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+            <h5 class="card-title">
+
+              <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+              <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'" [animation]="true"
+                [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true" [unitsFontSize]="10"
+                [titleFontSize]="15" [clockwise]="true">
+              </circle-progress>
+
+            </h5>
+
+            <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+            <p class="card-text">Entry Criteria: <b>SELL when Market Price >= {{(mins30sellDetails.lastSellPrice*0.998)}}
+                GBX</b>
+            </p>
+
+            <div align="right">
+              <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                style="font-variant-caps: all-petite-caps; color: blue;">
+                More Details...
+              </button>
+            </div>
+
+            <div class="like-content" align="left">
+
+
+              <button class="btn-secondary like-review" align="left">
+                <i class="fa fa-heart" aria-hidden="true"></i> 25
+              </button>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="getButton1status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton1()">Load More</button>
+
+      </div>
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(51, 100);" class="col-md-12">
+        <div *ngIf="getBlock2status()">
+          <div class="shadow-box">
+
+            <div class="card-body">
+
+              <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+                {{mins30sellDetails.indicator}}</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+                Price/LTP*:
+                {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+                P/L%*:
+                {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+                %</div>
+
+              <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+              <!--                    
+              <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+              <h5 class="card-title">
+
+                <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+
+                <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'"
+                  [animation]="true" [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true"
+                  [unitsFontSize]="10" [titleFontSize]="15" [clockwise]="true">
+                </circle-progress>
+
+              </h5>
+
+              <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+              <p class="card-text">Entry Criteria: <b>SELL when Market Price >=
+                  {{(mins30sellDetails.lastSellPrice*0.998)}}
+                  GBX</b>
+              </p>
+
+              <div align="right">
+                <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                  style="font-variant-caps: all-petite-caps; color: blue;">
+                  More Details...
+                </button>
+              </div>
+
+              <div class="like-content" align="left">
+
+
+                <button class="btn-secondary like-review" align="left">
+                  <i class="fa fa-heart" aria-hidden="true"></i> 25
+                </button>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container" *ngIf="getButton2status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton2()">Load More</button>
+
+      </div>
+
+
+
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(101, 150);" class="col-md-12">
+        <div *ngIf="getBlock3status()">
+          <div class="shadow-box">
+
+            <div class="card-body">
+
+              <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+                {{mins30sellDetails.indicator}}</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+                Price/LTP*:
+                {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+                P/L%*:
+                {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+                %</div>
+
+              <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+              <!--                    
+                    <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+              <h5 class="card-title">
+
+                <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+
+
+                <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'"
+                  [animation]="true" [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true"
+                  [unitsFontSize]="10" [titleFontSize]="15" [clockwise]="true">
+                </circle-progress>
+
+              </h5>
+
+              <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+              <p class="card-text">Entry Criteria: <b>SELL when Market Price >=
+                  {{(mins30sellDetails.lastSellPrice*0.998)}}
+                  GBX</b>
+              </p>
+
+              <div align="right">
+                <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                  style="font-variant-caps: all-petite-caps; color: blue;">
+                  More Details...
+                </button>
+              </div>
+
+              <div class="like-content" align="left">
+
+
+                <button class="btn-secondary like-review" align="left">
+                  <i class="fa fa-heart" aria-hidden="true"></i> 25
+                </button>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="getButton3status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton3()">Load More</button>
+
+      </div>
+
+
+
+
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(151, 200);" class="col-md-12">
+        <div *ngIf="getBlock4status()">
+          <div class="shadow-box">
+
+            <div class="card-body">
+
+              <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+                {{mins30sellDetails.indicator}}</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+                Price/LTP*:
+                {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+                P/L%*:
+                {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+                %</div>
+
+              <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+              <!--                    
+                    <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+              <h5 class="card-title">
+
+                <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+
+
+                <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'"
+                  [animation]="true" [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true"
+                  [unitsFontSize]="10" [titleFontSize]="15" [clockwise]="true">
+                </circle-progress>
+
+
+              </h5>
+
+              <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+              <p class="card-text">Entry Criteria: <b>SELL when Market Price >=
+                  {{(mins30sellDetails.lastSellPrice*0.998)}}
+                  GBX</b>
+              </p>
+
+              <div align="right">
+                <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                  style="font-variant-caps: all-petite-caps; color: blue;">
+                  More Details...
+                </button>
+              </div>
+
+              <div class="like-content" align="left">
+
+
+                <button class="btn-secondary like-review" align="left">
+                  <i class="fa fa-heart" aria-hidden="true"></i> 25
+                </button>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="getButton4status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton4()">Load More</button>
+
+      </div>
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(201, 250);" class="col-md-12">
+        <div *ngIf="getBlock5status()">
+          <div class="shadow-box">
+
+            <div class="card-body">
+
+              <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+                {{mins30sellDetails.indicator}}</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+                Price/LTP*:
+                {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+                P/L%*:
+                {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+                %</div>
+
+              <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+              <!--                    
+                    <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+              <h5 class="card-title">
+
+                <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+
+
+                <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'"
+                  [animation]="true" [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true"
+                  [unitsFontSize]="10" [titleFontSize]="15" [clockwise]="true">
+                </circle-progress>
+
+
+              </h5>
+
+              <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+              <p class="card-text">Entry Criteria: <b>SELL when Market Price >=
+                  {{(mins30sellDetails.lastSellPrice*0.998)}}
+                  GBX</b>
+              </p>
+
+              <div align="right">
+                <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                  style="font-variant-caps: all-petite-caps; color: blue;">
+                  More Details...
+                </button>
+              </div>
+
+              <div class="like-content" align="left">
+
+
+                <button class="btn-secondary like-review" align="left">
+                  <i class="fa fa-heart" aria-hidden="true"></i> 25
+                </button>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="getButton5status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton5()">Load More</button>
+
+      </div>
+
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(251, 300);" class="col-md-12">
+        <div *ngIf="getBlock6status()">
+          <div class="shadow-box">
+
+            <div class="card-body">
+
+              <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+                {{mins30sellDetails.indicator}}</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+                Price/LTP*:
+                {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+                P/L%*:
+                {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+                %</div>
+
+              <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+              <!--                    
+                    <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+              <h5 class="card-title">
+
+                <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+                <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'"
+                  [animation]="true" [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true"
+                  [unitsFontSize]="10" [titleFontSize]="15" [clockwise]="true">
+                </circle-progress>
+
+
+              </h5>
+
+              <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+              <p class="card-text">Entry Criteria: <b>SELL when Market Price >=
+                  {{(mins30sellDetails.lastSellPrice*0.998)}}
+                  GBX</b>
+              </p>
+
+              <div align="right">
+                <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                  style="font-variant-caps: all-petite-caps; color: blue;">
+                  More Details...
+                </button>
+              </div>
+
+              <div class="like-content" align="left">
+
+
+                <button class="btn-secondary like-review" align="left">
+                  <i class="fa fa-heart" aria-hidden="true"></i> 25
+                </button>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="getButton6status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton6()">Load More</button>
+
+      </div>
+
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(301, 350);" class="col-md-12">
+        <div *ngIf="getBlock7status()">
+          <div class="shadow-box">
+
+            <div class="card-body">
+
+              <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+                {{mins30sellDetails.indicator}}</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+                Price/LTP*:
+                {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+                P/L%*:
+                {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+                %</div>
+
+              <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+              <!--                    
+                    <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+              <h5 class="card-title">
+
+                <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+
+                <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'"
+                  [animation]="true" [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true"
+                  [unitsFontSize]="10" [titleFontSize]="15" [clockwise]="true">
+                </circle-progress>
+
+
+              </h5>
+
+              <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+              <p class="card-text">Entry Criteria: <b>SELL when Market Price >=
+                  {{(mins30sellDetails.lastSellPrice*0.998)}}
+                  GBX</b>
+              </p>
+
+              <div align="right">
+                <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                  style="font-variant-caps: all-petite-caps; color: blue;">
+                  More Details...
+                </button>
+              </div>
+
+              <div class="like-content" align="left">
+
+
+                <button class="btn-secondary like-review" align="left">
+                  <i class="fa fa-heart" aria-hidden="true"></i> 25
+                </button>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="getButton7status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton7()">Load More</button>
+
+      </div>
+
+
+
+      <div *ngFor="let mins30sellDetails of mins30sellDetails.slice(351, 400);" class="col-md-12">
+        <div *ngIf="getBlock8status()">
+          <div class="shadow-box">
+
+            <div class="card-body">
+
+              <div class="card-text" align="left" style="font-variant-caps: all-petite-caps; color: #10085A">
+                {{mins30sellDetails.indicator}}</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color:blueviolet;">Expiry
+                Price/LTP*:
+                {{(mins30sellDetails.lasttradedprice)}} GBX</div>
+
+              <div class="card-text" align="right" style="font-variant-caps: all-petite-caps; color: blueviolet;">MTM
+                P/L%*:
+                {{((mins30sellDetails.lastSellPrice*0.998 - mins30sellDetails.lasttradedprice)*100/(mins30sellDetails.lastSellPrice*0.998))}}
+                %</div>
+
+              <h5 class="card-title" style="font-weight: bold;">{{mins30sellDetails.company}}</h5>
+              <!--                    
+                    <h5 class="card-title">{{mins30sellDetails.confidence_level}}%</h5> -->
+
+              <h5 class="card-title">
+
+                <!--      [outerStrokeColor]="'#ff0000'" -- this is for  red
+-->
+
+                <circle-progress [percent]="mins30sellDetails.confidence_level" [radius]="30" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="2" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e2e2e2'"
+                  [animation]="true" [animationDuration]="300" [space]="5" [showSubtitle]="false" [showUnits]="true"
+                  [unitsFontSize]="10" [titleFontSize]="15" [clockwise]="true">
+                </circle-progress>
+
+
+              </h5>
+
+              <p class="card-text">{{mins30sellDetails.lastSellEvent}} GMT</p>
+              <p class="card-text">Entry Criteria: <b>SELL when Market Price >=
+                  {{(mins30sellDetails.lastSellPrice*0.998)}}
+                  GBX</b>
+              </p>
+
+              <div align="right">
+                <button type="button" (click)="navigateToSignalInfoPage(mins30sellDetails._id)" align="right"
+                  style="font-variant-caps: all-petite-caps; color: blue;">
+                  More Details...
+                </button>
+              </div>
+
+              <div class="like-content" align="left">
+
+
+                <button class="btn-secondary like-review" align="left">
+                  <i class="fa fa-heart" aria-hidden="true"></i> 25
+                </button>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" *ngIf="getButton8status()">
+
+        <button class="loadmorebutton" (click)="onclickbutton8()">Load More</button>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>

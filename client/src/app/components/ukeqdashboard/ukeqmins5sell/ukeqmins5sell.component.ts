@@ -9,6 +9,7 @@ import { EncrDecrService } from 'src/app/services/encrdecr.service';
   styleUrls: ['./ukeqmins5sell.component.css']
 })
 
+
 export class UkeqMins5sellComponent implements OnInit {
 
   mins5sellDetails: any;
