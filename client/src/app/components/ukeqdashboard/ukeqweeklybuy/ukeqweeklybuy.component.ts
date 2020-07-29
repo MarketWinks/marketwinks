@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import { UserService } from '../shared/user.service';
 import { UkeqWeeklybuyService } from '../../../services/ukeqweeklybuy.service';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
 import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
@@ -12,117 +9,236 @@ import { EncrDecrService } from 'src/app/services/encrdecr.service';
   styleUrls: ['./ukeqweeklybuy.component.css']
 })
 
-
 export class UkeqWeeklybuyComponent implements OnInit {
-  weeklybuyDetails;
+
+  weeklybuyDetails: any;
   weeklybuyDetailsUnique;
   weeklybuyDetails_length;
+  button1: Boolean = true;
+  button2: Boolean = false;
+  button3: Boolean = false;
+  button4: Boolean = false;
+  button5: Boolean = false;
+  button6: Boolean = false;
+  button7: Boolean = false;
+  button8: Boolean = false;
+  block2: Boolean = false;
+  block3: Boolean = false;
+  block4: Boolean = false;
+  block5: Boolean = false;
+  block6: Boolean = false;
+  block7: Boolean = false;
+  block8: Boolean = false;
+
+
   constructor(public weeklybuyService: UkeqWeeklybuyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
-    
-    if(!localStorage.getItem('id_token')){
+    if (!localStorage.getItem('id_token')) {
       this.router.navigate(['/login']);
       return;
 
     }
 
-    
-    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
+    if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW") {
       this.router.navigate(['/cart']);
       return;
 
     }
-    
     this.weeklybuyService.getWeeklybuyProfile().
-    subscribe((res: any[]) => {
-        console.log("RESPONSE");
-        console.log(res);
-        console.log("RESPONSE_LENGTH");
-        console.log(res.length);
+      subscribe((res: any[]) => {
+        // console.log("RESPONSE");
+        // console.log(res);
+
+        this.weeklybuyDetailsUnique = res;
+
+        if (res.length < 50) {
+          this.button1 = false;
+        }
+
+        this.weeklybuyDetails_length = this.weeklybuyDetailsUnique.length;
+        this.weeklybuyDetails = this.weeklybuyDetailsUnique;
+
+        if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
+          this.weeklybuyDetails = this.weeklybuyDetails.slice(0, 3);
+
+          this.button1 = false;
+
+        }
 
 
-        console.log("RESPONSE UNIQUE");
-        
-        this.weeklybuyDetailsUnique = Array.from(new Set(res.map(a => a.company)))
-        .map(company => {
-          return res.find(a => a.company === company)
-        });
-        
-        console.log(this.weeklybuyDetailsUnique);
+      },
+        err => {
+          console.log(err);
 
-        
-        console.log("RESPONSE unique LENGTH");
-        console.log(this.weeklybuyDetailsUnique.length);
+        }
+      );
+  }
 
-        //this.weeklybuyDetails_length=res.length;
-        //this.weeklybuyDetails = res;
 
-    
-    
-        
-     for(var i=0; i<this.weeklybuyDetailsUnique.length; i++){
+  onLogout() {
+    // this.userService.deleteToken();
+    this.weeklybuyService.deleteToken();
+    this.router.navigate(['/login']);
+  }
 
-      if (this.weeklybuyDetailsUnique[i].lastBuyEvent == undefined){
 
-        console.log("null found completed");
+  navigateToSignalInfoPage(weeklybuyDetails_idparameter) {
 
-  
-        console.log("before SPLICE");
-        console.log(this.weeklybuyDetailsUnique.length);
+    localStorage.setItem('mongoSignaltimeframe', "Weekly");
 
-        this.weeklybuyDetailsUnique.splice(i, 1);
+    localStorage.setItem('mongoSignalForecast', "BUY/LONG");
 
-        console.log("after SPLICE");
-        console.log(this.weeklybuyDetailsUnique.length);
+    localStorage.setItem('mongoSignalexchange', "UK : LSE : EQ");
 
-      
-      
+
+    localStorage.setItem('mongoSignalcurrency', "GBX");
+
+    localStorage.setItem('mongoSignaltradeterm', "Short Term");
+    localStorage.setItem('mongoSignalrequestedTable', "uk_lse_weeklybuys");
+    localStorage.setItem('mongoSignalrequestedSignalID', weeklybuyDetails_idparameter);
+    this.router.navigate(['/signalinfopage']);
+  }
+
+  onclickbutton1() {
+    this.block2 = true;
+    this.button1 = false;
+    if (this.weeklybuyDetails.length > 100) {
+      this.button2 = true;
     }
 
-     }
+  }
+
+  onclickbutton2() {
+    this.block3 = true;
+    this.button2 = false;
+    if (this.weeklybuyDetails.length > 150) {
+      this.button3 = true;
+    }
+  }
+
+  onclickbutton3() {
+    this.block4 = true;
+    this.button3 = false;
+    if (this.weeklybuyDetails.length > 200) {
+      this.button4 = true;
+    }
+  }
+
+  onclickbutton4() {
+    this.block5 = true;
+    this.button4 = false;
+    if (this.weeklybuyDetails.length > 250) {
+      this.button5 = true;
+    }
+  }
+  onclickbutton5() {
+    this.block6 = true;
+    this.button5 = false;
+    if (this.weeklybuyDetails.length > 300) {
+      this.button6 = true;
+    }
+  }
+  onclickbutton6() {
+    this.block7 = true;
+    this.button6 = false;
+    if (this.weeklybuyDetails.length > 350) {
+      this.button7 = true;
+    }
+  }
+  onclickbutton7() {
+    this.block8 = true;
+    this.button7 = false;
+    if (this.weeklybuyDetails.length > 400) {
+      this.button8 = true;
+    }
+  }
+  onclickbutton8() {
+
+    this.button8 = false;
+
+  }
 
 
-     
 
+  getBlock2status() {
+    return this.block2;
+  }
 
+  getBlock3status() {
+    return this.block3;
+  }
+  getBlock4status() {
+    return this.block4;
+  }
 
+  getBlock5status() {
+    return this.block5;
+  }
+  getBlock6status() {
+    return this.block6;
+  }
+  getBlock7status() {
+    return this.block7;
+  }
+  getBlock8status() {
+    return this.block8;
+  }
 
+  getButton1status() {
+    return this.button1;
+  }
+  getButton2status() {
+    return this.button2;
+  }
+  getButton3status() {
+    return this.button3;
+  }
+  getButton4status() {
+    return this.button4;
+  }
 
-        
-      this.weeklybuyDetailsUnique.sort((obj1, obj2) => {
-        if (new Date(obj1.lastBuyEvent.toString()).getTime() > new Date(obj2.lastBuyEvent.toString())
-        .getTime()) {
-            return 1;
+  getButton5status() {
+    return this.button5;
+  }
+  getButton6status() {
+    return this.button6;
+  }
+  getButton7status() {
+    return this.button7;
+  }
+  getButton8status() {
+    return this.button8;
+  }
+
+  onRefresh() {
+
+    this.weeklybuyService.getWeeklybuyProfile().
+      subscribe((res: any[]) => {
+
+        this.weeklybuyDetailsUnique = res;
+        if (res.length < 50) {
+          this.button1 = false;
         }
 
-        if (new Date(obj1.lastBuyEvent.toString()).getTime() < new Date(obj2.lastBuyEvent.toString())
-        .getTime()) {
-            return -1;
-        }
-    
-        return 0;
-    });
-
-        this.weeklybuyDetails_length=this.weeklybuyDetailsUnique.length;
+        this.weeklybuyDetails_length = this.weeklybuyDetailsUnique.length;
         this.weeklybuyDetails = this.weeklybuyDetailsUnique;
 
 
-        if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL"){
-          this.weeklybuyDetails = this.weeklybuyDetails.slice(0,3);
-  
+        if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
+          this.weeklybuyDetails = this.weeklybuyDetails.slice(0, 3);
+          this.button1 = false;
         }
 
       },
-      err => { 
-        console.log(err);
-      }
-    );
+        err => {
+          console.log(err);
+
+        }
+      );
+
+
   }
 
-  onLogout(){
-   this.weeklybuyService.deleteToken();
-    this.router.navigate(['/login']);
-  }
 }

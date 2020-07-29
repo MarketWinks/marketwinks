@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import { UserService } from '../shared/user.service';
 import { UkeqMonthlybuyService } from '../../../services/ukeqmonthlybuy.service';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
-
-import { environment } from 'src/environments/environment';
 import { EncrDecrService } from 'src/app/services/encrdecr.service';
 
 @Component({
@@ -15,163 +10,63 @@ import { EncrDecrService } from 'src/app/services/encrdecr.service';
 })
 
 export class UkeqMonthlybuyComponent implements OnInit {
-  //userDetails;
-  monthlybuyDetails;
-  monthlybuyDetailsUnique;
-  monthlybuyDetailsUniqueforTransitWork;
-  monthlybuyDetails_length;
-  public searchString: string;
-  monthlybuyDetailsTransit;
-  monthlybuyDetailsTransit_length;
-  monthlybuyDetailsUniqueComparitor: any;
 
-  //constructor(public userService: UserService, public router: Router, private EncrDecr: EncrDecrService) { }
+  monthlybuyDetails: any;
+  monthlybuyDetailsUnique;
+  monthlybuyDetails_length;
+  button1: Boolean = true;
+  button2: Boolean = false;
+  button3: Boolean = false;
+  button4: Boolean = false;
+  button5: Boolean = false;
+  button6: Boolean = false;
+  button7: Boolean = false;
+  button8: Boolean = false;
+  block2: Boolean = false;
+  block3: Boolean = false;
+  block4: Boolean = false;
+  block5: Boolean = false;
+  block6: Boolean = false;
+  block7: Boolean = false;
+  block8: Boolean = false;
+
+
   constructor(public monthlybuyService: UkeqMonthlybuyService, public router: Router, private EncrDecr: EncrDecrService) { }
 
   ngOnInit() {
 
-    
-    if(!localStorage.getItem('id_token')){
+    if (!localStorage.getItem('id_token')) {
       this.router.navigate(['/login']);
       return;
 
     }
-    // this.userService.getUserProfile().subscribe(
-    //   res => {
-    //   console.log("RESPONSE");
-    //     console.log(res['user']);
-    //     this.userDetails = res['user'];
-    //   },
-    //   err => { 
-    //     console.log(err);
 
-    //   }
-    //  ),
-
-    
-    if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW"){
+    if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "NONRENEW") {
       this.router.navigate(['/cart']);
       return;
 
     }
-
     this.monthlybuyService.getMonthlybuyProfile().
       subscribe((res: any[]) => {
-        console.log("RESPONSE");
-        console.log(res);
-
-        console.log("RESPONSE_LENGTH");
-        console.log(res.length);
-
-        console.log("RESPONSE UNIQUE");
-
+        // console.log("RESPONSE");
+        // console.log(res);
 
         this.monthlybuyDetailsUnique = res;
 
-
-
-        for (var i = 0; i < this.monthlybuyDetailsUnique.length; i++) {
-
-          if (this.monthlybuyDetailsUnique[i].lastBuyEvent == undefined) {
-
-            console.log("null found completed");
-
-
-            console.log("before SPLICE");
-            console.log(this.monthlybuyDetailsUnique.length);
-
-            this.monthlybuyDetailsUnique.splice(i, 1);
-
-            i = 0;
-
-            console.log("after SPLICE");
-            console.log(this.monthlybuyDetailsUnique.length);
-
-
-
-          }
-
+        if (res.length < 50) {
+          this.button1 = false;
         }
-
-        console.log("dry run");
-        for (var i = 0; i < this.monthlybuyDetailsUnique.length; i++) {
-
-          if (this.monthlybuyDetailsUnique[i].lastBuyEvent == undefined) {
-
-            console.log("dry run found bug");
-
-
-          }
-
-        }
-
-        console.log("AFTER SPLICE");
-        console.log(this.monthlybuyDetailsUnique);
-
-
-        this.monthlybuyDetailsUnique.sort((obj1, obj2) => {
-
-          if (new Date(obj1.lastBuyEvent.toString()).getTime() > new Date(obj2.lastBuyEvent.toString())
-            .getTime()) {
-            return 1;
-          }
-
-          if (new Date(obj1.lastBuyEvent.toString()).getTime() < new Date(obj2.lastBuyEvent.toString())
-            .getTime()) {
-            return -1;
-          }
-
-          return 0;
-        });
-
-        // //removal of duplicates
-        this.monthlybuyDetailsUniqueComparitor = this.monthlybuyDetailsUnique;
-
-        for (var i = 0, counter = 0; i < this.monthlybuyDetailsUniqueComparitor.length; i++) {
-
-          for (var j = this.monthlybuyDetailsUnique.length - 1; j >= 0; j--) {
-
-            if (this.monthlybuyDetailsUniqueComparitor[i].company == this.monthlybuyDetailsUnique[j].company) {
-              counter++;
-
-              if (counter > 1) {
-                this.monthlybuyDetailsUnique.splice(j, 1);
-                console.log("splicing for uniqueness");
-                counter = 0;
-                j = this.monthlybuyDetailsUnique.length;
-              }
-
-
-            }
-          }
-          counter = 0;
-        }
-
-
-
-        console.log(this.monthlybuyDetailsUnique);
-
-
-        console.log("RESPONSE unique new LENGTH");
-        console.log(this.monthlybuyDetailsUnique.length);
-
-
-
-
-
-
-
 
         this.monthlybuyDetails_length = this.monthlybuyDetailsUnique.length;
-        this.monthlybuyDetails = this.monthlybuyDetailsUnique.reverse();
-        this.monthlybuyDetailsUniqueforTransitWork = this.monthlybuyDetailsUnique;
+        this.monthlybuyDetails = this.monthlybuyDetailsUnique;
 
+        if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
+          this.monthlybuyDetails = this.monthlybuyDetails.slice(0, 3);
 
+          this.button1 = false;
 
-        if(this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL"){
-          this.monthlybuyDetails = this.monthlybuyDetails.slice(0,3);
-  
         }
+
 
       },
         err => {
@@ -181,43 +76,169 @@ export class UkeqMonthlybuyComponent implements OnInit {
       );
   }
 
-  OnSubmit() {
-    console.log("search string is:")
-    console.log(this.searchString);
-
-    this.monthlybuyDetailsTransit = [];
-
-
-
-    for (var i = 0; i < this.monthlybuyDetailsUniqueforTransitWork.length; i++) {
-
-
-
-      if (this.monthlybuyDetailsUniqueforTransitWork[i].company.toString().toLocaleUpperCase() === this.searchString.toString().toLocaleUpperCase()) {
-
-        this.monthlybuyDetailsTransit[this.monthlybuyDetailsTransit.length] = this.monthlybuyDetailsUniqueforTransitWork[i];
-
-      }
-
-    }
-
-    console.log(this.monthlybuyDetailsTransit);
-    this.monthlybuyDetailsTransit_length = this.monthlybuyDetailsTransit.length;
-
-    // this.monthlybuyDetails_length = this.monthlybuyDetailsTransit.length;
-    // this.monthlybuyDetails = this.monthlybuyDetailsTransit;
-
-    document.getElementById('display').innerHTML = this.monthlybuyDetailsTransit[this.monthlybuyDetailsTransit.length - 1].company
-      + " had a monthly buy signal with a confidence level of " + this.monthlybuyDetailsTransit[this.monthlybuyDetailsTransit.length - 1].confidence_level
-      + " on " +
-      this.monthlybuyDetailsTransit[this.monthlybuyDetailsTransit.length - 1].lastBuyEvent;
-
-  }
 
   onLogout() {
     // this.userService.deleteToken();
     this.monthlybuyService.deleteToken();
     this.router.navigate(['/login']);
+  }
+
+
+  navigateToSignalInfoPage(monthlybuyDetails_idparameter) {
+
+    localStorage.setItem('mongoSignaltimeframe', "Monthly");
+
+    localStorage.setItem('mongoSignalForecast', "BUY/LONG");
+
+    localStorage.setItem('mongoSignalexchange', "UK : LSE : EQ");
+
+
+    localStorage.setItem('mongoSignalcurrency', "GBX");
+
+    localStorage.setItem('mongoSignaltradeterm', "Short Term");
+    localStorage.setItem('mongoSignalrequestedTable', "uk_lse_monthlybuys");
+    localStorage.setItem('mongoSignalrequestedSignalID', monthlybuyDetails_idparameter);
+    this.router.navigate(['/signalinfopage']);
+  }
+
+  onclickbutton1() {
+    this.block2 = true;
+    this.button1 = false;
+    if (this.monthlybuyDetails.length > 100) {
+      this.button2 = true;
+    }
+
+  }
+
+  onclickbutton2() {
+    this.block3 = true;
+    this.button2 = false;
+    if (this.monthlybuyDetails.length > 150) {
+      this.button3 = true;
+    }
+  }
+
+  onclickbutton3() {
+    this.block4 = true;
+    this.button3 = false;
+    if (this.monthlybuyDetails.length > 200) {
+      this.button4 = true;
+    }
+  }
+
+  onclickbutton4() {
+    this.block5 = true;
+    this.button4 = false;
+    if (this.monthlybuyDetails.length > 250) {
+      this.button5 = true;
+    }
+  }
+  onclickbutton5() {
+    this.block6 = true;
+    this.button5 = false;
+    if (this.monthlybuyDetails.length > 300) {
+      this.button6 = true;
+    }
+  }
+  onclickbutton6() {
+    this.block7 = true;
+    this.button6 = false;
+    if (this.monthlybuyDetails.length > 350) {
+      this.button7 = true;
+    }
+  }
+  onclickbutton7() {
+    this.block8 = true;
+    this.button7 = false;
+    if (this.monthlybuyDetails.length > 400) {
+      this.button8 = true;
+    }
+  }
+  onclickbutton8() {
+
+    this.button8 = false;
+
+  }
+
+
+
+  getBlock2status() {
+    return this.block2;
+  }
+
+  getBlock3status() {
+    return this.block3;
+  }
+  getBlock4status() {
+    return this.block4;
+  }
+
+  getBlock5status() {
+    return this.block5;
+  }
+  getBlock6status() {
+    return this.block6;
+  }
+  getBlock7status() {
+    return this.block7;
+  }
+  getBlock8status() {
+    return this.block8;
+  }
+
+  getButton1status() {
+    return this.button1;
+  }
+  getButton2status() {
+    return this.button2;
+  }
+  getButton3status() {
+    return this.button3;
+  }
+  getButton4status() {
+    return this.button4;
+  }
+
+  getButton5status() {
+    return this.button5;
+  }
+  getButton6status() {
+    return this.button6;
+  }
+  getButton7status() {
+    return this.button7;
+  }
+  getButton8status() {
+    return this.button8;
+  }
+
+  onRefresh() {
+
+    this.monthlybuyService.getMonthlybuyProfile().
+      subscribe((res: any[]) => {
+
+        this.monthlybuyDetailsUnique = res;
+        if (res.length < 50) {
+          this.button1 = false;
+        }
+
+        this.monthlybuyDetails_length = this.monthlybuyDetailsUnique.length;
+        this.monthlybuyDetails = this.monthlybuyDetailsUnique;
+
+
+        if (this.EncrDecr.get('123456$#@$^@1ERF', localStorage.getItem('_q1_')) == "TRIAL") {
+          this.monthlybuyDetails = this.monthlybuyDetails.slice(0, 3);
+          this.button1 = false;
+        }
+
+      },
+        err => {
+          console.log(err);
+
+        }
+      );
+
+
   }
 
 }
