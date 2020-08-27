@@ -65,7 +65,6 @@ module.exports.register = (req, res, next) => {
                 port: 25,
                // secure: true,
                 auth: {
-                    //user: 'globalhr@skillplaces.com',
                     user: 'support@marketwinks.com',
                     pass: 'live9in@Us'
                 }
@@ -83,13 +82,14 @@ module.exports.register = (req, res, next) => {
           
               mailOptions={
                 from: 'support@marketwinks.com',
-                //from: 'globalhr@skillplaces.com',
                 to : req.body.email,
                 subject : "Please confirm your Email account for MarketWinks",
-                html : "Hello "+req.body.fullName+",<br><br> Welcome to MarketWinks!.<br><br>"+
-                "It’s time to confirm your email address.<br>"+
-                "Please Click on the link below to verify your email.<br><br>"+
-                link+"<br><br>Thank you,<br>MarketWinks Team!"
+                // html : "Hello "+req.body.fullName+",<br><br> Welcome to MarketWinks!.<br><br>"+
+                // "It’s time to confirm your email address.<br>"+
+                // "Please Click on the link below to verify your email.<br><br>"+
+                // link+"<br><br>Thank you,<br>MarketWinks Team!"
+
+                html : "<!DOCTYPE html><html><body><div><div></div><div style=\"background:none;color:#a5a5a5;padding:0;margin:0;font-family:Helvetica,arial,sans-serif;font-size:15px;line-height:24px\"><div></div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tbody><tr><td style=\"background-color:#10085A\"><center><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td align=\"center\" style=\"font-weight:bold;font-style:italic;font-size:30px;font-family:'Lucida Sans','Lucida Sans Regular','Lucida Grande','Lucida Sans Unicode',Geneva,Verdana,sans-serif;color:#FFFFFF;padding:20px 0 10px 0\">MarketWinks</td></tr><tr><td align=\"center\"><img width=\"600px\" src=\"https://images.unsplash.com/photo-1583752028088-91e3e9880b46\" tabindex=\"0\"><div style=\"opacity: 0.01; left: 552px; top: 360.4px;\"></div></td></tr></tbody></table></center></td></tr><tr><td style=\"background-color:#f1f5f5\"><center><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td style=\"width:600px;background-color:white\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td style=\"font-family:Helvetica,arial,sans-serif;font-size:15px;line-height:24px;padding:35px;color:#a5a5a5;text-align:left\"><span style=\"color:#7893b5;font-size:20px;line-height:29px\">Hello "+req.body.fullName+",<br><br> Great news, Welcome to Marketwinks - you just took your first step into a trading experience where you are fully backed by AI. <br><br>Now you’re part of a community has analyses over a million data points on every single day to provide trading forecasts with the vision of improving every trader's portfolio health. <br><br>It’s time to confirm your email address and continue your journey. Please Click on the link below to verify your email address.</p><p>Enjoy Trading!</p><p style=\"font-style:italic\"> Team <span class=\"il\">Marketwinks</span></p><center><table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"border-collapse:separate;width:540px;width:175px\"><tbody><tr><td style=\"background-color:#46d633;border-color:#32aa22;border-style:hidden hidden solid hidden;border-width:0 0 2px 0;font-family:Arial,sans-serif;white-space:nowrap;height:54px;text-align:center\"><a href=link style=\"font-size:16px;text-align:center;font-weight:600;text-decoration:none;vertical-align:baseline;text-transform:uppercase\"><span style=\"padding:10px 10px;color:#ffffff\">Confirm my Email</span></a></td></tr></tbody></table></center></td></tr></tbody></table></td></tr></tbody></table></center></td></tr><tr><td style=\"background-color:#f1f5f5\"><center><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody></div></div></body></html>"
                 
             };
             
